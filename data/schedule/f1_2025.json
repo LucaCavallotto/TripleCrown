@@ -1,0 +1,42 @@
+[
+  {
+    "id": "f1-aus-2025",
+    "series": "F1",
+    "name": "Australian Grand Prix",
+    "location": "Albert Park, Melbourne",
+    "country": "AU",
+    "date": "2025-03-16",
+    "sessions": [
+      {
+        "type": "Free Practice 1",
+        "code": "fp",
+        "date": "2025-03-14",
+        "time": "11:30",
+        "local": "Albert Park Circuit"
+      },
+      {
+        "type": "Free Practice 2",
+        "code": "fp",
+        "date": "2025-03-14",
+        "time": "15:00",
+        "local": "Albert Park Circuit"
+      },
+      {
+        "type": "Qualifying",
+        "code": "q",
+        "date": "2025-03-15",
+        "time": "15:00",
+        "local": "Albert Park Circuit"
+      },
+      {
+        "type": "Race",
+        "code": "r",
+        "date": "2025-03-16",
+        "time": "15:00",
+        "local": "Albert Park Circuit",
+        "broadcaster": "Sky Sports F1",
+        "official": "https://f1.com"
+      }
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "wrc-safari-2026",
+    "series": "WRC",
+    "name": "Safari Rally Kenya",
+    "location": "Naivasha, Kenya",
+    "country": "KE",
+    "date": "2026-04-18",
+    "sessions": [
+      {
+        "type": "Shakedown",
+        "code": "ss",
+        "date": "2026-04-17",
+        "time": "07:00",
+        "local": "Naivasha"
+      },
+      {
+        "type": "Special Stages Day 1",
+        "code": "ss",
+        "date": "2026-04-17",
+        "time": "10:00",
+        "local": "Naivasha Region"
+      },
+      {
+        "type": "Special Stages Day 2",
+        "code": "ss",
+        "date": "2026-04-18",
+        "time": "08:00",
+        "local": "Naivasha Region"
+      },
+      {
+        "type": "Power Stage",
+        "code": "r",
+        "date": "2026-04-19",
+        "time": "14:00",
+        "local": "Naivasha",
+        "broadcaster": "WRC+",
+        "official": "https://wrc.com"
+      }
+    ]
+  }
+]

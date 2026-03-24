@@ -1,0 +1,861 @@
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — TRIPLECROWN THEME
+    ============================================================ */
+    :root {
+      /* Gulf Racing Palette */
+      --gulf-blue:    #0067A5;
+      --gulf-orange:  #F4621F;
+      /* British Racing Green + Yellow */
+      --brg-green:    #1B4332;
+      --brg-yellow:   #FFCF00;
+      /* Ferrari Classic */
+      --ferrari-red:  #C8102E;
+      --ferrari-white:#F5F0E8;
+      /* Neutral tones */
+      --cream:        #FAF7F2;
+      --ink:          #1A1410;
+      --muted:        #8C8078;
+
+      /* Light mode defaults */
+      --bg-primary:   var(--cream);
+      --bg-secondary: #EFEBE4;
+      --bg-card:      #FFFFFF;
+      --text-primary: var(--ink);
+      --text-secondary:#5A5248;
+      --text-muted:   var(--muted);
+      --border-color: #DDD8D0;
+      --stripe-color: rgba(0,0,0,0.04);
+      --accent:       var(--gulf-orange);
+      --accent2:      var(--gulf-blue);
+      --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md:    0 8px 32px rgba(0,0,0,0.12);
+      --nav-bg:       rgba(250,247,242,0.92);
+      --hero-overlay: rgba(250,247,242,0.6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary:   #111009;
+        --bg-secondary: #1C1A16;
+        --bg-card:      #201E19;
+        --text-primary: #F0EBE3;
+        --text-secondary:#B0A898;
+        --text-muted:   #6B6258;
+        --border-color: #333028;
+        --stripe-color: rgba(255,255,255,0.03);
+        --accent:       var(--gulf-orange);
+        --accent2:      #3D9FD8;
+        --shadow-sm:    0 2px 8px rgba(0,0,0,0.4);
+        --shadow-md:    0 8px 32px rgba(0,0,0,0.5);
+        --nav-bg:       rgba(17,16,9,0.92);
+        --hero-overlay: rgba(17,16,9,0.6);
+      }
+    }
+
+    /* ============================================================
+       GLOBAL RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Pinstripe background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--stripe-color) 0px,
+        var(--stripe-color) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+    }
+
+    * { position: relative; z-index: 1; }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    h1, h2, h3, h4, h5, .display-font {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .mono { font-family: 'Space Mono', monospace; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .rm-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Racing stripe accent on navbar */
+    .rm-nav::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--gulf-orange) 0%,
+        var(--gulf-orange) 33%,
+        var(--gulf-blue) 33%,
+        var(--gulf-blue) 66%,
+        var(--brg-yellow) 66%,
+        var(--brg-yellow) 100%
+      );
+    }
+
+    .rm-nav .navbar-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--text-primary) !important;
+      text-transform: uppercase;
+    }
+
+    .rm-nav .navbar-brand span {
+      color: var(--gulf-orange);
+    }
+
+    .rm-nav .nav-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary) !important;
+      padding: 0.4rem 1rem !important;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .rm-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: var(--gulf-orange);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    .rm-nav .nav-link:hover,
+    .rm-nav .nav-link.active {
+      color: var(--text-primary) !important;
+    }
+
+    .rm-nav .nav-link:hover::after,
+    .rm-nav .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-primary) !important;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28100%2C90%2C80%2C1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    /* ============================================================
+       HERO BANNER
+    ============================================================ */
+    .rm-hero {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 4rem 0 3rem;
+      overflow: hidden;
+    }
+
+    .rm-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 20px,
+        var(--stripe-color) 20px,
+        var(--stripe-color) 21px
+      );
+    }
+
+    .rm-hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      color: var(--text-primary);
+    }
+
+    .rm-hero-title .accent-line {
+      display: block;
+      color: var(--gulf-orange);
+      -webkit-text-stroke: 0px;
+    }
+
+    .rm-hero-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .rm-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gulf-orange);
+      margin: 1.25rem 0;
+    }
+
+    /* ============================================================
+       SECTION LABELS
+    ============================================================ */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gulf-orange);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    /* ============================================================
+       NEWS SECTION
+    ============================================================ */
+    #news { padding: 4rem 0; }
+
+    /* Category Filter Pills */
+    .rm-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .rm-filter-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+    }
+
+    .rm-filter-btn:hover {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    .rm-filter-btn.active {
+      background: var(--gulf-orange);
+      border-color: var(--gulf-orange);
+      color: #fff;
+    }
+
+    /* News Grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* News Card — Square-ish */
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor: pointer;
+      aspect-ratio: 1 / 1.05;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gulf-orange);
+    }
+
+    .news-card-image {
+      flex: 0 0 45%;
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .news-card-image .cat-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      background: var(--gulf-orange);
+      color: #fff;
+      border-radius: 1px;
+      z-index: 2;
+    }
+
+    .news-card-image .cat-badge.wec   { background: var(--gulf-blue); }
+    .news-card-image .cat-badge.wrc   { background: var(--brg-green); }
+    .news-card-image .cat-badge.f2    { background: #6B21A8; }
+    .news-card-image .cat-badge.fe    { background: #0891B2; }
+    .news-card-image .cat-badge.indycar { background: #B45309; }
+
+    /* Decorative graphic placeholder for card image */
+    .news-card-graphic {
+      width: 100%;
+      height: 100%;
+    }
+
+    .news-card-body {
+      flex: 1;
+      padding: 1rem 1rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .news-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .news-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .news-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.85rem;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .news-source {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .news-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SCHEDULE SECTION
+    ============================================================ */
+    #schedule { padding: 4rem 0 6rem; }
+
+    /* Next Event Hero */
+    .next-event-hero {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+
+    .next-event-hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--gulf-orange), var(--gulf-blue));
+    }
+
+    .next-event-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gulf-orange);
+    }
+
+    .next-event-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      line-height: 1.05;
+    }
+
+    .next-event-detail {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    /* Countdown */
+    .countdown-wrap {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-unit {
+      text-align: center;
+      min-width: 56px;
+    }
+
+    .countdown-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      display: block;
+    }
+
+    .countdown-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .countdown-sep {
+      font-family: 'Space Mono', monospace;
+      font-size: 2rem;
+      color: var(--border-color);
+      align-self: flex-start;
+      margin-top: 0.1rem;
+    }
+
+    /* Year Selector */
+    .year-selector-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .year-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s;
+    }
+
+    .year-btn.active, .year-btn:hover {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    /* Timeline date picker */
+    .timeline-wrap {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-scroll {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    .timeline-scroll::-webkit-scrollbar { height: 4px; }
+    .timeline-scroll::-webkit-scrollbar-track { background: transparent; }
+    .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+    .timeline-date-btn {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s;
+      min-width: 72px;
+    }
+
+    .timeline-date-btn .tl-month {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .timeline-date-btn .tl-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+
+    .timeline-date-btn .tl-event {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70px;
+    }
+
+    .timeline-date-btn.active,
+    .timeline-date-btn:hover {
+      border-color: var(--gulf-orange);
+      background: rgba(244, 98, 31, 0.08);
+    }
+
+    .timeline-date-btn.active .tl-day { color: var(--gulf-orange); }
+    .timeline-date-btn.past { opacity: 0.45; }
+
+    .timeline-date-btn.next-indicator {
+      border-color: var(--gulf-orange);
+    }
+
+    .next-event-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--gulf-orange);
+      background: var(--gulf-orange);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .next-event-btn:hover { opacity: 0.85; }
+
+    /* Series filter tabs */
+    .series-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .series-tab {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s;
+    }
+
+    .series-tab.active { background: var(--gulf-blue); border-color: var(--gulf-blue); color: #fff; }
+    .series-tab:hover:not(.active) { border-color: var(--gulf-blue); color: var(--gulf-blue); }
+
+    /* Event group */
+    .event-group {
+      margin-bottom: 2.5rem;
+    }
+
+    .event-group-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .event-group-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .event-group-location {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .event-series-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 1px;
+      color: #fff;
+      margin-left: auto;
+    }
+
+    .badge-f1     { background: var(--ferrari-red); }
+    .badge-wec    { background: var(--gulf-blue); }
+    .badge-wrc    { background: var(--brg-green); }
+    .badge-f2     { background: #6B21A8; }
+    .badge-fe     { background: #0891B2; }
+    .badge-indycar{ background: #B45309; }
+
+    /* Session blocks */
+    .session-block {
+      display: flex;
+      align-items: stretch;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .session-block:hover {
+      border-color: var(--gulf-orange);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .session-block-color {
+      flex: 0 0 4px;
+      background: var(--gulf-orange);
+    }
+
+    .session-block-color.q  { background: var(--gulf-blue); }
+    .session-block-color.r  { background: var(--ferrari-red); }
+    .session-block-color.fp { background: var(--brg-yellow); }
+    .session-block-color.ss { background: #8B5CF6; }
+    .session-block-color.se { background: #10B981; }
+
+    .session-block-body {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .session-type {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      min-width: 120px;
+    }
+
+    .session-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .session-location {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    .session-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .session-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 1px;
+      transition: all 0.15s;
+    }
+
+    .session-link:hover {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    /* No events state */
+    .no-events {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .rm-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+    }
+
+    .rm-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--gulf-orange) 0%, var(--gulf-orange) 33%,
+        var(--gulf-blue) 33%, var(--gulf-blue) 66%,
+        var(--brg-yellow) 66%, var(--brg-yellow) 100%
+      );
+    }
+
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      color: var(--text-primary);
+    }
+
+    .footer-brand span { color: var(--gulf-orange); }
+
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .divider-racing {
+      height: 1px;
+      background: linear-gradient(90deg,
+        var(--gulf-orange), var(--gulf-blue), transparent
+      );
+      margin: 0.75rem 0;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { animation: fadeUp 0.5s ease both; }
+    .fade-up-1 { animation-delay: 0.05s; }
+    .fade-up-2 { animation-delay: 0.1s; }
+    .fade-up-3 { animation-delay: 0.15s; }
+    .fade-up-4 { animation-delay: 0.2s; }
+    .fade-up-5 { animation-delay: 0.25s; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 576px) {
+      .news-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .session-block-body { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+      .countdown-num { font-size: 1.6rem; }
+      .next-event-hero { padding: 1.25rem 1.25rem 1.25rem 1.75rem; }
+    }
+
+    @media (max-width: 400px) {
+      .news-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 992px) {
+      .next-event-hero { padding: 2.5rem 2.5rem 2.5rem 3rem; }
+    }
+  

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "indycar-indy500-2026",
+    "series": "IndyCar",
+    "name": "Indianapolis 500",
+    "location": "Indianapolis Motor Speedway, IN",
+    "country": "US",
+    "date": "2026-05-24",
+    "sessions": [
+      {
+        "type": "Practice Day 1",
+        "code": "fp",
+        "date": "2026-05-19",
+        "time": "12:00",
+        "local": "Indianapolis Motor Speedway"
+      },
+      {
+        "type": "Practice Day 2",
+        "code": "fp",
+        "date": "2026-05-20",
+        "time": "12:00",
+        "local": "Indianapolis Motor Speedway"
+      },
+      {
+        "type": "Qualifying",
+        "code": "q",
+        "date": "2026-05-22",
+        "time": "12:00",
+        "local": "Indianapolis Motor Speedway"
+      },
+      {
+        "type": "Indianapolis 500",
+        "code": "r",
+        "date": "2026-05-24",
+        "time": "12:45",
+        "local": "Indianapolis Motor Speedway",
+        "broadcaster": "NBC",
+        "official": "https://indycar.com"
+      }
+    ]
+  }
+]
