@@ -6,49 +6,65 @@
     {
       "round_number": 1,
       "id": "f1-2026-rd1",
-      "event_name": "Bahrain Grand Prix",
-      "location": "Sakhir",
-      "country_code": "BH",
-      "event_start_date": "2026-03-06T00:00:00Z",
-      "event_end_date": "2026-03-08T23:59:59Z",
+      "event_name": "Australian Grand Prix",
+      "location": "Melbourne",
+      "country_code": "AU",
+      "event_start_date": "2026-03-06T01:30:00Z",
+      "event_end_date": "2026-03-08T06:00:00Z",
       "sessions": [
         {
           "type": "Free Practice 1",
           "code": "FP1",
-          "start_time": "2026-03-06T14:30:00+03:00",
-          "end_time": "2026-03-06T15:30:00+03:00",
-          "is_confirmed": true
+          "start_time": "2026-03-06T01:30:00Z",
+          "end_time": "2026-03-06T02:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Free Practice 2",
           "code": "FP2",
-          "start_time": "2026-03-06T18:00:00+03:00",
-          "end_time": "2026-03-06T19:00:00+03:00",
-          "is_confirmed": true
+          "start_time": "2026-03-06T05:00:00Z",
+          "end_time": "2026-03-06T06:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Free Practice 3",
           "code": "FP3",
-          "start_time": "2026-03-07T15:30:00+03:00",
-          "end_time": "2026-03-07T16:30:00+03:00",
-          "is_confirmed": true
+          "start_time": "2026-03-07T01:30:00Z",
+          "end_time": "2026-03-07T02:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Qualifying",
           "code": "Q",
-          "start_time": "2026-03-07T19:00:00+03:00",
-          "end_time": "2026-03-07T20:00:00+03:00",
-          "is_confirmed": true
+          "start_time": "2026-03-07T05:00:00Z",
+          "end_time": "2026-03-07T06:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Race",
           "code": "R",
-          "start_time": "2026-03-08T18:00:00+03:00",
-          "end_time": "2026-03-08T20:00:00+03:00",
+          "start_time": "2026-03-08T04:00:00Z",
+          "end_time": "2026-03-08T06:00:00Z",
           "is_confirmed": true,
           "links": {
-            "official": "https://f1.com",
-            "broadcast": "Sky Sports F1"
+            "official": "https://www.formula1.com",
+            "broadcast": ""
           }
         }
       ]
@@ -56,49 +72,65 @@
     {
       "round_number": 2,
       "id": "f1-2026-rd2",
-      "event_name": "Saudi Arabian Grand Prix",
-      "location": "Jeddah",
-      "country_code": "SA",
-      "event_start_date": "2026-03-20T00:00:00Z",
-      "event_end_date": "2026-03-22T23:59:59Z",
+      "event_name": "Chinese Grand Prix",
+      "location": "Shanghai",
+      "country_code": "CN",
+      "event_start_date": "2026-03-13T03:30:00Z",
+      "event_end_date": "2026-03-15T09:00:00Z",
       "sessions": [
         {
           "type": "Free Practice 1",
           "code": "FP1",
-          "start_time": "2026-03-20T16:30:00+03:00",
-          "end_time": "2026-03-20T17:30:00+03:00",
-          "is_confirmed": true
-        },
-        {
-          "type": "Free Practice 2",
-          "code": "FP2",
-          "start_time": "2026-03-20T20:00:00+03:00",
-          "end_time": "2026-03-20T21:00:00+03:00",
-          "is_confirmed": true
-        },
-        {
-          "type": "Free Practice 3",
-          "code": "FP3",
-          "start_time": "2026-03-21T16:30:00+03:00",
-          "end_time": "2026-03-21T17:30:00+03:00",
-          "is_confirmed": true
+          "start_time": "2026-03-13T03:30:00Z",
+          "end_time": "2026-03-13T04:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Qualifying",
           "code": "Q",
-          "start_time": "2026-03-21T20:00:00+03:00",
-          "end_time": "2026-03-21T21:00:00+03:00",
-          "is_confirmed": true
+          "start_time": "2026-03-13T07:30:00Z",
+          "end_time": "2026-03-13T08:15:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Race",
           "code": "R",
-          "start_time": "2026-03-22T20:00:00+03:00",
-          "end_time": "2026-03-22T22:00:00+03:00",
+          "start_time": "2026-03-14T03:00:00Z",
+          "end_time": "2026-03-14T03:30:00Z",
           "is_confirmed": true,
           "links": {
-            "official": "https://f1.com",
-            "broadcast": "Sky Sports F1"
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-03-14T07:00:00Z",
+          "end_time": "2026-03-14T08:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-15T07:00:00Z",
+          "end_time": "2026-03-15T09:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
           }
         }
       ]
@@ -106,49 +138,1319 @@
     {
       "round_number": 3,
       "id": "f1-2026-rd3",
-      "event_name": "Australian Grand Prix",
-      "location": "Melbourne",
-      "country_code": "AU",
-      "event_start_date": "2026-04-10T00:00:00Z",
-      "event_end_date": "2026-04-12T23:59:59Z",
+      "event_name": "Japanese Grand Prix",
+      "location": "Suzuka",
+      "country_code": "JP",
+      "event_start_date": "2026-03-27T02:30:00Z",
+      "event_end_date": "2026-03-29T07:00:00Z",
       "sessions": [
         {
           "type": "Free Practice 1",
           "code": "FP1",
-          "start_time": "2026-04-10T12:30:00+10:00",
-          "end_time": "2026-04-10T13:30:00+10:00",
-          "is_confirmed": true
+          "start_time": "2026-03-27T02:30:00Z",
+          "end_time": "2026-03-27T03:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Free Practice 2",
           "code": "FP2",
-          "start_time": "2026-04-10T16:00:00+10:00",
-          "end_time": "2026-04-10T17:00:00+10:00",
-          "is_confirmed": true
+          "start_time": "2026-03-27T06:00:00Z",
+          "end_time": "2026-03-27T07:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Free Practice 3",
           "code": "FP3",
-          "start_time": "2026-04-11T12:30:00+10:00",
-          "end_time": "2026-04-11T13:30:00+10:00",
-          "is_confirmed": true
+          "start_time": "2026-03-28T02:30:00Z",
+          "end_time": "2026-03-28T03:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Qualifying",
           "code": "Q",
-          "start_time": "2026-04-11T16:00:00+10:00",
-          "end_time": "2026-04-11T17:00:00+10:00",
-          "is_confirmed": true
+          "start_time": "2026-03-28T06:00:00Z",
+          "end_time": "2026-03-28T07:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
         },
         {
           "type": "Race",
           "code": "R",
-          "start_time": "2026-04-12T15:00:00+10:00",
-          "end_time": "2026-04-12T17:00:00+10:00",
+          "start_time": "2026-03-29T05:00:00Z",
+          "end_time": "2026-03-29T07:00:00Z",
           "is_confirmed": true,
           "links": {
-            "official": "https://f1.com",
-            "broadcast": "Sky Sports F1"
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "f1-2026-rd4",
+      "event_name": "Miami Grand Prix",
+      "location": "Miami",
+      "country_code": "US",
+      "event_start_date": "2026-05-01T16:30:00Z",
+      "event_end_date": "2026-05-03T22:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-05-01T16:30:00Z",
+          "end_time": "2026-05-01T17:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-05-01T20:30:00Z",
+          "end_time": "2026-05-01T21:15:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-02T16:00:00Z",
+          "end_time": "2026-05-02T16:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-05-02T20:00:00Z",
+          "end_time": "2026-05-02T21:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-03T20:00:00Z",
+          "end_time": "2026-05-03T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "f1-2026-rd5",
+      "event_name": "Canadian Grand Prix",
+      "location": "Montreal",
+      "country_code": "CA",
+      "event_start_date": "2026-05-22T16:30:00Z",
+      "event_end_date": "2026-05-24T22:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-05-22T16:30:00Z",
+          "end_time": "2026-05-22T17:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-05-22T20:30:00Z",
+          "end_time": "2026-05-22T21:15:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-23T16:00:00Z",
+          "end_time": "2026-05-23T16:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-05-23T20:00:00Z",
+          "end_time": "2026-05-23T21:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-24T20:00:00Z",
+          "end_time": "2026-05-24T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "f1-2026-rd6",
+      "event_name": "Monaco Grand Prix",
+      "location": "Monte Carlo",
+      "country_code": "MC",
+      "event_start_date": "2026-06-05T11:30:00Z",
+      "event_end_date": "2026-06-07T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-06-05T11:30:00Z",
+          "end_time": "2026-06-05T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-06-05T15:00:00Z",
+          "end_time": "2026-06-05T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-06-06T10:30:00Z",
+          "end_time": "2026-06-06T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-06T14:00:00Z",
+          "end_time": "2026-06-06T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-07T13:00:00Z",
+          "end_time": "2026-06-07T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "f1-2026-rd7",
+      "event_name": "Barcelona-Catalunya Grand Prix",
+      "location": "Barcelona",
+      "country_code": "ES",
+      "event_start_date": "2026-06-12T11:30:00Z",
+      "event_end_date": "2026-06-14T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-06-12T11:30:00Z",
+          "end_time": "2026-06-12T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-06-12T15:00:00Z",
+          "end_time": "2026-06-12T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-06-13T10:30:00Z",
+          "end_time": "2026-06-13T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-13T14:00:00Z",
+          "end_time": "2026-06-13T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-14T13:00:00Z",
+          "end_time": "2026-06-14T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "f1-2026-rd8",
+      "event_name": "Austrian Grand Prix",
+      "location": "Spielberg",
+      "country_code": "AT",
+      "event_start_date": "2026-06-26T11:30:00Z",
+      "event_end_date": "2026-06-28T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-06-26T11:30:00Z",
+          "end_time": "2026-06-26T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-06-26T15:00:00Z",
+          "end_time": "2026-06-26T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-06-27T10:30:00Z",
+          "end_time": "2026-06-27T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-27T14:00:00Z",
+          "end_time": "2026-06-27T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-28T13:00:00Z",
+          "end_time": "2026-06-28T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "f1-2026-rd9",
+      "event_name": "British Grand Prix",
+      "location": "Silverstone",
+      "country_code": "GB",
+      "event_start_date": "2026-07-03T11:30:00Z",
+      "event_end_date": "2026-07-05T16:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-07-03T11:30:00Z",
+          "end_time": "2026-07-03T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-03T15:30:00Z",
+          "end_time": "2026-07-03T16:15:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-04T11:00:00Z",
+          "end_time": "2026-07-04T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-04T15:00:00Z",
+          "end_time": "2026-07-04T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-05T14:00:00Z",
+          "end_time": "2026-07-05T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 10,
+      "id": "f1-2026-rd10",
+      "event_name": "Belgian Grand Prix",
+      "location": "Spa-Francorchamps",
+      "country_code": "BE",
+      "event_start_date": "2026-07-17T11:30:00Z",
+      "event_end_date": "2026-07-19T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-07-17T11:30:00Z",
+          "end_time": "2026-07-17T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-07-17T15:00:00Z",
+          "end_time": "2026-07-17T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-07-18T10:30:00Z",
+          "end_time": "2026-07-18T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-18T14:00:00Z",
+          "end_time": "2026-07-18T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-19T13:00:00Z",
+          "end_time": "2026-07-19T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 11,
+      "id": "f1-2026-rd11",
+      "event_name": "Hungarian Grand Prix",
+      "location": "Budapest",
+      "country_code": "HU",
+      "event_start_date": "2026-07-24T11:30:00Z",
+      "event_end_date": "2026-07-26T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-07-24T11:30:00Z",
+          "end_time": "2026-07-24T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-07-24T15:00:00Z",
+          "end_time": "2026-07-24T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-07-25T10:30:00Z",
+          "end_time": "2026-07-25T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-25T14:00:00Z",
+          "end_time": "2026-07-25T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-26T13:00:00Z",
+          "end_time": "2026-07-26T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 12,
+      "id": "f1-2026-rd12",
+      "event_name": "Dutch Grand Prix",
+      "location": "Zandvoort",
+      "country_code": "NL",
+      "event_start_date": "2026-08-21T10:30:00Z",
+      "event_end_date": "2026-08-23T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-08-21T10:30:00Z",
+          "end_time": "2026-08-21T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-08-21T14:30:00Z",
+          "end_time": "2026-08-21T15:15:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-22T10:00:00Z",
+          "end_time": "2026-08-22T10:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-08-22T14:00:00Z",
+          "end_time": "2026-08-22T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-23T13:00:00Z",
+          "end_time": "2026-08-23T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 13,
+      "id": "f1-2026-rd13",
+      "event_name": "Italian Grand Prix",
+      "location": "Monza",
+      "country_code": "IT",
+      "event_start_date": "2026-09-04T10:30:00Z",
+      "event_end_date": "2026-09-06T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-09-04T10:30:00Z",
+          "end_time": "2026-09-04T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-09-04T14:00:00Z",
+          "end_time": "2026-09-04T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-09-05T10:30:00Z",
+          "end_time": "2026-09-05T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-05T14:00:00Z",
+          "end_time": "2026-09-05T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-06T13:00:00Z",
+          "end_time": "2026-09-06T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 14,
+      "id": "f1-2026-rd14",
+      "event_name": "Spanish Grand Prix",
+      "location": "Madrid",
+      "country_code": "XX",
+      "event_start_date": "2026-09-11T11:30:00Z",
+      "event_end_date": "2026-09-13T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-09-11T11:30:00Z",
+          "end_time": "2026-09-11T12:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-09-11T15:00:00Z",
+          "end_time": "2026-09-11T16:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-09-12T10:30:00Z",
+          "end_time": "2026-09-12T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-12T14:00:00Z",
+          "end_time": "2026-09-12T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-13T13:00:00Z",
+          "end_time": "2026-09-13T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 15,
+      "id": "f1-2026-rd15",
+      "event_name": "Azerbaijan Grand Prix",
+      "location": "Baku",
+      "country_code": "AZ",
+      "event_start_date": "2026-09-24T08:30:00Z",
+      "event_end_date": "2026-09-26T13:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-09-24T08:30:00Z",
+          "end_time": "2026-09-24T09:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-09-24T12:00:00Z",
+          "end_time": "2026-09-24T13:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-09-25T08:30:00Z",
+          "end_time": "2026-09-25T09:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-25T12:00:00Z",
+          "end_time": "2026-09-25T13:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-26T11:00:00Z",
+          "end_time": "2026-09-26T13:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 16,
+      "id": "f1-2026-rd16",
+      "event_name": "Singapore Grand Prix",
+      "location": "Singapore",
+      "country_code": "SG",
+      "event_start_date": "2026-10-09T08:30:00Z",
+      "event_end_date": "2026-10-11T14:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-10-09T08:30:00Z",
+          "end_time": "2026-10-09T09:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-10-09T12:30:00Z",
+          "end_time": "2026-10-09T13:15:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-10T09:00:00Z",
+          "end_time": "2026-10-10T09:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-10-10T13:00:00Z",
+          "end_time": "2026-10-10T14:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-11T12:00:00Z",
+          "end_time": "2026-10-11T14:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 17,
+      "id": "f1-2026-rd17",
+      "event_name": "degli Stati Uniti d'America Grand Prix",
+      "location": "Austin",
+      "country_code": "US",
+      "event_start_date": "2026-10-23T17:30:00Z",
+      "event_end_date": "2026-10-25T22:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-10-23T17:30:00Z",
+          "end_time": "2026-10-23T18:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-10-23T21:00:00Z",
+          "end_time": "2026-10-23T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-10-24T17:30:00Z",
+          "end_time": "2026-10-24T18:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-10-24T21:00:00Z",
+          "end_time": "2026-10-24T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-25T20:00:00Z",
+          "end_time": "2026-10-25T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 18,
+      "id": "f1-2026-rd18",
+      "event_name": "Città del Messico Grand Prix",
+      "location": "Mexico City",
+      "country_code": "MX",
+      "event_start_date": "2026-10-30T18:30:00Z",
+      "event_end_date": "2026-11-01T22:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-10-30T18:30:00Z",
+          "end_time": "2026-10-30T19:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-10-30T22:00:00Z",
+          "end_time": "2026-10-30T23:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-10-31T17:30:00Z",
+          "end_time": "2026-10-31T18:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-10-31T21:00:00Z",
+          "end_time": "2026-10-31T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-11-01T20:00:00Z",
+          "end_time": "2026-11-01T22:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 19,
+      "id": "f1-2026-rd19",
+      "event_name": "São Paulo Grand Prix",
+      "location": "Sao Paulo",
+      "country_code": "BR",
+      "event_start_date": "2026-11-06T15:30:00Z",
+      "event_end_date": "2026-11-08T19:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-11-06T15:30:00Z",
+          "end_time": "2026-11-06T16:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-11-06T19:00:00Z",
+          "end_time": "2026-11-06T20:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-11-07T14:30:00Z",
+          "end_time": "2026-11-07T15:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-11-07T18:00:00Z",
+          "end_time": "2026-11-07T19:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-11-08T17:00:00Z",
+          "end_time": "2026-11-08T19:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 20,
+      "id": "f1-2026-rd20",
+      "event_name": "Las Vegas Grand Prix",
+      "location": "Las Vegas",
+      "country_code": "US",
+      "event_start_date": "2026-11-20T00:30:00Z",
+      "event_end_date": "2026-11-22T06:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-11-20T00:30:00Z",
+          "end_time": "2026-11-20T01:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-11-20T04:00:00Z",
+          "end_time": "2026-11-20T05:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-11-21T00:30:00Z",
+          "end_time": "2026-11-21T01:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-11-21T04:00:00Z",
+          "end_time": "2026-11-21T05:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-11-22T04:00:00Z",
+          "end_time": "2026-11-22T06:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 21,
+      "id": "f1-2026-rd21",
+      "event_name": "Qatar Grand Prix",
+      "location": "Doha",
+      "country_code": "XX",
+      "event_start_date": "2026-11-27T13:30:00Z",
+      "event_end_date": "2026-11-29T18:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-11-27T13:30:00Z",
+          "end_time": "2026-11-27T14:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-11-27T17:00:00Z",
+          "end_time": "2026-11-27T18:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-11-28T14:30:00Z",
+          "end_time": "2026-11-28T15:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-11-28T18:00:00Z",
+          "end_time": "2026-11-28T19:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-11-29T16:00:00Z",
+          "end_time": "2026-11-29T18:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 22,
+      "id": "f1-2026-rd22",
+      "event_name": "Abu Dhabi Grand Prix",
+      "location": "Yas Marina",
+      "country_code": "AE",
+      "event_start_date": "2026-12-04T09:30:00Z",
+      "event_end_date": "2026-12-06T15:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-12-04T09:30:00Z",
+          "end_time": "2026-12-04T10:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-12-04T13:00:00Z",
+          "end_time": "2026-12-04T14:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-12-05T10:30:00Z",
+          "end_time": "2026-12-05T11:30:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-12-05T14:00:00Z",
+          "end_time": "2026-12-05T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
+          }
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-12-06T13:00:00Z",
+          "end_time": "2026-12-06T15:00:00Z",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://www.formula1.com",
+            "broadcast": ""
           }
         }
       ]
