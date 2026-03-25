@@ -26,9 +26,46 @@ async function loadData() {
     const seriesList = ['f1', 'wec', 'wrc', 'fe', 'indycar'];
     for (const s of seriesList) {
       try {
-        const res = await fetch(`data/schedule/${s}_${activeYear}.json`);
+        const res = await fetch(`data/schedule/${activeYear}/${s}_${activeYear}.json`);
         if (res.ok) {
-          const sData = await res.json();
+          const rawData = await res.json();
+          let sData = rawData;
+          if (rawData.calendar) {
+            let seriesName = rawData.series_slug.toUpperCase();
+            if (rawData.series_slug === 'indycar') seriesName = 'IndyCar';
+            
+            sData = rawData.calendar.map(calItem => {
+              const rSesh = calItem.sessions.find(sesh => sesh.code === 'R') || calItem.sessions[calItem.sessions.length - 1] || {};
+              const rDate = rSesh.start_time ? new Date(rSesh.start_time) : new Date(calItem.event_end_date);
+              const pad = n => String(n).padStart(2, '0');
+              const eDateStr = `${rDate.getFullYear()}-${pad(rDate.getMonth() + 1)}-${pad(rDate.getDate())}`;
+
+              return {
+                id: calItem.id,
+                date: eDateStr,
+                series: seriesName,
+                name: calItem.event_name,
+                location: calItem.location,
+                sessions: calItem.sessions.map(sesh => {
+                  const d = new Date(sesh.start_time);
+                  const lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+                  const lTime = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                  let cssCode = sesh.code ? sesh.code.toLowerCase() : 'u';
+                  if (cssCode.startsWith('fp')) cssCode = 'fp';
+
+                  return {
+                    code: cssCode,
+                    type: sesh.type,
+                    date: lDate,
+                    time: lTime,
+                    local: calItem.location,
+                    official: sesh.links?.official || null,
+                    broadcaster: sesh.links?.broadcast || null
+                  };
+                })
+              };
+            });
+          }
           SCHEDULE_DATA[activeYear].push(...sData);
         }
       } catch (e) {
@@ -420,13 +457,17 @@ function buildNewsFilters() {
     const links = [];
     if (s.official) links.push(`<a href="${s.official}" target="_blank" class="session-link"><i class="bi bi-globe2 me-1"></i>Official</a>`);
     if (s.broadcaster) links.push(`<a href="#" class="session-link"><i class="bi bi-tv me-1"></i>${s.broadcaster}</a>`);
+    
+    // Format YYYY-MM-DD to DD-MM-YYYY
+    const [yr, mo, da] = s.date.split('-');
+    const formattedDate = `${da}-${mo}-${yr}`;
 
     return `
       <div class="session-block">
         <div class="session-block-color ${s.code}"></div>
         <div class="session-block-body">
           <div class="session-type">${s.type}</div>
-          <div class="session-time mono"><i class="bi bi-clock me-1"></i>${s.date} &nbsp;<strong>${s.time}</strong></div>
+          <div class="session-time mono"><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
           <div class="session-location"><i class="bi bi-geo-alt me-1"></i>${s.local}</div>
           ${links.length ? `<div class="session-links">${links.join('')}</div>` : ''}
         </div>

@@ -1,0 +1,23 @@
+{
+  "series": "WEC",
+  "series_slug": "wec",
+  "season": 2025,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "wec-2025-rd1",
+      "event_name": "6 Hours of Spa",
+      "location": "Stavelot",
+      "country_code": "BE",
+      "event_start_date": "2025-04-26T00:00:00Z",
+      "event_end_date": "2025-04-26T23:59:59Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2025-04-26T13:00:00+02:00"
+        }
+      ]
+    }
+  ]
+}

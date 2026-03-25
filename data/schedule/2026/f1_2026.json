@@ -1,0 +1,157 @@
+{
+  "series": "Formula 1",
+  "series_slug": "f1",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "f1-2026-rd1",
+      "event_name": "Bahrain Grand Prix",
+      "location": "Sakhir",
+      "country_code": "BH",
+      "event_start_date": "2026-03-06T00:00:00Z",
+      "event_end_date": "2026-03-08T23:59:59Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-03-06T14:30:00+03:00",
+          "end_time": "2026-03-06T15:30:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-03-06T18:00:00+03:00",
+          "end_time": "2026-03-06T19:00:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-03-07T15:30:00+03:00",
+          "end_time": "2026-03-07T16:30:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-03-07T19:00:00+03:00",
+          "end_time": "2026-03-07T20:00:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-08T18:00:00+03:00",
+          "end_time": "2026-03-08T20:00:00+03:00",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://f1.com",
+            "broadcast": "Sky Sports F1"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "f1-2026-rd2",
+      "event_name": "Saudi Arabian Grand Prix",
+      "location": "Jeddah",
+      "country_code": "SA",
+      "event_start_date": "2026-03-20T00:00:00Z",
+      "event_end_date": "2026-03-22T23:59:59Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-03-20T16:30:00+03:00",
+          "end_time": "2026-03-20T17:30:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-03-20T20:00:00+03:00",
+          "end_time": "2026-03-20T21:00:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-03-21T16:30:00+03:00",
+          "end_time": "2026-03-21T17:30:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-03-21T20:00:00+03:00",
+          "end_time": "2026-03-21T21:00:00+03:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-22T20:00:00+03:00",
+          "end_time": "2026-03-22T22:00:00+03:00",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://f1.com",
+            "broadcast": "Sky Sports F1"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "f1-2026-rd3",
+      "event_name": "Australian Grand Prix",
+      "location": "Melbourne",
+      "country_code": "AU",
+      "event_start_date": "2026-04-10T00:00:00Z",
+      "event_end_date": "2026-04-12T23:59:59Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-04-10T12:30:00+10:00",
+          "end_time": "2026-04-10T13:30:00+10:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-04-10T16:00:00+10:00",
+          "end_time": "2026-04-10T17:00:00+10:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-04-11T12:30:00+10:00",
+          "end_time": "2026-04-11T13:30:00+10:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-04-11T16:00:00+10:00",
+          "end_time": "2026-04-11T17:00:00+10:00",
+          "is_confirmed": true
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-04-12T15:00:00+10:00",
+          "end_time": "2026-04-12T17:00:00+10:00",
+          "is_confirmed": true,
+          "links": {
+            "official": "https://f1.com",
+            "broadcast": "Sky Sports F1"
+          }
+        }
+      ]
+    }
+  ]
+}
