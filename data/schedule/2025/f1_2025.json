@@ -2,27 +2,5 @@
   "series": "Formula 1",
   "series_slug": "f1",
   "season": 2025,
-  "calendar": [
-    {
-      "round_number": 1,
-      "id": "f1-2025-rd1",
-      "event_name": "Bahrain Grand Prix",
-      "location": "Sakhir",
-      "country_code": "BH",
-      "event_start_date": "2025-03-02T00:00:00Z",
-      "event_end_date": "2025-03-02T23:59:59Z",
-      "sessions": [
-        {
-          "type": "Qualifying",
-          "code": "Q",
-          "start_time": "2025-03-01T19:00:00+03:00"
-        },
-        {
-          "type": "Race",
-          "code": "R",
-          "start_time": "2025-03-02T18:00:00+03:00"
-        }
-      ]
-    }
-  ]
+  "calendar": []
 }
