@@ -1,0 +1,203 @@
+{
+  "series": "NLS",
+  "series_slug": "nls",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "nls-2026-rd1",
+      "event_name": "NLS1: 71. ADAC Westfalenfahrt (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-03-14T00:00:00Z",
+      "event_end_date": "2026-03-14T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-14T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "nls-2026-rd2",
+      "event_name": "NLS2: 58. ADAC Barbarossapreis (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-03-21T00:00:00Z",
+      "event_end_date": "2026-03-21T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-21T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "nls-2026-rd3",
+      "event_name": "NLS3: 57. Adenauer ADAC Rundstrecken-Trophy (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-04-11T00:00:00Z",
+      "event_end_date": "2026-04-11T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-11T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "nls-2026-rd4",
+      "event_name": "ADAC 24h Qualifiers (2x4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-04-18T00:00:00Z",
+      "event_end_date": "2026-04-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race 1",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-18T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        },
+        {
+          "type": "Race 2",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-19T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "nls-2026-rd5",
+      "event_name": "NLS6: 1. ADAC Eifel Trophy (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-06-20T00:00:00Z",
+      "event_end_date": "2026-06-20T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-20T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "nls-2026-rd6",
+      "event_name": "NLS7: KW 6h ADAC Ruhr-Pokal-Rennen",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-08-01T00:00:00Z",
+      "event_end_date": "2026-08-01T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-01T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "nls-2026-rd7",
+      "event_name": "NLS8: 65. ADAC Reinoldus-Langstreckenrennen (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-09-12T00:00:00Z",
+      "event_end_date": "2026-09-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-12T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "nls-2026-rd8",
+      "event_name": "NLS9: 58. ADAC Barbarossapreis (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-09-13T00:00:00Z",
+      "event_end_date": "2026-09-13T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-13T00:00:00Z",
+          "is_confirmed": false,
+          "links": {
+            "official": "https://www.nuerburgring-langstrecken-serie.de/language/en/calendar-nurburgring-langstrecken-serie-2026/"
+          }
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "nls-2026-rd9",
+      "event_name": "NLS10: 2. NLS Sportwarte-Trophy (4h)",
+      "location": "Nürburgring",
+      "country_code": "DE",
+      "event_start_date": "2026-10-10T00:00:00Z",
+      "event_end_date": "2026-10-10T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-10T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    }
+  ]
+}
