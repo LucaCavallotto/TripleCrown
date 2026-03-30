@@ -2,5 +2,545 @@
   "series": "WRC",
   "series_slug": "wrc",
   "season": 2026,
-  "calendar": []
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "wrc-2026-rd1",
+      "event_name": "WRC Rallye Monte-Carlo 2026",
+      "location": "Monaco",
+      "country_code": "MC",
+      "event_start_date": "2026-01-22T00:00:00Z",
+      "event_end_date": "2026-01-25T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-01-22T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-01-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-01-24T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-01-25T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "wrc-2026-rd2",
+      "event_name": "WRC Rally Sweden 2026",
+      "location": "Sweden",
+      "country_code": "SE",
+      "event_start_date": "2026-02-12T00:00:00Z",
+      "event_end_date": "2026-02-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-02-12T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-02-13T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-02-14T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-02-15T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "wrc-2026-rd3",
+      "event_name": "WRC Safari Rally Kenya 2026",
+      "location": "Kenya",
+      "country_code": "KE",
+      "event_start_date": "2026-03-12T00:00:00Z",
+      "event_end_date": "2026-03-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-12T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-13T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-14T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-15T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "wrc-2026-rd4",
+      "event_name": "WRC Croatia Rally 2026",
+      "location": "Croatia",
+      "country_code": "HR",
+      "event_start_date": "2026-04-10T00:00:00Z",
+      "event_end_date": "2026-04-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 3",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 3",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 3",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-12T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "wrc-2026-rd5",
+      "event_name": "WRC Rally Islas Canarias 2026",
+      "location": "Spain",
+      "country_code": "ES",
+      "event_start_date": "2026-04-23T00:00:00Z",
+      "event_end_date": "2026-04-26T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-24T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-25T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-26T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "wrc-2026-rd6",
+      "event_name": "WRC Vodafone Rally de Portugal 2026",
+      "location": "Portugal",
+      "country_code": "PT",
+      "event_start_date": "2026-05-07T00:00:00Z",
+      "event_end_date": "2026-05-10T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-07T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-08T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-09T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-10T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "wrc-2026-rd7",
+      "event_name": "WRC FORUM8 Rally Japan 2026",
+      "location": "Japan",
+      "country_code": "JP",
+      "event_start_date": "2026-05-28T00:00:00Z",
+      "event_end_date": "2026-05-31T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-28T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-29T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-30T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-31T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "wrc-2026-rd8",
+      "event_name": "WRC EKO Acropolis Rally Greece 2026",
+      "location": "Greece",
+      "country_code": "GR",
+      "event_start_date": "2026-06-25T00:00:00Z",
+      "event_end_date": "2026-06-28T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-25T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-26T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-27T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-28T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "wrc-2026-rd9",
+      "event_name": "WRC Delfi Rally Estonia 2026",
+      "location": "Estonia",
+      "country_code": "EE",
+      "event_start_date": "2026-07-16T00:00:00Z",
+      "event_end_date": "2026-07-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-16T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-17T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-18T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-19T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 10,
+      "id": "wrc-2026-rd10",
+      "event_name": "WRC Secto Rally Finland 2026",
+      "location": "Finland",
+      "country_code": "FI",
+      "event_start_date": "2026-07-30T00:00:00Z",
+      "event_end_date": "2026-08-02T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-30T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-31T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-01T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-02T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 11,
+      "id": "wrc-2026-rd11",
+      "event_name": "WRC ueno Rally del Paraguay 2026",
+      "location": "Paraguay",
+      "country_code": "PY",
+      "event_start_date": "2026-08-27T00:00:00Z",
+      "event_end_date": "2026-08-30T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-27T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-28T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-29T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-30T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 12,
+      "id": "wrc-2026-rd12",
+      "event_name": "WRC Rally Chile Bio Bío 2026",
+      "location": "Chile",
+      "country_code": "CL",
+      "event_start_date": "2026-09-10T00:00:00Z",
+      "event_end_date": "2026-09-13T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-12T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-13T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 13,
+      "id": "wrc-2026-rd13",
+      "event_name": "WRC Rally Italia Sardegna 2026",
+      "location": "Italy",
+      "country_code": "IT",
+      "event_start_date": "2026-10-01T00:00:00Z",
+      "event_end_date": "2026-10-04T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-01T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-02T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-03T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-04T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 14,
+      "id": "wrc-2026-rd14",
+      "event_name": "WRC Rally Saudi Arabia 2026",
+      "location": "Saudi Arabia",
+      "country_code": "SA",
+      "event_start_date": "2026-11-11T00:00:00Z",
+      "event_end_date": "2026-11-14T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Day 1 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 2 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-12T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 3 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-13T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Day 4 of 4",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-14T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    }
+  ]
 }
