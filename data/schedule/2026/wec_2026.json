@@ -2,5 +2,554 @@
   "series": "WEC",
   "series_slug": "wec",
   "season": 2026,
-  "calendar": []
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "wec-2026-rd1",
+      "event_name": "6 Hours of Imola",
+      "location": "Imola",
+      "country_code": "IT",
+      "event_start_date": "2026-04-17T00:00:00Z",
+      "event_end_date": "2026-04-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-04-17T08:15:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-04-17T13:15:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-04-18T08:30:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "2026-04-18T12:30:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "2026-04-18T12:50:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "2026-04-18T13:10:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "2026-04-18T13:30:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-04-19T11:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "wec-2026-rd2",
+      "event_name": "TotalEnergies 6 Hours of Spa-Francorchamps",
+      "location": "Spa-Francorchamps",
+      "country_code": "BE",
+      "event_start_date": "2026-05-07T00:00:00Z",
+      "event_end_date": "2026-05-09T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "2026-05-07T09:00:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "2026-05-07T13:40:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "2026-05-08T08:10:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "2026-05-08T12:30:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "2026-05-08T12:55:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "2026-05-08T13:20:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "2026-05-08T13:45:00Z",
+          "is_confirmed": true
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-09T12:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "wec-2026-rd3",
+      "event_name": "24 Hours of Le Mans",
+      "location": "Le Mans",
+      "country_code": "FR",
+      "event_start_date": "2026-06-10T00:00:00Z",
+      "event_end_date": "2026-06-14T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - LMP2 & LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole 1 - LMP2 & LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole 2 - LMP2 & LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole 1 - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole 2 - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 4",
+          "code": "FP4",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Warm-up",
+          "code": "W",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-13T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-13T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "wec-2026-rd4",
+      "event_name": "ROLEX 6 Hours of São Paulo",
+      "location": "São Paulo",
+      "country_code": "BR",
+      "event_start_date": "2026-07-10T00:00:00Z",
+      "event_end_date": "2026-07-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-10T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-11T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-12T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "wec-2026-rd5",
+      "event_name": "Lone Star Le Mans",
+      "location": "Austin",
+      "country_code": "US",
+      "event_start_date": "2026-09-04T00:00:00Z",
+      "event_end_date": "2026-09-06T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-04T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-04T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-06T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "wec-2026-rd6",
+      "event_name": "6 Hours of Fuji",
+      "location": "Fuji",
+      "country_code": "JP",
+      "event_start_date": "2026-09-25T00:00:00Z",
+      "event_end_date": "2026-09-27T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-25T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-25T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-26T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-26T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-26T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-26T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-26T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-27T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "wec-2026-rd7",
+      "event_name": "Qatar 1812km",
+      "location": "Lusail",
+      "country_code": "QA",
+      "event_start_date": "2026-10-22T00:00:00Z",
+      "event_end_date": "2026-10-24T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-22T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-22T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-23T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-24T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "wec-2026-rd8",
+      "event_name": "Bapco Energies 8 Hours of Bahrain",
+      "location": "Sakhir",
+      "country_code": "BH",
+      "event_start_date": "2026-11-05T00:00:00Z",
+      "event_end_date": "2026-11-07T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Free Practice 1",
+          "code": "FP1",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 2",
+          "code": "FP2",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-05T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Free Practice 3",
+          "code": "FP3",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-06T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-06T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - LMGT3",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-06T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Qualifying - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-06T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Hyperpole - HYPERCAR",
+          "code": "Q",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-06T00:00:00Z",
+          "is_confirmed": false
+        },
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-11-07T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    }
+  ]
 }

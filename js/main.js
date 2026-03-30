@@ -36,9 +36,12 @@ async function loadData() {
             
             sData = rawData.calendar.map(calItem => {
               const rSesh = calItem.sessions.find(sesh => sesh.code === 'R') || calItem.sessions[calItem.sessions.length - 1] || {};
-              const rDate = rSesh.start_time ? new Date(rSesh.start_time) : new Date(calItem.event_end_date);
+              let rDateObj = new Date(calItem.event_end_date);
+              if (rSesh.start_time && rSesh.start_time !== "TBC") {
+                rDateObj = new Date(rSesh.start_time);
+              }
               const pad = n => String(n).padStart(2, '0');
-              const eDateStr = `${rDate.getFullYear()}-${pad(rDate.getMonth() + 1)}-${pad(rDate.getDate())}`;
+              const eDateStr = `${rDateObj.getFullYear()}-${pad(rDateObj.getMonth() + 1)}-${pad(rDateObj.getDate())}`;
 
               return {
                 id: calItem.id,
@@ -47,9 +50,18 @@ async function loadData() {
                 name: calItem.event_name,
                 location: calItem.location,
                 sessions: calItem.sessions.map(sesh => {
-                  const d = new Date(sesh.start_time);
-                  const lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-                  const lTime = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                  let lDate = "";
+                  let lTime = "";
+                  if (sesh.start_time === "TBC" || !sesh.start_time) {
+                    const dStr = sesh.date_tbc || calItem.event_end_date;
+                    const d = new Date(dStr);
+                    lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+                    lTime = "TBC";
+                  } else {
+                    const d = new Date(sesh.start_time);
+                    lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+                    lTime = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                  }
                   let cssCode = sesh.code ? sesh.code.toLowerCase() : 'u';
                   if (cssCode.startsWith('fp')) cssCode = 'fp';
 
@@ -296,6 +308,10 @@ function buildNewsFilters() {
     }
 
     const nextSession = event.sessions.find(s => {
+      if (s.time === "TBC") {
+        const dt = new Date(s.date + 'T23:59:59');
+        return dt > new Date();
+      }
       const dt = new Date(s.date + 'T' + s.time + ':00');
       return dt > new Date();
     }) || event.sessions[event.sessions.length - 1];
@@ -324,11 +340,17 @@ function buildNewsFilters() {
 
     // Start countdown
     if (countdownInterval) clearInterval(countdownInterval);
+    const wrap = document.getElementById('countdown-wrap');
+
+    if (nextSession.time === "TBC") {
+      wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TIME TBC</span>`;
+      return;
+    }
+
     const target = new Date(nextSession.date + 'T' + nextSession.time + ':00');
     function tick() {
       const now = new Date();
       const diff = target - now;
-      const wrap = document.getElementById('countdown-wrap');
       if (!wrap) return;
       if (diff <= 0) {
         wrap.innerHTML = `<span class="section-label" style="color:var(--ferrari-red)">LIVE NOW</span>`;
