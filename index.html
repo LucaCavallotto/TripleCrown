@@ -22,14 +22,14 @@
   <!-- ===== NAVBAR ===== -->
   <nav class="rm-nav navbar navbar-expand-md">
     <div class="container">
-      <a class="navbar-brand" href="#" onclick="showSection('news')">Triple<span>Crown</span></a>
+      <a class="navbar-brand" href="#" onclick="showSection('home')">Triple<span>Crown</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#news" onclick="showSection('news')">News</a>
+            <a class="nav-link" href="#news" onclick="showSection('news')">News</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#schedule" onclick="showSection('schedule')">Schedule</a>
@@ -39,26 +39,21 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <header class="rm-hero">
-    <div class="container">
-      <div class="fade-up">
-        <p class="section-label" style="color:var(--text-muted)">Motorsport Intelligence</p>
-        <h1 class="rm-hero-title">
-          The Track<br>
-          <span class="accent-line">Never Lies.</span>
-        </h1>
-        <div class="rm-divider"></div>
-        <p class="rm-hero-sub">News & Race Calendar · F1 · WEC · WRC · FE · IndyCar</p>
-      </div>
-    </div>
-  </header>
+
 
   <!-- ===== MAIN ===== -->
   <main>
 
+    <!-- ================== HOME SECTION ================== -->
+    <section id="home" class="rm-section">
+      <div class="container">
+        <!-- Next event hero moved here and will be populated by JS -->
+        <div class="next-event-hero mt-5 mb-5" id="next-event-hero"></div>
+      </div>
+    </section>
+
     <!-- ================== NEWS SECTION ================== -->
-    <section id="news" class="rm-section">
+    <section id="news" class="rm-section" style="display:none;">
       <div class="container">
         <div class="row align-items-end mb-4 mt-5">
           <div class="col">
@@ -88,9 +83,6 @@
         <!-- Year selector -->
         <div class="year-selector-wrap" id="year-selector"></div>
 
-        <!-- Next event hero -->
-        <div class="next-event-hero" id="next-event-hero"></div>
-
         <!-- Timeline -->
         <div class="timeline-wrap">
           <div class="d-flex align-items-center gap-2 mb-2">
@@ -102,8 +94,11 @@
           <div class="timeline-scroll" id="timeline-scroll"></div>
         </div>
 
-        <!-- Series filter -->
-        <div class="series-tabs" id="series-tabs"></div>
+        <!-- Series filter & View Toggle -->
+        <div class="d-flex flex-wrap justify-content-between align-items-end mb-2 gap-2">
+          <div class="series-tabs mb-0" id="series-tabs"></div>
+          <div id="view-toggle-wrap"></div>
+        </div>
 
         <!-- Events list -->
         <div id="events-container"></div>

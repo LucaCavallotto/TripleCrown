@@ -254,7 +254,7 @@
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(3rem, 6vw, 4.5rem);
       text-transform: uppercase;
       letter-spacing: -0.01em;
       color: var(--text-primary);
@@ -457,6 +457,44 @@
       color: var(--text-secondary);
     }
 
+    /* Hero Clickable */
+    .hero-clickable {
+      cursor: pointer;
+      border-radius: 4px; /* subtle base for the hover */
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-clickable:hover {
+      transform: scale(1.01);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* highlight on hover */
+      filter: brightness(1.05); /* subtle brighten */
+    }
+
+    .hero-clickable:active {
+      transform: scale(0.995);
+    }
+
+    .hero-cta {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .hero-clickable:hover .hero-cta {
+      color: var(--gulf-orange);
+      gap: 0.75rem; /* Moves the arrow slightly to the right */
+    }
+
     /* Countdown */
     .countdown-wrap {
       display: flex;
@@ -615,7 +653,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
-      margin-bottom: 2rem;
     }
 
     .series-tab {
@@ -636,9 +673,94 @@
     .series-tab.active { background: var(--gulf-blue); border-color: var(--gulf-blue); color: #fff; }
     .series-tab:hover:not(.active) { border-color: var(--gulf-blue); color: var(--gulf-blue); }
 
+    /* View Toggle */
+    .view-toggle-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .view-toggle-btn.left-btn {
+      border-radius: 3px 0 0 3px;
+      border-right: none;
+    }
+
+    .view-toggle-btn.right-btn {
+      border-radius: 0 3px 3px 0;
+    }
+
+    .view-toggle-btn.active {
+      background: var(--text-secondary);
+      border-color: var(--text-secondary);
+      color: var(--bg-primary);
+    }
+    
+    .date-group-header {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    /* Past Events Toggle */
+    .past-events-wrapper {
+      margin-bottom: 2.5rem;
+    }
+
+    .past-events-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .past-events-toggle:hover {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    .past-events-toggle .toggle-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .past-events-toggle.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .past-count {
+      color: var(--text-muted);
+      margin-left: 0.25rem;
+    }
+
     /* Event group */
     .event-group {
       margin-bottom: 2.5rem;
+      scroll-margin-top: 160px; /* Accounts for fixed navbar + sticky timeline */
     }
 
     .event-group-header {
@@ -682,6 +804,19 @@
     .badge-f2     { background: #6B21A8; }
     .badge-fe     { background: #0891B2; }
     .badge-indycar{ background: #B45309; }
+    
+    .completed-badge {
+      background: var(--ferrari-red);
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
+    }
 
     /* Session blocks */
     .session-block {
@@ -847,15 +982,30 @@
     /* ============================================================
        RESPONSIVE
     ============================================================ */
+    @media (max-width: 768px) {
+      .countdown-wrap { gap: 0.5rem; flex-wrap: nowrap; justify-content: flex-start; }
+      .countdown-num { font-size: 1.75rem; }
+      .countdown-unit { min-width: 48px; }
+      .countdown-sep { font-size: 1.5rem; margin-top: 0.2rem; }
+      .hero-cta { bottom: 1rem; right: 1.5rem; font-size: 0.65rem; }
+      .next-event-hero { padding: 1.5rem 1.5rem 2.5rem 1.75rem; } /* Extra bottom padding for CTA */
+    }
+
     @media (max-width: 576px) {
       .news-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
       .session-block-body { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-      .countdown-num { font-size: 1.6rem; }
-      .next-event-hero { padding: 1.25rem 1.25rem 1.25rem 1.75rem; }
+      .countdown-wrap { gap: 0.25rem; justify-content: space-between; }
+      .countdown-num { font-size: 1.4rem; }
+      .countdown-unit { min-width: 40px; }
+      .countdown-sep { margin-top: 0.1rem; }
+      .countdown-label { font-size: 0.6rem; }
     }
 
     @media (max-width: 400px) {
       .news-grid { grid-template-columns: 1fr; }
+      .countdown-num { font-size: 1.25rem; }
+      .countdown-unit { min-width: 35px; }
+      .hero-cta { font-size: 0.55rem; right: 1.25rem; }
     }
 
     @media (min-width: 992px) {

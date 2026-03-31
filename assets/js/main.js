@@ -125,6 +125,7 @@ window.setYear = async function(yr) {
   let activeSeries = "All";
   let activeEventId = null;
   let countdownInterval = null;
+  let isChronologicalView = false;
 
   const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NLS", "GTWC", "MotoGP"];
   const YEARS = [2025, 2026];
@@ -311,8 +312,20 @@ function buildNewsFilters() {
     const hero = document.getElementById('next-event-hero');
     if (!event) {
       hero.innerHTML = `<p class="no-events">No upcoming events found.</p>`;
+      hero.onclick = null;
+      hero.classList.remove('hero-clickable');
+      hero.removeAttribute('role');
+      hero.removeAttribute('tabindex');
+      hero.removeAttribute('title');
       return;
     }
+
+    // Make the entire hero container clickable
+    hero.classList.add('hero-clickable');
+    hero.setAttribute('role', 'button');
+    hero.setAttribute('tabindex', '0');
+    hero.setAttribute('title', 'Go to Event Schedule');
+    hero.onclick = () => goToScheduleAndScroll(event.id);
 
     const nextSession = event.sessions.find(s => {
       if (s.time === "TBC") {
@@ -343,24 +356,29 @@ function buildNewsFilters() {
           <div class="countdown-wrap mt-1" id="countdown-wrap"></div>
         </div>
       </div>
+      <div class="hero-cta">
+        View Full Schedule <i class="bi bi-arrow-right"></i>
+      </div>
     `;
 
     // Start countdown
     if (countdownInterval) clearInterval(countdownInterval);
     const wrap = document.getElementById('countdown-wrap');
 
-    if (nextSession.time === "TBC") {
-      wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TIME TBC</span>`;
-      return;
-    }
+    const targetStr = nextSession.time === "TBC" ? (nextSession.date + 'T00:00:00') : (nextSession.date + 'T' + nextSession.time + ':00');
+    const target = new Date(targetStr);
 
-    const target = new Date(nextSession.date + 'T' + nextSession.time + ':00');
     function tick() {
       const now = new Date();
       const diff = target - now;
       if (!wrap) return;
+
       if (diff <= 0) {
-        wrap.innerHTML = `<span class="section-label" style="color:var(--ferrari-red)">LIVE NOW</span>`;
+        if (nextSession.time === "TBC") {
+          wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TODAY (TIME TBC)</span>`;
+        } else {
+          wrap.innerHTML = `<span class="section-label" style="color:var(--ferrari-red)">LIVE NOW</span>`;
+        }
         clearInterval(countdownInterval);
         return;
       }
@@ -387,17 +405,39 @@ function buildNewsFilters() {
   // ============================================================
   function buildTimeline(events, nextEvent) {
     const scroll = document.getElementById('timeline-scroll');
-    scroll.innerHTML = events.map(ev => {
-      const past = isPast(ev.date);
-      const isNext = ev.id === (nextEvent && nextEvent.id);
+    if (!events.length) {
+      scroll.innerHTML = '';
+      return;
+    }
+
+    // Group events by date
+    const groupedByDate = {};
+    events.forEach(ev => {
+      if (!groupedByDate[ev.date]) groupedByDate[ev.date] = [];
+      groupedByDate[ev.date].push(ev);
+    });
+
+    const uniqueDates = Object.keys(groupedByDate).sort();
+
+    // Get date of active event to show correct active state
+    const activeEvent = events.find(e => e.id === activeEventId);
+    const activeDate = activeEvent ? activeEvent.date : (nextEvent ? nextEvent.date : null);
+    const nextDate = nextEvent ? nextEvent.date : null;
+
+    scroll.innerHTML = uniqueDates.map(dateStr => {
+      const dayEvents = groupedByDate[dateStr];
+      const firstEventId = dayEvents[0].id;
+      const past = isPast(dateStr);
+      const isActive = dateStr === activeDate;
+      const isNext = dateStr === nextDate;
+
       return `<button
-        class="timeline-date-btn ${past ? 'past' : ''} ${isNext ? 'next-indicator' : ''} ${activeEventId === ev.id ? 'active' : ''}"
-        onclick="selectEvent('${ev.id}')"
-        data-event-id="${ev.id}"
-        id="tl-${ev.id}">
-          <span class="tl-month">${getMonthShort(ev.date)}</span>
-          <span class="tl-day">${getDay(ev.date)}</span>
-          <span class="tl-event">${ev.series}</span>
+        class="timeline-date-btn ${past ? 'past' : ''} ${isNext ? 'next-indicator' : ''} ${isActive ? 'active' : ''}"
+        onclick="selectEvent('${firstEventId}')"
+        data-date="${dateStr}"
+        id="tl-date-${dateStr}">
+          <span class="tl-month">${getMonthShort(dateStr)}</span>
+          <span class="tl-day">${getDay(dateStr)}</span>
       </button>`;
     }).join('');
   }
@@ -414,7 +454,7 @@ function buildNewsFilters() {
   }
 
   // ============================================================
-  //  SCHEDULE — Series tabs
+  //  SCHEDULE — Series tabs & View Toggle
   // ============================================================
   function buildSeriesTabs(events) {
     const series = getSeries(events);
@@ -423,10 +463,33 @@ function buildNewsFilters() {
       `<button class="series-tab ${s === activeSeries ? 'active' : ''}"
                onclick="setSeries('${s}')">${s}</button>`
     ).join('');
+    buildViewToggle();
+  }
+
+  function buildViewToggle() {
+    const wrap = document.getElementById('view-toggle-wrap');
+    if (!wrap) return;
+    if (activeSeries !== 'All') {
+      wrap.innerHTML = '';
+      return;
+    }
+    wrap.innerHTML = `
+      <div class="d-flex rounded">
+        <button class="view-toggle-btn left-btn ${!isChronologicalView ? 'active' : ''}" onclick="toggleViewMode(false)">Grouped</button>
+        <button class="view-toggle-btn right-btn ${isChronologicalView ? 'active' : ''}" onclick="toggleViewMode(true)">Chronological</button>
+      </div>
+    `;
+  }
+
+  window.toggleViewMode = function(toChronological) {
+    if (isChronologicalView === toChronological) return;
+    isChronologicalView = toChronological;
+    buildSchedule();
   }
 
   function setSeries(s) {
     activeSeries = s;
+    if (s !== 'All') isChronologicalView = false;
     buildSchedule();
   }
 
@@ -459,30 +522,120 @@ function buildNewsFilters() {
       return;
     }
 
-    container.innerHTML = events.map((ev, idx) => {
-      const past = isPast(ev.date);
-      const isHighlighted = ev.id === activeEventId;
-      return `
-        <div class="event-group fade-up fade-up-${Math.min(idx+1,5)} ${isHighlighted ? 'highlighted-event' : ''}"
-             id="event-${ev.id}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
-          <div class="event-group-header">
-            <div>
-              <div class="event-group-name">${ev.name}</div>
-              <div class="event-group-location">
-                <i class="bi bi-geo-alt me-1"></i>${ev.location}
-                &nbsp;·&nbsp;${fmtShort(ev.date)}
-                ${past ? '<span class="ms-2" style="color:var(--text-muted);font-size:0.65rem;">COMPLETED</span>' : ''}
-              </div>
+    if (isChronologicalView && activeSeries === 'All') {
+      // Flatten all sessions
+      let allSessions = [];
+      events.forEach(ev => {
+        ev.sessions.forEach(s => {
+          allSessions.push({
+            ...s,
+            evName: ev.name,
+            evSeries: ev.series,
+            evLocation: ev.location,
+            evId: ev.id
+          });
+        });
+      });
+
+      // Group by date
+      const grouped = {};
+      allSessions.forEach(s => {
+        if (!grouped[s.date]) grouped[s.date] = [];
+        grouped[s.date].push(s);
+      });
+
+      // Sort dates
+      const sortedDates = Object.keys(grouped).sort();
+      const pastDates = sortedDates.filter(d => isPast(d));
+      const upcomingDates = sortedDates.filter(d => !isPast(d));
+
+      const renderDateGroup = (date, idx) => {
+        let daySessions = grouped[date];
+        // Sort sessions by time
+        daySessions.sort((a,b) => {
+          if (a.time === "TBC" && b.time === "TBC") return 0;
+          if (a.time === "TBC") return 1;
+          if (b.time === "TBC") return -1;
+          return a.time.localeCompare(b.time);
+        });
+
+        const dDate = new Date(date + 'T00:00:00');
+        const displayDate = dDate.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+
+        return `
+          <div class="event-group fade-up fade-up-${Math.min(idx+1,5)}">
+            <div class="date-group-header">
+              <i class="bi bi-calendar-event me-2" style="color:var(--gulf-orange);"></i>${displayDate}
             </div>
-            <span class="event-series-badge badge-${ev.series.toLowerCase()}">${ev.series}</span>
+            ${daySessions.map(s => sessionBlock(s, true)).join('')}
           </div>
-          ${ev.sessions.map(s => sessionBlock(s)).join('')}
-        </div>
-      `;
-    }).join('');
+        `;
+      };
+
+      let html = '';
+      if (pastDates.length > 0) {
+        html += `
+          <div class="past-events-wrapper">
+            <button class="past-events-toggle w-100" onclick="document.getElementById('past-events-chrono').classList.toggle('d-none'); this.classList.toggle('open')">
+              <i class="bi bi-clock-history me-2"></i> Show Past Dates (<span class="past-count">${pastDates.length}</span>)
+              <i class="bi bi-chevron-down ms-auto toggle-icon"></i>
+            </button>
+            <div id="past-events-chrono" class="d-none mt-4">
+              ${pastDates.map((d, idx) => renderDateGroup(d, idx)).join('')}
+            </div>
+          </div>
+        `;
+      }
+      
+      html += upcomingDates.map((d, idx) => renderDateGroup(d, idx)).join('');
+      container.innerHTML = html;
+
+    } else {
+      const pastEvents = events.filter(ev => isPast(ev.date));
+      const upcomingEvents = events.filter(ev => !isPast(ev.date));
+
+      const renderEvent = (ev, idx) => {
+        const past = isPast(ev.date);
+        const isHighlighted = ev.id === activeEventId;
+        return `
+          <div class="event-group fade-up fade-up-${Math.min(idx+1,5)} ${isHighlighted ? 'highlighted-event' : ''}"
+               id="event-${ev.id}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
+            <div class="event-group-header">
+              <div>
+                <div class="event-group-name">${ev.name}</div>
+                <div class="event-group-location">
+                  <i class="bi bi-geo-alt me-1"></i>${ev.location}
+                  ${past ? '<span class="completed-badge ms-2">COMPLETED</span>' : ''}
+                </div>
+              </div>
+              <span class="event-series-badge badge-${ev.series.toLowerCase()}">${ev.series}</span>
+            </div>
+            ${ev.sessions.map(s => sessionBlock(s, false)).join('')}
+          </div>
+        `;
+      };
+
+      let html = '';
+      if (pastEvents.length > 0) {
+        html += `
+          <div class="past-events-wrapper">
+            <button class="past-events-toggle w-100" onclick="document.getElementById('past-events-grouped').classList.toggle('d-none'); this.classList.toggle('open')">
+              <i class="bi bi-clock-history me-2"></i> Show Past Events (<span class="past-count">${pastEvents.length}</span>)
+              <i class="bi bi-chevron-down ms-auto toggle-icon"></i>
+            </button>
+            <div id="past-events-grouped" class="d-none mt-4">
+              ${pastEvents.map((ev, idx) => renderEvent(ev, idx)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      html += upcomingEvents.map((ev, idx) => renderEvent(ev, idx)).join('');
+      container.innerHTML = html;
+    }
   }
 
-  function sessionBlock(s) {
+  function sessionBlock(s, isChronological = false) {
     const links = [];
     if (s.official) links.push(`<a href="${s.official}" target="_blank" class="session-link"><i class="bi bi-globe2 me-1"></i>Official</a>`);
     if (s.broadcaster) links.push(`<a href="#" class="session-link"><i class="bi bi-tv me-1"></i>${s.broadcaster}</a>`);
@@ -495,14 +648,36 @@ function buildNewsFilters() {
       <div class="session-block">
         <div class="session-block-color ${s.code}"></div>
         <div class="session-block-body">
-          <div class="session-type">${s.type}</div>
-          <div class="session-time mono"><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
-          <div class="session-location"><i class="bi bi-geo-alt me-1"></i>${s.local}</div>
-          ${links.length ? `<div class="session-links">${links.join('')}</div>` : ''}
+          ${isChronological ? `<span class="event-series-badge ms-0 badge-${s.evSeries.toLowerCase()}">${s.evSeries}</span>` : ''}
+          <div class="session-type">
+            ${s.type}
+            ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;">${s.evName} &middot; ${s.evLocation}</div>` : ''}
+          </div>
+          <div class="session-time mono d-flex align-items-center gap-3">
+            <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
+          </div>
+          ${links.length ? `<div class="session-links ms-auto">${links.join('')}</div>` : ''}
         </div>
       </div>
     `;
   }
+
+  // ============================================================
+  //  DEEP LINKING & NAVIGATION
+  // ============================================================
+  window.goToScheduleAndScroll = function(eventId) {
+    // Check if we are already on schedule
+    const hashRaw = window.location.hash.replace('#', '');
+    const [sectionPart] = hashRaw.split('?');
+    
+    if (sectionPart !== 'schedule') {
+        showSection('schedule');
+    }
+    history.pushState(null, '', '#schedule?eventId=' + eventId);
+    
+    // selectEvent rebuilds the layout, sets the active style, and scrolls down
+    selectEvent(eventId);
+  };
 
   // ============================================================
   //  SCHEDULE — Main build
@@ -528,6 +703,18 @@ function buildNewsFilters() {
   // ============================================================
   async function init() {
     await loadData();
+    
+    // Deep Linking: parse the event ID from the URL hash query string
+    const hashRaw = window.location.hash.replace('#', '');
+    const [sectionPart, queryString] = hashRaw.split('?');
+    if (queryString) {
+      const params = new URLSearchParams(queryString);
+      const urlEventId = params.get('eventId');
+      if (urlEventId) {
+        activeEventId = urlEventId; // Sets the default active event BEFORE building
+      }
+    }
+
     // News
     buildNewsFilters();
     buildNewsGrid();
@@ -536,16 +723,24 @@ function buildNewsFilters() {
     buildYearSelector();
     buildSchedule();
 
+    // If opened directly via a deep link, force scroll into view after rendering
+    if (sectionPart === 'schedule' && activeEventId) {
+      setTimeout(() => {
+        const el = document.getElementById('event-' + activeEventId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 250); // slight delay to allow layout calculation
+    }
+
     // Section toggle via hash
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'schedule') showSection('schedule');
-    else showSection('news');
+    if (sectionPart === 'schedule') showSection('schedule');
+    else if (sectionPart === 'news') showSection('news');
+    else showSection('home');
 
     // Nav link clicks toggle sections
     document.querySelectorAll('.rm-nav .nav-link[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         const target = link.getAttribute('href').replace('#', '');
-        if (['news', 'schedule'].includes(target)) {
+        if (['home', 'news', 'schedule'].includes(target)) {
           e.preventDefault();
           showSection(target);
           history.pushState(null, '', '#' + target);
