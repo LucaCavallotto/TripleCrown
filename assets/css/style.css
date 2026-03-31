@@ -682,6 +682,19 @@
     .badge-f2     { background: #6B21A8; }
     .badge-fe     { background: #0891B2; }
     .badge-indycar{ background: #B45309; }
+    
+    .completed-badge {
+      background: var(--ferrari-red);
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
+    }
 
     /* Session blocks */
     .session-block {

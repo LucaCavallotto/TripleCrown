@@ -470,7 +470,7 @@ function buildNewsFilters() {
               <div class="event-group-name">${ev.name}</div>
               <div class="event-group-location">
                 <i class="bi bi-geo-alt me-1"></i>${ev.location}
-                ${past ? '<span class="ms-2" style="color:var(--text-muted);font-size:0.65rem;">COMPLETED</span>' : ''}
+                ${past ? '<span class="completed-badge ms-2">COMPLETED</span>' : ''}
               </div>
             </div>
             <span class="event-series-badge badge-${ev.series.toLowerCase()}">${ev.series}</span>
