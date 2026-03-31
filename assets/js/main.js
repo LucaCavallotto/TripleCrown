@@ -470,7 +470,6 @@ function buildNewsFilters() {
               <div class="event-group-name">${ev.name}</div>
               <div class="event-group-location">
                 <i class="bi bi-geo-alt me-1"></i>${ev.location}
-                &nbsp;·&nbsp;${fmtShort(ev.date)}
                 ${past ? '<span class="ms-2" style="color:var(--text-muted);font-size:0.65rem;">COMPLETED</span>' : ''}
               </div>
             </div>
@@ -497,7 +496,6 @@ function buildNewsFilters() {
         <div class="session-block-body">
           <div class="session-type">${s.type}</div>
           <div class="session-time mono"><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
-          <div class="session-location"><i class="bi bi-geo-alt me-1"></i>${s.local}</div>
           ${links.length ? `<div class="session-links">${links.join('')}</div>` : ''}
         </div>
       </div>
