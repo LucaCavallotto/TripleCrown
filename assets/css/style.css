@@ -720,6 +720,7 @@
     /* Event group */
     .event-group {
       margin-bottom: 2.5rem;
+      scroll-margin-top: 160px; /* Accounts for fixed navbar + sticky timeline */
     }
 
     .event-group-header {
