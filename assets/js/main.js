@@ -312,8 +312,20 @@ function buildNewsFilters() {
     const hero = document.getElementById('next-event-hero');
     if (!event) {
       hero.innerHTML = `<p class="no-events">No upcoming events found.</p>`;
+      hero.onclick = null;
+      hero.classList.remove('hero-clickable');
+      hero.removeAttribute('role');
+      hero.removeAttribute('tabindex');
+      hero.removeAttribute('title');
       return;
     }
+
+    // Make the entire hero container clickable
+    hero.classList.add('hero-clickable');
+    hero.setAttribute('role', 'button');
+    hero.setAttribute('tabindex', '0');
+    hero.setAttribute('title', 'Go to Event Schedule');
+    hero.onclick = () => goToScheduleAndScroll(event.id);
 
     const nextSession = event.sessions.find(s => {
       if (s.time === "TBC") {
@@ -344,24 +356,29 @@ function buildNewsFilters() {
           <div class="countdown-wrap mt-1" id="countdown-wrap"></div>
         </div>
       </div>
+      <div class="hero-cta">
+        View Full Schedule <i class="bi bi-arrow-right"></i>
+      </div>
     `;
 
     // Start countdown
     if (countdownInterval) clearInterval(countdownInterval);
     const wrap = document.getElementById('countdown-wrap');
 
-    if (nextSession.time === "TBC") {
-      wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TIME TBC</span>`;
-      return;
-    }
+    const targetStr = nextSession.time === "TBC" ? (nextSession.date + 'T00:00:00') : (nextSession.date + 'T' + nextSession.time + ':00');
+    const target = new Date(targetStr);
 
-    const target = new Date(nextSession.date + 'T' + nextSession.time + ':00');
     function tick() {
       const now = new Date();
       const diff = target - now;
       if (!wrap) return;
+
       if (diff <= 0) {
-        wrap.innerHTML = `<span class="section-label" style="color:var(--ferrari-red)">LIVE NOW</span>`;
+        if (nextSession.time === "TBC") {
+          wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TODAY (TIME TBC)</span>`;
+        } else {
+          wrap.innerHTML = `<span class="section-label" style="color:var(--ferrari-red)">LIVE NOW</span>`;
+        }
         clearInterval(countdownInterval);
         return;
       }
@@ -605,6 +622,23 @@ function buildNewsFilters() {
   }
 
   // ============================================================
+  //  DEEP LINKING & NAVIGATION
+  // ============================================================
+  window.goToScheduleAndScroll = function(eventId) {
+    // Check if we are already on schedule
+    const hashRaw = window.location.hash.replace('#', '');
+    const [sectionPart] = hashRaw.split('?');
+    
+    if (sectionPart !== 'schedule') {
+        showSection('schedule');
+    }
+    history.pushState(null, '', '#schedule?eventId=' + eventId);
+    
+    // selectEvent rebuilds the layout, sets the active style, and scrolls down
+    selectEvent(eventId);
+  };
+
+  // ============================================================
   //  SCHEDULE — Main build
   // ============================================================
   function buildSchedule() {
@@ -628,6 +662,18 @@ function buildNewsFilters() {
   // ============================================================
   async function init() {
     await loadData();
+    
+    // Deep Linking: parse the event ID from the URL hash query string
+    const hashRaw = window.location.hash.replace('#', '');
+    const [sectionPart, queryString] = hashRaw.split('?');
+    if (queryString) {
+      const params = new URLSearchParams(queryString);
+      const urlEventId = params.get('eventId');
+      if (urlEventId) {
+        activeEventId = urlEventId; // Sets the default active event BEFORE building
+      }
+    }
+
     // News
     buildNewsFilters();
     buildNewsGrid();
@@ -636,10 +682,17 @@ function buildNewsFilters() {
     buildYearSelector();
     buildSchedule();
 
+    // If opened directly via a deep link, force scroll into view after rendering
+    if (sectionPart === 'schedule' && activeEventId) {
+      setTimeout(() => {
+        const el = document.getElementById('event-' + activeEventId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 250); // slight delay to allow layout calculation
+    }
+
     // Section toggle via hash
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'schedule') showSection('schedule');
-    else if (hash === 'news') showSection('news');
+    if (sectionPart === 'schedule') showSection('schedule');
+    else if (sectionPart === 'news') showSection('news');
     else showSection('home');
 
     // Nav link clicks toggle sections

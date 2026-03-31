@@ -457,6 +457,44 @@
       color: var(--text-secondary);
     }
 
+    /* Hero Clickable */
+    .hero-clickable {
+      cursor: pointer;
+      border-radius: 4px; /* subtle base for the hover */
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-clickable:hover {
+      transform: scale(1.01);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* highlight on hover */
+      filter: brightness(1.05); /* subtle brighten */
+    }
+
+    .hero-clickable:active {
+      transform: scale(0.995);
+    }
+
+    .hero-cta {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .hero-clickable:hover .hero-cta {
+      color: var(--gulf-orange);
+      gap: 0.75rem; /* Moves the arrow slightly to the right */
+    }
+
     /* Countdown */
     .countdown-wrap {
       display: flex;
@@ -903,15 +941,30 @@
     /* ============================================================
        RESPONSIVE
     ============================================================ */
+    @media (max-width: 768px) {
+      .countdown-wrap { gap: 0.5rem; flex-wrap: nowrap; justify-content: flex-start; }
+      .countdown-num { font-size: 1.75rem; }
+      .countdown-unit { min-width: 48px; }
+      .countdown-sep { font-size: 1.5rem; margin-top: 0.2rem; }
+      .hero-cta { bottom: 1rem; right: 1.5rem; font-size: 0.65rem; }
+      .next-event-hero { padding: 1.5rem 1.5rem 2.5rem 1.75rem; } /* Extra bottom padding for CTA */
+    }
+
     @media (max-width: 576px) {
       .news-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
       .session-block-body { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-      .countdown-num { font-size: 1.6rem; }
-      .next-event-hero { padding: 1.25rem 1.25rem 1.25rem 1.75rem; }
+      .countdown-wrap { gap: 0.25rem; justify-content: space-between; }
+      .countdown-num { font-size: 1.4rem; }
+      .countdown-unit { min-width: 40px; }
+      .countdown-sep { margin-top: 0.1rem; }
+      .countdown-label { font-size: 0.6rem; }
     }
 
     @media (max-width: 400px) {
       .news-grid { grid-template-columns: 1fr; }
+      .countdown-num { font-size: 1.25rem; }
+      .countdown-unit { min-width: 35px; }
+      .hero-cta { font-size: 0.55rem; right: 1.25rem; }
     }
 
     @media (min-width: 992px) {
