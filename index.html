@@ -29,7 +29,10 @@
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#news" onclick="showSection('news')">News</a>
+            <a class="nav-link active" href="#home" onclick="showSection('home')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#news" onclick="showSection('news')">News</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#schedule" onclick="showSection('schedule')">Schedule</a>
@@ -44,8 +47,16 @@
   <!-- ===== MAIN ===== -->
   <main>
 
+    <!-- ================== HOME SECTION ================== -->
+    <section id="home" class="rm-section">
+      <div class="container">
+        <!-- Next event hero moved here and will be populated by JS -->
+        <div class="next-event-hero mt-5 mb-5" id="next-event-hero"></div>
+      </div>
+    </section>
+
     <!-- ================== NEWS SECTION ================== -->
-    <section id="news" class="rm-section">
+    <section id="news" class="rm-section" style="display:none;">
       <div class="container">
         <div class="row align-items-end mb-4 mt-5">
           <div class="col">
@@ -74,9 +85,6 @@
 
         <!-- Year selector -->
         <div class="year-selector-wrap" id="year-selector"></div>
-
-        <!-- Next event hero -->
-        <div class="next-event-hero" id="next-event-hero"></div>
 
         <!-- Timeline -->
         <div class="timeline-wrap">

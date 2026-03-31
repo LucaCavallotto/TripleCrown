@@ -639,13 +639,14 @@ function buildNewsFilters() {
     // Section toggle via hash
     const hash = window.location.hash.replace('#', '');
     if (hash === 'schedule') showSection('schedule');
-    else showSection('news');
+    else if (hash === 'news') showSection('news');
+    else showSection('home');
 
     // Nav link clicks toggle sections
     document.querySelectorAll('.rm-nav .nav-link[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         const target = link.getAttribute('href').replace('#', '');
-        if (['news', 'schedule'].includes(target)) {
+        if (['home', 'news', 'schedule'].includes(target)) {
           e.preventDefault();
           showSection(target);
           history.pushState(null, '', '#' + target);
