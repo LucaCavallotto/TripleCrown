@@ -179,6 +179,13 @@ window.setYear = async function(yr) {
     document.querySelectorAll('.rm-nav .nav-link').forEach(l => {
       l.classList.toggle('active', l.getAttribute('href') === '#' + name);
     });
+    
+    // Close navbar on mobile after selection
+    const navMain = document.getElementById('navMain');
+    if (navMain && navMain.classList.contains('show')) {
+      const bsCollapse = bootstrap.Collapse.getInstance(navMain) || new bootstrap.Collapse(navMain);
+      bsCollapse.hide();
+    }
   }
 
   // ============================================================
