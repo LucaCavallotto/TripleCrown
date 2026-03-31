@@ -717,6 +717,46 @@
       gap: 0.5rem;
     }
 
+    /* Past Events Toggle */
+    .past-events-wrapper {
+      margin-bottom: 2.5rem;
+    }
+
+    .past-events-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .past-events-toggle:hover {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    .past-events-toggle .toggle-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .past-events-toggle.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .past-count {
+      color: var(--text-muted);
+      margin-left: 0.25rem;
+    }
+
     /* Event group */
     .event-group {
       margin-bottom: 2.5rem;

@@ -546,8 +546,10 @@ function buildNewsFilters() {
 
       // Sort dates
       const sortedDates = Object.keys(grouped).sort();
+      const pastDates = sortedDates.filter(d => isPast(d));
+      const upcomingDates = sortedDates.filter(d => !isPast(d));
 
-      container.innerHTML = sortedDates.map((date, idx) => {
+      const renderDateGroup = (date, idx) => {
         let daySessions = grouped[date];
         // Sort sessions by time
         daySessions.sort((a,b) => {
@@ -568,10 +570,31 @@ function buildNewsFilters() {
             ${daySessions.map(s => sessionBlock(s, true)).join('')}
           </div>
         `;
-      }).join('');
+      };
+
+      let html = '';
+      if (pastDates.length > 0) {
+        html += `
+          <div class="past-events-wrapper">
+            <button class="past-events-toggle w-100" onclick="document.getElementById('past-events-chrono').classList.toggle('d-none'); this.classList.toggle('open')">
+              <i class="bi bi-clock-history me-2"></i> Show Past Dates (<span class="past-count">${pastDates.length}</span>)
+              <i class="bi bi-chevron-down ms-auto toggle-icon"></i>
+            </button>
+            <div id="past-events-chrono" class="d-none mt-4">
+              ${pastDates.map((d, idx) => renderDateGroup(d, idx)).join('')}
+            </div>
+          </div>
+        `;
+      }
+      
+      html += upcomingDates.map((d, idx) => renderDateGroup(d, idx)).join('');
+      container.innerHTML = html;
 
     } else {
-      container.innerHTML = events.map((ev, idx) => {
+      const pastEvents = events.filter(ev => isPast(ev.date));
+      const upcomingEvents = events.filter(ev => !isPast(ev.date));
+
+      const renderEvent = (ev, idx) => {
         const past = isPast(ev.date);
         const isHighlighted = ev.id === activeEventId;
         return `
@@ -590,7 +613,25 @@ function buildNewsFilters() {
             ${ev.sessions.map(s => sessionBlock(s, false)).join('')}
           </div>
         `;
-      }).join('');
+      };
+
+      let html = '';
+      if (pastEvents.length > 0) {
+        html += `
+          <div class="past-events-wrapper">
+            <button class="past-events-toggle w-100" onclick="document.getElementById('past-events-grouped').classList.toggle('d-none'); this.classList.toggle('open')">
+              <i class="bi bi-clock-history me-2"></i> Show Past Events (<span class="past-count">${pastEvents.length}</span>)
+              <i class="bi bi-chevron-down ms-auto toggle-icon"></i>
+            </button>
+            <div id="past-events-grouped" class="d-none mt-4">
+              ${pastEvents.map((ev, idx) => renderEvent(ev, idx)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      html += upcomingEvents.map((ev, idx) => renderEvent(ev, idx)).join('');
+      container.innerHTML = html;
     }
   }
 
