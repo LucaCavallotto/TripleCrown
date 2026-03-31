@@ -388,17 +388,39 @@ function buildNewsFilters() {
   // ============================================================
   function buildTimeline(events, nextEvent) {
     const scroll = document.getElementById('timeline-scroll');
-    scroll.innerHTML = events.map(ev => {
-      const past = isPast(ev.date);
-      const isNext = ev.id === (nextEvent && nextEvent.id);
+    if (!events.length) {
+      scroll.innerHTML = '';
+      return;
+    }
+
+    // Group events by date
+    const groupedByDate = {};
+    events.forEach(ev => {
+      if (!groupedByDate[ev.date]) groupedByDate[ev.date] = [];
+      groupedByDate[ev.date].push(ev);
+    });
+
+    const uniqueDates = Object.keys(groupedByDate).sort();
+
+    // Get date of active event to show correct active state
+    const activeEvent = events.find(e => e.id === activeEventId);
+    const activeDate = activeEvent ? activeEvent.date : (nextEvent ? nextEvent.date : null);
+    const nextDate = nextEvent ? nextEvent.date : null;
+
+    scroll.innerHTML = uniqueDates.map(dateStr => {
+      const dayEvents = groupedByDate[dateStr];
+      const firstEventId = dayEvents[0].id;
+      const past = isPast(dateStr);
+      const isActive = dateStr === activeDate;
+      const isNext = dateStr === nextDate;
+
       return `<button
-        class="timeline-date-btn ${past ? 'past' : ''} ${isNext ? 'next-indicator' : ''} ${activeEventId === ev.id ? 'active' : ''}"
-        onclick="selectEvent('${ev.id}')"
-        data-event-id="${ev.id}"
-        id="tl-${ev.id}">
-          <span class="tl-month">${getMonthShort(ev.date)}</span>
-          <span class="tl-day">${getDay(ev.date)}</span>
-          <span class="tl-event">${ev.series}</span>
+        class="timeline-date-btn ${past ? 'past' : ''} ${isNext ? 'next-indicator' : ''} ${isActive ? 'active' : ''}"
+        onclick="selectEvent('${firstEventId}')"
+        data-date="${dateStr}"
+        id="tl-date-${dateStr}">
+          <span class="tl-month">${getMonthShort(dateStr)}</span>
+          <span class="tl-day">${getDay(dateStr)}</span>
       </button>`;
     }).join('');
   }
