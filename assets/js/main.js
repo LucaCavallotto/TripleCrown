@@ -648,13 +648,13 @@ function buildNewsFilters() {
       <div class="session-block">
         <div class="session-block-color ${s.code}"></div>
         <div class="session-block-body">
+          ${isChronological ? `<span class="event-series-badge ms-0 badge-${s.evSeries.toLowerCase()}">${s.evSeries}</span>` : ''}
           <div class="session-type">
             ${s.type}
             ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;">${s.evName} &middot; ${s.evLocation}</div>` : ''}
           </div>
           <div class="session-time mono d-flex align-items-center gap-3">
             <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
-            ${isChronological ? `<span class="event-series-badge badge-${s.evSeries.toLowerCase()}">${s.evSeries}</span>` : ''}
           </div>
           ${links.length ? `<div class="session-links ms-auto">${links.join('')}</div>` : ''}
         </div>
