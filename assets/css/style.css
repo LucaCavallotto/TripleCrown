@@ -254,7 +254,7 @@
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(3rem, 6vw, 4.5rem);
       text-transform: uppercase;
       letter-spacing: -0.01em;
       color: var(--text-primary);
