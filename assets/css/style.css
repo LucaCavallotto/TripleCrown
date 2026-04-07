@@ -779,7 +779,7 @@
     /* Event group */
     .event-group {
       margin-bottom: 2.5rem;
-      scroll-margin-top: 160px; /* Accounts for fixed navbar + sticky timeline */
+      scroll-margin-top: var(--dynamic-scroll-offset, 160px); /* Dynamically updated via JS to perfectly match sticky header height */
     }
 
     .event-group-header {

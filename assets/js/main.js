@@ -729,6 +729,20 @@ function buildNewsFilters() {
     });
 
     observer.observe(sentinel);
+
+    // Track dynamic height of the sticky bar for accurate scroll-margins
+    // This perfectly calculates whether the filter dropdown is open or closed!
+    const resizeObserver = new ResizeObserver(() => {
+      // Use offsetHeight since it factors in total element size (padding/borders)
+      const stickyHeight = stickyBar.offsetHeight; 
+      // Add Navbar height + 20px padding buffer for visual breathing room
+      const totalOffset = navbarHeight + stickyHeight + 20;
+      
+      // Pass this dynamic value directly to the CSS variable
+      document.documentElement.style.setProperty('--dynamic-scroll-offset', `${totalOffset}px`);
+    });
+
+    resizeObserver.observe(stickyBar);
   }
 
   async function init() {
