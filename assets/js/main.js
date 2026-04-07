@@ -4,7 +4,7 @@ let SCHEDULE_DATA = {};
 
 async function loadData() {
   try {
-    const cats_to_fetch = activeNewsFilter === 'All' ? ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nls', 'gtwc', 'motogp'] : [activeNewsFilter.toLowerCase()];
+    const cats_to_fetch = activeNewsFilter === 'All' ? ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp'] : [activeNewsFilter.toLowerCase()];
     NEWS_DATA = [];
     for (const cat of cats_to_fetch) {
       try {
@@ -23,7 +23,7 @@ async function loadData() {
 
     // Load schedule
     SCHEDULE_DATA[activeYear] = [];
-    const seriesList = ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nls', 'gtwc', 'motogp'];
+    const seriesList = ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp'];
     for (const s of seriesList) {
       try {
         const res = await fetch(`data/schedule/${activeYear}/${s}_${activeYear}.json`);
@@ -127,7 +127,7 @@ window.setYear = async function(yr) {
   let countdownInterval = null;
   let isChronologicalView = false;
 
-  const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NLS", "GTWC", "MotoGP"];
+  const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NASCAR", "IGTC", "NLS", "GTWC", "MotoGP"];
   const YEARS = [2025, 2026];
 
   // ============================================================

@@ -1,0 +1,97 @@
+{
+  "series": "IGTC",
+  "series_slug": "igtc",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "igtc-2026-rd1",
+      "event_name": "Meguiar's Bathurst 12 Hour",
+      "location": "Bathurst, Australia",
+      "country_code": "AU",
+      "event_start_date": "2026-02-11T00:00:00Z",
+      "event_end_date": "2026-02-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-02-15T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "igtc-2026-rd2",
+      "event_name": "ADAC RAVENOL 24h N\u00fcrburgring",
+      "location": "N\u00fcrburg, Germany",
+      "country_code": "DE",
+      "event_start_date": "2026-05-14T00:00:00Z",
+      "event_end_date": "2026-05-17T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-16T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "igtc-2026-rd3",
+      "event_name": "CrowdStrike 24 Hours of Spa",
+      "location": "Spa-Francorchamps, Belgium",
+      "country_code": "BE",
+      "event_start_date": "2026-06-25T00:00:00Z",
+      "event_end_date": "2026-06-28T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-27T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "igtc-2026-rd4",
+      "event_name": "Suzuka 1000km",
+      "location": "Suzuka, Japan",
+      "country_code": "JP",
+      "event_start_date": "2026-09-11T00:00:00Z",
+      "event_end_date": "2026-09-13T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-13T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "igtc-2026-rd5",
+      "event_name": "Indianapolis 8 Hour",
+      "location": "Speedway, Indiana",
+      "country_code": "US",
+      "event_start_date": "2026-10-08T00:00:00Z",
+      "event_end_date": "2026-10-10T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-10T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    }
+  ]
+}
