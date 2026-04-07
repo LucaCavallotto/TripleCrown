@@ -699,9 +699,40 @@ function buildNewsFilters() {
   }
 
   // ============================================================
+  // ============================================================
   //  INIT
   // ============================================================
+  function initStickyBehavior() {
+    const sentinel = document.getElementById('schedule-sticky-sentinel');
+    const stickyBar = document.getElementById('schedule-sticky-bar');
+    
+    if (!sentinel || !stickyBar) return;
+
+    // Exact height of the fixed navbar
+    const navbarHeight = 56; 
+
+    // Create an Intersection Observer to watch the zero-height sentinel
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // If the sentinel is scrolling up past the top of the navbar, 
+        // we lock the sticky bar.
+        if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
+          stickyBar.classList.add('is-locked');
+        } else {
+          stickyBar.classList.remove('is-locked');
+        }
+      });
+    }, {
+      // Offset by the navbar height so it triggers exactly when it touches the navbar
+      rootMargin: `-${navbarHeight}px 0px 0px 0px`,
+      threshold: 0
+    });
+
+    observer.observe(sentinel);
+  }
+
   async function init() {
+    initStickyBehavior();
     await loadData();
     
     // Deep Linking: parse the event ID from the URL hash query string
