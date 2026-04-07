@@ -109,9 +109,7 @@ window.setNewsFilter = async function(cat) {
 window.setYear = async function(yr) {
     activeYear = yr;
     await loadData();
-    document.querySelectorAll('.year-btn').forEach(btn => {
-      btn.classList.toggle('active', parseInt(btn.innerText) === yr);
-    });
+    buildYearSelector();
     activeSeries = 'All'; // reset
     buildSchedule();
 }
@@ -290,11 +288,13 @@ function buildNewsFilters() {
   // ============================================================
   function buildYearSelector() {
     const wrap = document.getElementById('year-selector');
-    wrap.innerHTML = `<span class="section-label mb-0" style="margin-bottom:0!important">Season:</span>` +
-      YEARS.map(y =>
-        `<button class="year-btn ${y === activeYear ? 'active' : ''}"
-                 onclick="setYear(${y})">${y}</button>`
-      ).join('');
+    wrap.innerHTML = `
+      <div class="d-flex align-items-center gap-2">
+        <span class="section-label mb-0" style="margin-bottom:0!important">Season:</span>
+        <select class="form-select form-select-sm w-auto" style="background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); cursor: pointer;" onchange="setYear(parseInt(this.value))">
+          ${YEARS.map(y => `<option value="${y}" ${y === activeYear ? 'selected' : ''}>${y}</option>`).join('')}
+        </select>
+      </div>`;
   }
 
   function setYear(y) {

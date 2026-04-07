@@ -540,23 +540,6 @@
       margin-bottom: 1.5rem;
     }
 
-    .year-btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid var(--border-color);
-      background: transparent;
-      color: var(--text-secondary);
-      cursor: pointer;
-      border-radius: 2px;
-      transition: all 0.15s;
-    }
-
-    .year-btn.active, .year-btn:hover {
-      border-color: var(--gulf-orange);
-      color: var(--gulf-orange);
-    }
 
     /* Timeline date picker */
     .timeline-wrap {
