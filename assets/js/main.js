@@ -109,9 +109,7 @@ window.setNewsFilter = async function(cat) {
 window.setYear = async function(yr) {
     activeYear = yr;
     await loadData();
-    document.querySelectorAll('.year-btn').forEach(btn => {
-      btn.classList.toggle('active', parseInt(btn.innerText) === yr);
-    });
+    buildYearSelector();
     activeSeries = 'All'; // reset
     buildSchedule();
 }
@@ -290,11 +288,13 @@ function buildNewsFilters() {
   // ============================================================
   function buildYearSelector() {
     const wrap = document.getElementById('year-selector');
-    wrap.innerHTML = `<span class="section-label mb-0" style="margin-bottom:0!important">Season:</span>` +
-      YEARS.map(y =>
-        `<button class="year-btn ${y === activeYear ? 'active' : ''}"
-                 onclick="setYear(${y})">${y}</button>`
-      ).join('');
+    wrap.innerHTML = `
+      <div class="d-flex align-items-center gap-2">
+        <span class="section-label mb-0" style="margin-bottom:0!important">Season:</span>
+        <select class="form-select form-select-sm w-auto" style="background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); cursor: pointer;" onchange="setYear(parseInt(this.value))">
+          ${YEARS.map(y => `<option value="${y}" ${y === activeYear ? 'selected' : ''}>${y}</option>`).join('')}
+        </select>
+      </div>`;
   }
 
   function setYear(y) {
@@ -699,9 +699,54 @@ function buildNewsFilters() {
   }
 
   // ============================================================
+  // ============================================================
   //  INIT
   // ============================================================
+  function initStickyBehavior() {
+    const sentinel = document.getElementById('schedule-sticky-sentinel');
+    const stickyBar = document.getElementById('schedule-sticky-bar');
+    
+    if (!sentinel || !stickyBar) return;
+
+    // Exact height of the fixed navbar
+    const navbarHeight = 56; 
+
+    // Create an Intersection Observer to watch the zero-height sentinel
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // If the sentinel is scrolling up past the top of the navbar, 
+        // we lock the sticky bar.
+        if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
+          stickyBar.classList.add('is-locked');
+        } else {
+          stickyBar.classList.remove('is-locked');
+        }
+      });
+    }, {
+      // Offset by the navbar height so it triggers exactly when it touches the navbar
+      rootMargin: `-${navbarHeight}px 0px 0px 0px`,
+      threshold: 0
+    });
+
+    observer.observe(sentinel);
+
+    // Track dynamic height of the sticky bar for accurate scroll-margins
+    // This perfectly calculates whether the filter dropdown is open or closed!
+    const resizeObserver = new ResizeObserver(() => {
+      // Use offsetHeight since it factors in total element size (padding/borders)
+      const stickyHeight = stickyBar.offsetHeight; 
+      // Add Navbar height + 20px padding buffer for visual breathing room
+      const totalOffset = navbarHeight + stickyHeight + 20;
+      
+      // Pass this dynamic value directly to the CSS variable
+      document.documentElement.style.setProperty('--dynamic-scroll-offset', `${totalOffset}px`);
+    });
+
+    resizeObserver.observe(stickyBar);
+  }
+
   async function init() {
+    initStickyBehavior();
     await loadData();
     
     // Deep Linking: parse the event ID from the URL hash query string

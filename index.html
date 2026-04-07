@@ -57,7 +57,7 @@
       <div class="container">
         <div class="row align-items-end mb-4 mt-5">
           <div class="col">
-            <p class="section-label">Latest Updates</p>
+
             <h2 class="section-title">Paddock News</h2>
           </div>
         </div>
@@ -75,31 +75,50 @@
       <div class="container">
         <div class="row align-items-end mb-4 mt-5">
           <div class="col">
-            <p class="section-label">Race Calendar</p>
             <h2 class="section-title">Season Schedule</h2>
           </div>
         </div>
 
-        <!-- Year selector -->
-        <div class="year-selector-wrap" id="year-selector"></div>
+      </div>
 
-        <!-- Timeline -->
-        <div class="timeline-wrap">
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <p class="section-label mb-0" style="margin-bottom:0 !important;">Event Timeline</p>
-            <button class="next-event-btn ms-auto" id="jump-next-btn" onclick="jumpToNextEvent()">
-              <i class="bi bi-skip-forward-fill me-1"></i>Next Event
-            </button>
+      <!-- Sentinel for IntersectionObserver to know when the sticky bar hits the top offset -->
+      <div id="schedule-sticky-sentinel"></div>
+
+      <!-- The Single Combined Sticky Wrapper -->
+      <div id="schedule-sticky-bar">
+        <div class="container pt-3 pb-3">
+          
+          <!-- Timeline -->
+          <div class="timeline-wrap mb-0">
+            <div class="timeline-scroll" id="timeline-scroll"></div>
           </div>
-          <div class="timeline-scroll" id="timeline-scroll"></div>
-        </div>
 
-        <!-- Series filter & View Toggle -->
-        <div class="d-flex flex-wrap justify-content-between align-items-end mb-2 gap-2">
-          <div class="series-tabs mb-0" id="series-tabs"></div>
-          <div id="view-toggle-wrap"></div>
-        </div>
+          <!-- Filters (Inline Collapse Panel) -->
+          <div class="mt-3">
+            <div class="d-flex align-items-center gap-2 mt-2">
+              <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="false" aria-controls="filtersCollapse" style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                <span><i class="bi bi-funnel-fill me-2"></i> Filter Schedule</span>
+              </button>
+              
+              <button class="next-event-btn ms-auto" id="jump-next-btn" onclick="jumpToNextEvent()">
+                <i class="bi bi-skip-forward-fill me-1"></i>Next Event
+              </button>
+            </div>
+            <div class="collapse" id="filtersCollapse">
+              <div class="pt-3 pb-1 mt-2 d-flex flex-wrap justify-content-between align-items-end gap-3" style="border-top: 1px solid var(--border-color);">
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+                  <div class="year-selector-wrap mb-0" style="margin-bottom:0!important;" id="year-selector"></div>
+                  <div class="series-tabs mb-0" id="series-tabs"></div>
+                </div>
+                <div id="view-toggle-wrap"></div>
+              </div>
+            </div>
+          </div>
 
+        </div>
+      </div>
+
+      <div class="container pt-2">
         <!-- Events list -->
         <div id="events-container"></div>
       </div>

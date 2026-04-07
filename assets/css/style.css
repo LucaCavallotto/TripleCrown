@@ -414,6 +414,42 @@
     ============================================================ */
     #schedule { padding: 4rem 0 6rem; }
 
+    /* Ensure the sentinel stays in DOM flow but takes up no visual space */
+    #schedule-sticky-sentinel {
+      height: 0;
+      visibility: hidden;
+    }
+
+    /* Base state for the combined wrapper */
+    #schedule-sticky-bar {
+      /* Set position to sticky and offset it by the navbar height */
+      position: sticky;
+      top: 56px; /* Update this if your rm-nav height is different */
+      z-index: 900; /* Stays below the navbar (1000) but above event cards */
+      
+      /* Start transparent to blend with the natural page flow */
+      background-color: transparent;
+      box-shadow: none;
+      border-bottom: 1px solid transparent;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      
+      /* Bleed background to screen edges so the background spans the entire width 
+         while the inner .container keeps the content centered */
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding-left: calc(50vw - 50%);
+      padding-right: calc(50vw - 50%);
+    }
+
+    /* Locked state (Class added by JavaScript when scrolling) */
+    #schedule-sticky-bar.is-locked {
+      background-color: var(--bg-primary); /* Uses main bg to block out scrolling content */
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Drop shadow to separate from content below */
+      border-bottom: 1px solid var(--border-color); /* Subtle divider border */
+    }
+
+
+
     /* Next Event Hero */
     .next-event-hero {
       background: var(--bg-secondary);
@@ -540,23 +576,6 @@
       margin-bottom: 1.5rem;
     }
 
-    .year-btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid var(--border-color);
-      background: transparent;
-      color: var(--text-secondary);
-      cursor: pointer;
-      border-radius: 2px;
-      transition: all 0.15s;
-    }
-
-    .year-btn.active, .year-btn:hover {
-      border-color: var(--gulf-orange);
-      color: var(--gulf-orange);
-    }
 
     /* Timeline date picker */
     .timeline-wrap {
@@ -760,7 +779,7 @@
     /* Event group */
     .event-group {
       margin-bottom: 2.5rem;
-      scroll-margin-top: 160px; /* Accounts for fixed navbar + sticky timeline */
+      scroll-margin-top: var(--dynamic-scroll-offset, 160px); /* Dynamically updated via JS to perfectly match sticky header height */
     }
 
     .event-group-header {
