@@ -124,6 +124,8 @@ window.setYear = async function(yr) {
   let activeEventId = null;
   let countdownInterval = null;
   let isChronologicalView = false;
+  let isProgrammaticScroll = false;
+  let programmaticScrollTimeout = null;
 
   const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NLS", "GTWC", "MotoGP"];
   const YEARS = [2025, 2026];
@@ -453,6 +455,64 @@ function buildNewsFilters() {
     if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
+  function updateActiveTimelineBtn(dateStr) {
+    if (!dateStr) return;
+    const currentActive = document.querySelector('.timeline-date-btn.active');
+    if (currentActive && currentActive.getAttribute('data-date') === dateStr) {
+      return; 
+    }
+    
+    document.querySelectorAll('.timeline-date-btn').forEach(b => b.classList.remove('active'));
+    
+    const newActive = document.querySelector(`.timeline-date-btn[data-date="${dateStr}"]`);
+    if (newActive) {
+      newActive.classList.add('active');
+      scrollTimelineToActive();
+    }
+  }
+
+  let scrollTimeoutAuto;
+  function initTimelineScrollSpy() {
+    window.addEventListener('scroll', () => {
+      if (isProgrammaticScroll) return;
+      if (scrollTimeoutAuto) cancelAnimationFrame(scrollTimeoutAuto);
+      
+      scrollTimeoutAuto = requestAnimationFrame(() => {
+        const groups = document.querySelectorAll('.event-group[data-date]');
+        if (!groups.length) return;
+        
+        let stickyOffset = 160;
+        const rootStyles = getComputedStyle(document.documentElement);
+        const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+        if (dynamicOffset) stickyOffset = parseInt(dynamicOffset);
+        
+        const targetLine = stickyOffset + 50; 
+        let bestGroup = null;
+        let minDiff = Infinity;
+        
+        for (const g of groups) {
+          const rect = g.getBoundingClientRect();
+          if (rect.height === 0) continue; // Skip hidden ones
+          
+          if (rect.top <= targetLine && rect.bottom >= targetLine) {
+            bestGroup = g;
+            break;
+          } else if (rect.top > targetLine) {
+            if (!bestGroup && rect.top - targetLine < minDiff) {
+              bestGroup = g;
+            }
+            break;
+          }
+          bestGroup = g;
+        }
+        
+        if (bestGroup) {
+          updateActiveTimelineBtn(bestGroup.getAttribute('data-date'));
+        }
+      });
+    }, { passive: true });
+  }
+
   // ============================================================
   //  SCHEDULE — Series tabs & View Toggle
   // ============================================================
@@ -510,9 +570,29 @@ function buildNewsFilters() {
 
     // Scroll to event block
     setTimeout(() => {
-      const el = document.getElementById('event-' + id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+      isProgrammaticScroll = true;
+      if (programmaticScrollTimeout) clearTimeout(programmaticScrollTimeout);
+      
+      let el = document.getElementById('event-' + id);
+      if (!el) {
+        const ev = events.find(e => e.id === id);
+        if (ev) el = document.querySelector(`.event-group[data-date="${ev.date}"]`);
+      }
+      
+      if (el) {
+        let offset = 160;
+        const rootStyles = getComputedStyle(document.documentElement);
+        const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+        if (dynamicOffset) offset = parseInt(dynamicOffset);
+
+        const y = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y - offset - 40, behavior: 'smooth' });
+      }
+      
+      programmaticScrollTimeout = setTimeout(() => {
+        isProgrammaticScroll = false;
+      }, 1000);
+    }, 150);
   }
 
   function buildEventsList(events) {
@@ -563,7 +643,7 @@ function buildNewsFilters() {
         const displayDate = dDate.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
         return `
-          <div class="event-group fade-up fade-up-${Math.min(idx+1,5)}">
+          <div class="event-group fade-up fade-up-${Math.min(idx+1,5)}" data-date="${date}">
             <div class="date-group-header">
               <i class="bi bi-calendar-event me-2" style="color:var(--gulf-orange);"></i>${displayDate}
             </div>
@@ -599,7 +679,7 @@ function buildNewsFilters() {
         const isHighlighted = ev.id === activeEventId;
         return `
           <div class="event-group fade-up fade-up-${Math.min(idx+1,5)} ${isHighlighted ? 'highlighted-event' : ''}"
-               id="event-${ev.id}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
+               id="event-${ev.id}" data-date="${ev.date}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
             <div class="event-group-header">
               <div>
                 <div class="event-group-name">${ev.name}</div>
@@ -747,6 +827,7 @@ function buildNewsFilters() {
 
   async function init() {
     initStickyBehavior();
+    initTimelineScrollSpy();
     await loadData();
     
     // Deep Linking: parse the event ID from the URL hash query string
@@ -771,8 +852,22 @@ function buildNewsFilters() {
     // If opened directly via a deep link, force scroll into view after rendering
     if (sectionPart === 'schedule' && activeEventId) {
       setTimeout(() => {
-        const el = document.getElementById('event-' + activeEventId);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        let el = document.getElementById('event-' + activeEventId);
+        if (!el) {
+          const events = getEvents(activeYear);
+          const ev = events.find(e => e.id === activeEventId);
+          if (ev) el = document.querySelector(`.event-group[data-date="${ev.date}"]`);
+        }
+        
+        if (el) {
+          let offset = 160;
+          const rootStyles = getComputedStyle(document.documentElement);
+          const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+          if (dynamicOffset) offset = parseInt(dynamicOffset);
+          
+          const y = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: y - offset - 40, behavior: 'smooth' });
+        }
       }, 250); // slight delay to allow layout calculation
     }
 
