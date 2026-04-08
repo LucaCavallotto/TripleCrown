@@ -573,13 +573,26 @@ function buildNewsFilters() {
       isProgrammaticScroll = true;
       if (programmaticScrollTimeout) clearTimeout(programmaticScrollTimeout);
       
-      const el = document.getElementById('event-' + id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      let el = document.getElementById('event-' + id);
+      if (!el) {
+        const ev = events.find(e => e.id === id);
+        if (ev) el = document.querySelector(`.event-group[data-date="${ev.date}"]`);
+      }
+      
+      if (el) {
+        let offset = 160;
+        const rootStyles = getComputedStyle(document.documentElement);
+        const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+        if (dynamicOffset) offset = parseInt(dynamicOffset);
+
+        const y = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y - offset - 40, behavior: 'smooth' });
+      }
       
       programmaticScrollTimeout = setTimeout(() => {
         isProgrammaticScroll = false;
       }, 1000);
-    }, 100);
+    }, 150);
   }
 
   function buildEventsList(events) {
@@ -839,8 +852,22 @@ function buildNewsFilters() {
     // If opened directly via a deep link, force scroll into view after rendering
     if (sectionPart === 'schedule' && activeEventId) {
       setTimeout(() => {
-        const el = document.getElementById('event-' + activeEventId);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        let el = document.getElementById('event-' + activeEventId);
+        if (!el) {
+          const events = getEvents(activeYear);
+          const ev = events.find(e => e.id === activeEventId);
+          if (ev) el = document.querySelector(`.event-group[data-date="${ev.date}"]`);
+        }
+        
+        if (el) {
+          let offset = 160;
+          const rootStyles = getComputedStyle(document.documentElement);
+          const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+          if (dynamicOffset) offset = parseInt(dynamicOffset);
+          
+          const y = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: y - offset - 40, behavior: 'smooth' });
+        }
       }, 250); // slight delay to allow layout calculation
     }
 
