@@ -355,6 +355,8 @@
     .news-card-image .cat-badge.f2    { background: #6B21A8; }
     .news-card-image .cat-badge.fe    { background: #0891B2; }
     .news-card-image .cat-badge.indycar { background: #B45309; }
+    .news-card-image .cat-badge.nascar  { background: #002855; }
+    .news-card-image .cat-badge.igtc    { background: #FF4500; }
 
     /* Decorative graphic placeholder for card image */
     .news-card-graphic {
@@ -823,6 +825,8 @@
     .badge-f2     { background: #6B21A8; }
     .badge-fe     { background: #0891B2; }
     .badge-indycar{ background: #B45309; }
+    .badge-nascar { background: #002855; }
+    .badge-igtc   { background: #FF4500; }
     
     .completed-badge {
       background: var(--ferrari-red);

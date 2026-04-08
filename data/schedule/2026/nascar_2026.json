@@ -1,0 +1,687 @@
+{
+  "series": "NASCAR",
+  "series_slug": "nascar",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "nascar-2026-rd1",
+      "event_name": "Cook Out Clash at Bowman Gray",
+      "location": "Winston-Salem, North Carolina",
+      "country_code": "US",
+      "event_start_date": "2026-02-04T00:00:00Z",
+      "event_end_date": "2026-02-04T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-02-04T23:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "nascar-2026-rd2",
+      "event_name": "Bluegreen Vacations Duel 1 at DAYTONA",
+      "location": "Daytona Beach, Florida",
+      "country_code": "US",
+      "event_start_date": "2026-02-12T00:00:00Z",
+      "event_end_date": "2026-02-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-02-13T00:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "nascar-2026-rd3",
+      "event_name": "Bluegreen Vacations Duel 2 at DAYTONA",
+      "location": "Daytona Beach, Florida",
+      "country_code": "US",
+      "event_start_date": "2026-02-12T00:00:00Z",
+      "event_end_date": "2026-02-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-02-13T01:45:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "nascar-2026-rd4",
+      "event_name": "DAYTONA 500",
+      "location": "Daytona Beach, Florida",
+      "country_code": "US",
+      "event_start_date": "2026-02-15T00:00:00Z",
+      "event_end_date": "2026-02-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-02-15T18:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "nascar-2026-rd5",
+      "event_name": "Autotrader 400",
+      "location": "Hampton, Georgia",
+      "country_code": "US",
+      "event_start_date": "2026-02-22T00:00:00Z",
+      "event_end_date": "2026-02-22T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-02-22T20:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "nascar-2026-rd6",
+      "event_name": "DuraMAX Texas Grand Prix",
+      "location": "Austin, Texas",
+      "country_code": "US",
+      "event_start_date": "2026-03-01T00:00:00Z",
+      "event_end_date": "2026-03-01T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-01T20:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "nascar-2026-rd7",
+      "event_name": "Straight Talk Wireless 500",
+      "location": "Avondale, Arizona",
+      "country_code": "US",
+      "event_start_date": "2026-03-08T00:00:00Z",
+      "event_end_date": "2026-03-08T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-08T19:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "nascar-2026-rd8",
+      "event_name": "Pennzoil 400 presented by Jiffy Lube",
+      "location": "Las Vegas, Nevada",
+      "country_code": "US",
+      "event_start_date": "2026-03-15T00:00:00Z",
+      "event_end_date": "2026-03-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-15T20:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "nascar-2026-rd9",
+      "event_name": "Goodyear 400",
+      "location": "Darlington, South Carolina",
+      "country_code": "US",
+      "event_start_date": "2026-03-22T00:00:00Z",
+      "event_end_date": "2026-03-22T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-22T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 10,
+      "id": "nascar-2026-rd10",
+      "event_name": "Cook Out 400",
+      "location": "Ridgeway, Virginia",
+      "country_code": "US",
+      "event_start_date": "2026-03-29T00:00:00Z",
+      "event_end_date": "2026-03-29T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-29T19:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 11,
+      "id": "nascar-2026-rd11",
+      "event_name": "Food City 500",
+      "location": "Bristol, Tennessee",
+      "country_code": "US",
+      "event_start_date": "2026-04-12T00:00:00Z",
+      "event_end_date": "2026-04-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-04-12T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 12,
+      "id": "nascar-2026-rd12",
+      "event_name": "AdventHealth 400",
+      "location": "Kansas City, Kansas",
+      "country_code": "US",
+      "event_start_date": "2026-04-19T00:00:00Z",
+      "event_end_date": "2026-04-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-04-19T18:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 13,
+      "id": "nascar-2026-rd13",
+      "event_name": "Jack Link's 500",
+      "location": "Talladega, Alabama",
+      "country_code": "US",
+      "event_start_date": "2026-04-26T00:00:00Z",
+      "event_end_date": "2026-04-26T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-04-26T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 14,
+      "id": "nascar-2026-rd14",
+      "event_name": "W\u00fcrth 400 presented by LIQUI MOLY",
+      "location": "Fort Worth, Texas",
+      "country_code": "US",
+      "event_start_date": "2026-05-03T00:00:00Z",
+      "event_end_date": "2026-05-03T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-03T19:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 15,
+      "id": "nascar-2026-rd15",
+      "event_name": "Go Bowling at The Glen",
+      "location": "Watkins Glen, New York",
+      "country_code": "US",
+      "event_start_date": "2026-05-10T00:00:00Z",
+      "event_end_date": "2026-05-10T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-10T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 16,
+      "id": "nascar-2026-rd16",
+      "event_name": "NASCAR All-Star Race",
+      "location": "Dover, Delaware",
+      "country_code": "US",
+      "event_start_date": "2026-05-17T00:00:00Z",
+      "event_end_date": "2026-05-17T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-17T17:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 17,
+      "id": "nascar-2026-rd17",
+      "event_name": "Coca-Cola 600",
+      "location": "Concord, North Carolina",
+      "country_code": "US",
+      "event_start_date": "2026-05-24T00:00:00Z",
+      "event_end_date": "2026-05-24T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-24T22:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 18,
+      "id": "nascar-2026-rd18",
+      "event_name": "Cracker Barrel 400",
+      "location": "Lebanon, Tennessee",
+      "country_code": "US",
+      "event_start_date": "2026-05-31T00:00:00Z",
+      "event_end_date": "2026-05-31T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-31T23:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 19,
+      "id": "nascar-2026-rd19",
+      "event_name": "FireKeepers Casino 400",
+      "location": "Brooklyn, Michigan",
+      "country_code": "US",
+      "event_start_date": "2026-06-07T00:00:00Z",
+      "event_end_date": "2026-06-07T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-07T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 20,
+      "id": "nascar-2026-rd20",
+      "event_name": "Great American Getaway 400",
+      "location": "Long Pond, Pennsylvania",
+      "country_code": "US",
+      "event_start_date": "2026-06-14T00:00:00Z",
+      "event_end_date": "2026-06-14T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-14T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 21,
+      "id": "nascar-2026-rd21",
+      "event_name": "Anduril 250",
+      "location": "San Diego, California",
+      "country_code": "US",
+      "event_start_date": "2026-06-21T00:00:00Z",
+      "event_end_date": "2026-06-21T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-21T20:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 22,
+      "id": "nascar-2026-rd22",
+      "event_name": "Toyota / Save Mart 350",
+      "location": "Sonoma, California",
+      "country_code": "US",
+      "event_start_date": "2026-06-28T00:00:00Z",
+      "event_end_date": "2026-06-28T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-28T19:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 23,
+      "id": "nascar-2026-rd23",
+      "event_name": "NASCAR Cup Series Race at Chicagoland",
+      "location": "Joliet, Illinois",
+      "country_code": "US",
+      "event_start_date": "2026-07-05T00:00:00Z",
+      "event_end_date": "2026-07-05T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-05T22:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 24,
+      "id": "nascar-2026-rd24",
+      "event_name": "Quaker State 400 Available at Walmart",
+      "location": "Hampton, Georgia",
+      "country_code": "US",
+      "event_start_date": "2026-07-12T00:00:00Z",
+      "event_end_date": "2026-07-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-12T23:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 25,
+      "id": "nascar-2026-rd25",
+      "event_name": "Window World 450",
+      "location": "North Wilkesboro, North Carolina",
+      "country_code": "US",
+      "event_start_date": "2026-07-19T00:00:00Z",
+      "event_end_date": "2026-07-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-19T23:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 26,
+      "id": "nascar-2026-rd26",
+      "event_name": "Brickyard 400",
+      "location": "Speedway, Indiana",
+      "country_code": "US",
+      "event_start_date": "2026-07-26T00:00:00Z",
+      "event_end_date": "2026-07-26T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-26T18:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 27,
+      "id": "nascar-2026-rd27",
+      "event_name": "Iowa Corn 350 Powered by Ethanol",
+      "location": "Newton, Iowa",
+      "country_code": "US",
+      "event_start_date": "2026-08-09T00:00:00Z",
+      "event_end_date": "2026-08-09T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-09T19:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 28,
+      "id": "nascar-2026-rd28",
+      "event_name": "Cook Out 400",
+      "location": "Richmond, Virginia",
+      "country_code": "US",
+      "event_start_date": "2026-08-15T00:00:00Z",
+      "event_end_date": "2026-08-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-15T23:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 29,
+      "id": "nascar-2026-rd29",
+      "event_name": "NASCAR Cup Series Race at New Hampshire",
+      "location": "Loudon, New Hampshire",
+      "country_code": "US",
+      "event_start_date": "2026-08-23T00:00:00Z",
+      "event_end_date": "2026-08-23T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-23T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 30,
+      "id": "nascar-2026-rd30",
+      "event_name": "Coke Zero Sugar 400",
+      "location": "Daytona Beach, Florida",
+      "country_code": "US",
+      "event_start_date": "2026-08-29T00:00:00Z",
+      "event_end_date": "2026-08-29T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-29T23:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 31,
+      "id": "nascar-2026-rd31",
+      "event_name": "Cook Out Southern 500",
+      "location": "Darlington, South Carolina",
+      "country_code": "US",
+      "event_start_date": "2026-09-06T00:00:00Z",
+      "event_end_date": "2026-09-06T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-06T21:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 32,
+      "id": "nascar-2026-rd32",
+      "event_name": "Enjoy Illinois 300",
+      "location": "Madison, Illinois",
+      "country_code": "US",
+      "event_start_date": "2026-09-13T00:00:00Z",
+      "event_end_date": "2026-09-13T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-13T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 33,
+      "id": "nascar-2026-rd33",
+      "event_name": "Bass Pro Shops Night Race",
+      "location": "Bristol, Tennessee",
+      "country_code": "US",
+      "event_start_date": "2026-09-19T00:00:00Z",
+      "event_end_date": "2026-09-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-19T23:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 34,
+      "id": "nascar-2026-rd34",
+      "event_name": "Hollywood Casino 400",
+      "location": "Kansas City, Kansas",
+      "country_code": "US",
+      "event_start_date": "2026-09-27T00:00:00Z",
+      "event_end_date": "2026-09-27T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-27T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 35,
+      "id": "nascar-2026-rd35",
+      "event_name": "South Point 400",
+      "location": "Las Vegas, Nevada",
+      "country_code": "US",
+      "event_start_date": "2026-10-04T00:00:00Z",
+      "event_end_date": "2026-10-04T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-04T21:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 36,
+      "id": "nascar-2026-rd36",
+      "event_name": "Bank of America 400",
+      "location": "Concord, North Carolina",
+      "country_code": "US",
+      "event_start_date": "2026-10-11T00:00:00Z",
+      "event_end_date": "2026-10-11T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-11T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 37,
+      "id": "nascar-2026-rd37",
+      "event_name": "Freeway Insurance 500",
+      "location": "Avondale, Arizona",
+      "country_code": "US",
+      "event_start_date": "2026-10-18T00:00:00Z",
+      "event_end_date": "2026-10-18T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-18T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 38,
+      "id": "nascar-2026-rd38",
+      "event_name": "YellaWood 500",
+      "location": "Talladega, Alabama",
+      "country_code": "US",
+      "event_start_date": "2026-10-25T00:00:00Z",
+      "event_end_date": "2026-10-25T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-10-25T18:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 39,
+      "id": "nascar-2026-rd39",
+      "event_name": "Xfinity 500",
+      "location": "Ridgeway, Virginia",
+      "country_code": "US",
+      "event_start_date": "2026-11-01T00:00:00Z",
+      "event_end_date": "2026-11-01T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-11-01T19:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 40,
+      "id": "nascar-2026-rd40",
+      "event_name": "NASCAR Cup Series Championship Race",
+      "location": "Homestead, Florida",
+      "country_code": "US",
+      "event_start_date": "2026-11-08T00:00:00Z",
+      "event_end_date": "2026-11-08T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-11-08T20:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    }
+  ]
+}

@@ -2,5 +2,314 @@
   "series": "IndyCar",
   "series_slug": "indycar",
   "season": 2026,
-  "calendar": []
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "indycar-2026-rd1",
+      "event_name": "Firestone Grand Prix of St. Petersburg",
+      "location": "St. Petersburg, Florida",
+      "country_code": "US",
+      "event_start_date": "2026-03-01T00:00:00Z",
+      "event_end_date": "2026-03-01T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-01T17:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "indycar-2026-rd2",
+      "event_name": "Good Ranchers 250 at Phoenix Raceway",
+      "location": "Phoenix, Arizona",
+      "country_code": "US",
+      "event_start_date": "2026-03-07T00:00:00Z",
+      "event_end_date": "2026-03-07T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-07T20:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "indycar-2026-rd3",
+      "event_name": "Java House INDYCAR Grand Prix of Arlington",
+      "location": "Arlington, Texas",
+      "country_code": "US",
+      "event_start_date": "2026-03-15T00:00:00Z",
+      "event_end_date": "2026-03-15T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-15T15:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "indycar-2026-rd4",
+      "event_name": "Children's of Alabama Indy Grand Prix",
+      "location": "Birmingham, Alabama",
+      "country_code": "US",
+      "event_start_date": "2026-03-29T00:00:00Z",
+      "event_end_date": "2026-03-29T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-03-29T17:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "indycar-2026-rd5",
+      "event_name": "Acura Grand Prix of Long Beach",
+      "location": "Long Beach, California",
+      "country_code": "US",
+      "event_start_date": "2026-04-19T00:00:00Z",
+      "event_end_date": "2026-04-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-04-19T21:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "indycar-2026-rd6",
+      "event_name": "Sonsio Grand Prix at IMS",
+      "location": "Indianapolis, Indiana",
+      "country_code": "US",
+      "event_start_date": "2026-05-09T00:00:00Z",
+      "event_end_date": "2026-05-09T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-09T20:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "indycar-2026-rd7",
+      "event_name": "110th Running of the Indianapolis 500",
+      "location": "Indianapolis, Indiana",
+      "country_code": "US",
+      "event_start_date": "2026-05-24T00:00:00Z",
+      "event_end_date": "2026-05-24T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-24T14:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "indycar-2026-rd8",
+      "event_name": "Chevrolet Detroit Grand Prix",
+      "location": "Detroit, Michigan",
+      "country_code": "US",
+      "event_start_date": "2026-05-31T00:00:00Z",
+      "event_end_date": "2026-05-31T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-05-31T16:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "indycar-2026-rd9",
+      "event_name": "Bommarito Automotive Group 500",
+      "location": "Madison, Illinois",
+      "country_code": "US",
+      "event_start_date": "2026-06-07T00:00:00Z",
+      "event_end_date": "2026-06-07T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-08T01:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 10,
+      "id": "indycar-2026-rd10",
+      "event_name": "XPEL Grand Prix at Road America",
+      "location": "Elkhart Lake, Wisconsin",
+      "country_code": "US",
+      "event_start_date": "2026-06-21T00:00:00Z",
+      "event_end_date": "2026-06-21T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-06-21T18:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 11,
+      "id": "indycar-2026-rd11",
+      "event_name": "Honda Indy 200 at Mid-Ohio",
+      "location": "Lexington, Ohio",
+      "country_code": "US",
+      "event_start_date": "2026-07-05T00:00:00Z",
+      "event_end_date": "2026-07-05T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-07-05T16:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 12,
+      "id": "indycar-2026-rd12",
+      "event_name": "Borchetta Bourbon Music City Grand Prix",
+      "location": "Lebanon, Tennessee",
+      "country_code": "US",
+      "event_start_date": "2026-07-19T00:00:00Z",
+      "event_end_date": "2026-07-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-19T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 13,
+      "id": "indycar-2026-rd13",
+      "event_name": "BITNILE.com Grand Prix of Portland",
+      "location": "Portland, Oregon",
+      "country_code": "US",
+      "event_start_date": "2026-08-09T00:00:00Z",
+      "event_end_date": "2026-08-09T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-09T20:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 14,
+      "id": "indycar-2026-rd14",
+      "event_name": "Ontario Honda Dealers Indy at Markham",
+      "location": "Markham, Ontario, Canada",
+      "country_code": "CA",
+      "event_start_date": "2026-08-16T00:00:00Z",
+      "event_end_date": "2026-08-16T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-16T16:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 15,
+      "id": "indycar-2026-rd15",
+      "event_name": "Freedom 250 Grand Prix of Washington, D.C.",
+      "location": "Washington, D.C.",
+      "country_code": "US",
+      "event_start_date": "2026-08-23T00:00:00Z",
+      "event_end_date": "2026-08-23T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-23T00:00:00Z",
+          "is_confirmed": false
+        }
+      ]
+    },
+    {
+      "round_number": 16,
+      "id": "indycar-2026-rd16",
+      "event_name": "Snap-on Makers and Fixers 250",
+      "location": "West Allis, Wisconsin",
+      "country_code": "US",
+      "event_start_date": "2026-08-29T00:00:00Z",
+      "event_end_date": "2026-08-29T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-29T18:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 17,
+      "id": "indycar-2026-rd17",
+      "event_name": "Snap-on Milwaukee Mile 250",
+      "location": "West Allis, Wisconsin",
+      "country_code": "US",
+      "event_start_date": "2026-08-30T00:00:00Z",
+      "event_end_date": "2026-08-30T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-08-30T17:00:00Z",
+          "is_confirmed": true
+        }
+      ]
+    },
+    {
+      "round_number": 18,
+      "id": "indycar-2026-rd18",
+      "event_name": "WeatherTech Raceway Laguna Seca",
+      "location": "Monterey, California",
+      "country_code": "US",
+      "event_start_date": "2026-09-06T00:00:00Z",
+      "event_end_date": "2026-09-06T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "2026-09-06T18:30:00Z",
+          "is_confirmed": true
+        }
+      ]
+    }
+  ]
 }
