@@ -4,23 +4,6 @@ let SCHEDULE_DATA = {};
 
 async function loadData() {
   try {
-    const cats_to_fetch = activeNewsFilter === 'All' ? ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp'] : [activeNewsFilter.toLowerCase()];
-    NEWS_DATA = [];
-    for (const cat of cats_to_fetch) {
-      try {
-        const res = await fetch(`data/news/${cat}.json`);
-        if (res.ok) {
-          const catData = await res.json();
-          NEWS_DATA.push(...catData);
-        }
-      } catch (e) {
-        console.warn('Could not load news for ' + cat);
-      }
-    }
-    
-    // Sort news by date descending
-    NEWS_DATA.sort((a,b) => new Date(b.date) - new Date(a.date));
-
     // Load schedule
     SCHEDULE_DATA[activeYear] = [];
     const seriesList = ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp'];
@@ -90,11 +73,71 @@ async function loadData() {
   }
 }
 
-// Intercept buildNewsFilters, setNewsFilter, setYear, init page
+// Fetch external news from custom API proxy
+async function loadExternalNews() {
+    const grid = document.getElementById('news-grid');
+    grid.innerHTML = '<div class="loading-overlay d-flex w-100" style="position:relative;height:150px;grid-column:1/-1;"><div class="spinner-border text-primary m-auto"></div></div>';
+    try {
+        const res = await fetch('https://api-proxy-337645177936.europe-west1.run.app');
+        if (!res.ok) throw new Error('API request failed');
+        const data = await res.json();
+        
+        let allNews = [];
+        if (data.f1_news) allNews = allNews.concat(data.f1_news.map(n => ({...n, _cat: 'F1'})));
+        if (data.motogp_news) allNews = allNews.concat(data.motogp_news.map(n => ({...n, _cat: 'MotoGP'})));
+        
+        // Sort by date descending
+        allNews.sort((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        
+        if (allNews.length === 0) {
+            grid.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No news found.</div>`;
+            return;
+        }
+
+        const renderCards = (newsArray) => newsArray.map((item, idx) => {
+            const hasImage = item.urlToImage && item.urlToImage !== 'null';
+            const imgHtml = hasImage 
+                ? `<div class="api-news-img" style="background-image: url('${item.urlToImage}')"></div>` 
+                : `<div class="api-news-placeholder d-flex align-items-center justify-content-center"><i class="bi bi-image" style="font-size:2.5rem;color:#333"></i></div>`;
+            
+            const dateObj = new Date(item.publishedAt);
+            const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            
+            return `
+            <article class="api-news-card fade-up fade-up-${Math.min(idx+1, 5)}" onclick="window.open('${item.url}', '_blank')">
+                <div class="api-news-image">
+                    <span class="cat-badge ${item._cat === 'F1' ? 'f1' : 'motogp'}">${item._cat}</span>
+                    ${imgHtml}
+                </div>
+                <div class="api-news-body">
+                    <h3 class="api-news-title">${item.title}</h3>
+                    <p class="api-news-desc">${item.description || ''}</p>
+                    <div class="api-news-meta">
+                        <span class="api-news-source">${item.source?.name || 'Unknown'}</span>
+                        <span class="api-news-date">${dateStr}</span>
+                    </div>
+                </div>
+            </article>
+            `;
+        }).join('');
+
+        grid.innerHTML = renderCards(allNews);
+        
+        const homeGrid = document.getElementById('home-news-grid');
+        if (homeGrid) {
+            homeGrid.innerHTML = renderCards(allNews.slice(0, 3));
+        }
+    } catch (e) {
+        const errorHtml = `<div class="no-events w-100 text-center" style="grid-column:1/-1;color:var(--bs-danger);">Error loading news: ${e.message}</div>`;
+        grid.innerHTML = errorHtml;
+        const homeGrid = document.getElementById('home-news-grid');
+        if (homeGrid) homeGrid.innerHTML = errorHtml;
+    }
+}
+
 async function initPage() {
     await loadData();
-    buildNewsFilters();
-    buildNewsGrid();
+    loadExternalNews();
     buildTimeline();
 }
 
@@ -849,8 +892,7 @@ function buildNewsFilters() {
       }
 
       // News
-      buildNewsFilters();
-      buildNewsGrid();
+      loadExternalNews();
 
       // Schedule
       buildYearSelector();
