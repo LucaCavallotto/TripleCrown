@@ -64,6 +64,12 @@
       <div class="container">
         <!-- Next event hero moved here and will be populated by JS -->
         <div class="next-event-hero mt-5 mb-5" id="next-event-hero"></div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+          <h2 class="section-title mb-0">Latest Paddock News</h2>
+          <button class="btn btn-outline-primary btn-sm" onclick="showSection('news')">View All</button>
+        </div>
+        <div class="api-news-grid mb-5" id="home-news-grid"></div>
       </div>
     </section>
 
@@ -78,10 +84,10 @@
         </div>
 
         <!-- Filters -->
-        <div class="rm-filters" id="news-filters"></div>
+        <div class="rm-filters d-none" id="news-filters"></div>
 
         <!-- Grid -->
-        <div class="news-grid" id="news-grid"></div>
+        <div class="api-news-grid" id="news-grid"></div>
       </div>
     </section>
 
