@@ -828,65 +828,86 @@ function buildNewsFilters() {
   async function init() {
     initStickyBehavior();
     initTimelineScrollSpy();
-    await loadData();
     
-    // Deep Linking: parse the event ID from the URL hash query string
-    const hashRaw = window.location.hash.replace('#', '');
-    const [sectionPart, queryString] = hashRaw.split('?');
-    if (queryString) {
-      const params = new URLSearchParams(queryString);
-      const urlEventId = params.get('eventId');
-      if (urlEventId) {
-        activeEventId = urlEventId; // Sets the default active event BEFORE building
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const contentContainer = document.getElementById('content');
+    const errorContainer = document.getElementById('errorContainer');
+    const errorMessage = document.getElementById('errorMessage');
+
+    try {
+      await loadData();
+      
+      // Deep Linking: parse the event ID from the URL hash query string
+      const hashRaw = window.location.hash.replace('#', '');
+      const [sectionPart, queryString] = hashRaw.split('?');
+      if (queryString) {
+        const params = new URLSearchParams(queryString);
+        const urlEventId = params.get('eventId');
+        if (urlEventId) {
+          activeEventId = urlEventId; // Sets the default active event BEFORE building
+        }
       }
-    }
 
-    // News
-    buildNewsFilters();
-    buildNewsGrid();
+      // News
+      buildNewsFilters();
+      buildNewsGrid();
 
-    // Schedule
-    buildYearSelector();
-    buildSchedule();
+      // Schedule
+      buildYearSelector();
+      buildSchedule();
 
-    // If opened directly via a deep link, force scroll into view after rendering
-    if (sectionPart === 'schedule' && activeEventId) {
-      setTimeout(() => {
-        let el = document.getElementById('event-' + activeEventId);
-        if (!el) {
-          const events = getEvents(activeYear);
-          const ev = events.find(e => e.id === activeEventId);
-          if (ev) el = document.querySelector(`.event-group[data-date="${ev.date}"]`);
-        }
-        
-        if (el) {
-          let offset = 160;
-          const rootStyles = getComputedStyle(document.documentElement);
-          const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
-          if (dynamicOffset) offset = parseInt(dynamicOffset);
+      // If opened directly via a deep link, force scroll into view after rendering
+      if (sectionPart === 'schedule' && activeEventId) {
+        setTimeout(() => {
+          let el = document.getElementById('event-' + activeEventId);
+          if (!el) {
+            const events = getEvents(activeYear);
+            const ev = events.find(e => e.id === activeEventId);
+            if (ev) el = document.querySelector(`.event-group[data-date="${ev.date}"]`);
+          }
           
-          const y = el.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({ top: y - offset - 40, behavior: 'smooth' });
-        }
-      }, 250); // slight delay to allow layout calculation
-    }
+          if (el) {
+            let offset = 160;
+            const rootStyles = getComputedStyle(document.documentElement);
+            const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+            if (dynamicOffset) offset = parseInt(dynamicOffset);
+            
+            const y = el.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: y - offset - 40, behavior: 'smooth' });
+          }
+        }, 250); // slight delay to allow layout calculation
+      }
 
-    // Section toggle via hash
-    if (sectionPart === 'schedule') showSection('schedule');
-    else if (sectionPart === 'news') showSection('news');
-    else showSection('home');
+      // Hide Loader & Show Content
+      if (loadingOverlay) loadingOverlay.classList.add('hidden');
+      if (contentContainer) contentContainer.classList.remove('d-none');
+      setTimeout(() => {
+        if (loadingOverlay) loadingOverlay.classList.add('d-none');
+      }, 300);
 
-    // Nav link clicks toggle sections
-    document.querySelectorAll('.rm-nav .nav-link[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        const target = link.getAttribute('href').replace('#', '');
-        if (['home', 'news', 'schedule'].includes(target)) {
-          e.preventDefault();
-          showSection(target);
-          history.pushState(null, '', '#' + target);
-        }
+      // Section toggle via hash
+      if (sectionPart === 'schedule') showSection('schedule');
+      else if (sectionPart === 'news') showSection('news');
+      else showSection('home');
+
+      // Nav link clicks toggle sections
+      document.querySelectorAll('.rm-nav .nav-link[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          const target = link.getAttribute('href').replace('#', '');
+          if (['home', 'news', 'schedule'].includes(target)) {
+            e.preventDefault();
+            showSection(target);
+            history.pushState(null, '', '#' + target);
+          }
+        });
       });
-    });
+      
+    } catch (e) {
+      console.error("Initialization failed", e);
+      if (loadingOverlay) loadingOverlay.classList.add('hidden');
+      if (errorMessage) errorMessage.textContent = `Failed to load data: ${e.message}. Please refresh the page.`;
+      if (errorContainer) errorContainer.classList.remove('d-none');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', init);

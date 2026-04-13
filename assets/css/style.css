@@ -1034,4 +1034,37 @@
     @media (min-width: 992px) {
       .next-event-hero { padding: 2.5rem 2.5rem 2.5rem 3rem; }
     }
-  
+
+    /* ============================================================
+       LOADING OVERLAY
+    ============================================================ */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      
+      /* Slight dark transparent background */
+      background-color: var(--bg-primary); 
+      
+      /* Flexbox to center the Bootstrap spinner */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      /* Ensure it sits on top of all other content */
+      z-index: 9999; 
+      
+      /* Smooth fade out when hidden */
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .d-none {
+      display: none !important;
+    }
+
+    .loading-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
