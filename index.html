@@ -19,6 +19,21 @@
 
 <body>
 
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="spinner-border text-primary" role="status" id="loadingSpinner">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error Message Container (Hidden initially) -->
+  <div id="errorContainer" class="container mt-5 d-none">
+    <div class="alert alert-danger" role="alert" id="errorMessage"></div>
+  </div>
+
+  <!-- Main Content (Hidden initially) -->
+  <div id="content" class="d-none">
+
   <!-- ===== NAVBAR ===== -->
   <nav class="rm-nav navbar navbar-expand-md">
     <div class="container">
@@ -141,6 +156,8 @@
       </div>
     </div>
   </footer>
+
+  </div> <!-- /#content -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
