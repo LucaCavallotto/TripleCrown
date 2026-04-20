@@ -774,7 +774,7 @@ function buildNewsFilters() {
           ${isChronological ? `<span class="event-series-badge ms-0 badge-${s.evSeries.toLowerCase()}">${s.evSeries}</span>` : ''}
           <div class="session-type">
             ${s.type}
-            ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;">${s.evName} &middot; ${s.evLocation}</div>` : ''}
+            ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;" class="session-event-name-wrap"><span class="session-event-name">${s.evName}</span> &middot; ${s.evLocation}</div>` : ''}
           </div>
           <div class="session-time mono d-flex align-items-center gap-3">
             <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
@@ -817,14 +817,127 @@ function buildNewsFilters() {
     buildSeriesTabs(events);
     buildEventsList(filtered);
 
+    if (window.triggerScheduleSearch) window.triggerScheduleSearch();
+
     // Auto-scroll timeline to next
     setTimeout(scrollTimelineToActive, 150);
   }
 
   // ============================================================
-  // ============================================================
   //  INIT
   // ============================================================
+  function initScheduleSearch() {
+    const searchInput = document.getElementById('api-schedule-search');
+    const clearBtn = document.getElementById('api-schedule-search-clear');
+    
+    if (!searchInput) return;
+
+    // We expose a global trigger so buildSchedule() can re-apply the filter after DOM rebuilds
+    window.triggerScheduleSearch = () => {
+      searchInput.dispatchEvent(new Event('input'));
+    };
+
+    const filterSchedule = (query) => {
+      const isChrono = isChronologicalView && activeSeries === 'All';
+      
+      if (isChrono) {
+        const groups = document.querySelectorAll('#events-container .event-group');
+        groups.forEach(group => {
+          let hasVisible = false;
+          const sessions = group.querySelectorAll('.session-block');
+          sessions.forEach(session => {
+            const nameEl = session.querySelector('.session-event-name');
+            if (nameEl) {
+              if (nameEl.textContent.toLowerCase().includes(query)) {
+                session.style.display = '';
+                hasVisible = true;
+              } else {
+                session.style.display = 'none';
+              }
+            } else {
+              // If title doesn't exist, we just show it if query is empty
+              session.style.display = query === '' ? '' : 'none';
+            }
+          });
+          group.style.display = hasVisible ? '' : 'none';
+        });
+      } else {
+        const groups = document.querySelectorAll('#events-container .event-group');
+        groups.forEach(group => {
+          const nameEl = group.querySelector('.event-group-name');
+          if (nameEl) {
+            if (nameEl.textContent.toLowerCase().includes(query)) {
+              group.style.display = '';
+            } else {
+              group.style.display = 'none';
+            }
+          }
+        });
+      }
+    };
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      if (clearBtn) {
+        clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+      }
+      filterSchedule(query);
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        filterSchedule('');
+        searchInput.focus();
+      });
+    }
+  }
+
+  function initNewsSearch() {
+    const searchInput = document.getElementById('api-news-search');
+    const clearBtn = document.getElementById('api-news-search-clear');
+    const newsGrid = document.getElementById('news-grid');
+    if (!searchInput || !newsGrid) return;
+
+    // Filter function
+    const filterNews = (query) => {
+      const cards = newsGrid.querySelectorAll('.api-news-card');
+      cards.forEach(card => {
+        const titleEl = card.querySelector('.api-news-title');
+        if (titleEl) {
+          const titleText = titleEl.textContent.toLowerCase();
+          if (titleText.includes(query)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    };
+
+    // On input, filter and toggle clear button
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      
+      if (clearBtn) {
+        clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+      }
+      
+      filterNews(query);
+    });
+
+    // On clear button click, clear input and filter
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        filterNews('');
+        searchInput.focus();
+      });
+    }
+  }
+
   function initStickyBehavior() {
     const sentinel = document.getElementById('schedule-sticky-sentinel');
     const stickyBar = document.getElementById('schedule-sticky-bar');
@@ -871,6 +984,8 @@ function buildNewsFilters() {
   async function init() {
     initStickyBehavior();
     initTimelineScrollSpy();
+    initNewsSearch();
+    initScheduleSearch();
     
     const loadingOverlay = document.getElementById('loadingOverlay');
     const contentContainer = document.getElementById('content');
