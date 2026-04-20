@@ -34,134 +34,161 @@
   <!-- Main Content (Hidden initially) -->
   <div id="content" class="d-none">
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="rm-nav navbar navbar-expand-md">
-    <div class="container">
-      <a class="navbar-brand" href="#" onclick="showSection('home')">Triple<span>Crown</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#news" onclick="showSection('news')">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#schedule" onclick="showSection('schedule')">Schedule</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-
-  <!-- ===== MAIN ===== -->
-  <main>
-
-    <!-- ================== HOME SECTION ================== -->
-    <section id="home" class="rm-section">
+    <!-- ===== NAVBAR ===== -->
+    <nav class="rm-nav navbar navbar-expand-md">
       <div class="container">
-        <!-- Next event hero moved here and will be populated by JS -->
-        <div class="next-event-hero mt-5 mb-5" id="next-event-hero"></div>
-        
-        <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
-          <h2 class="section-title mb-0">Latest Paddock News</h2>
-          <button class="btn btn-outline-primary btn-sm" onclick="showSection('news')">View All</button>
+        <a class="navbar-brand" href="#" onclick="showSection('home')">Triple<span>Crown</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#news" onclick="showSection('news')">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#schedule" onclick="showSection('schedule')">Schedule</a>
+            </li>
+          </ul>
         </div>
-        <div class="api-news-grid mb-5" id="home-news-grid"></div>
       </div>
-    </section>
+    </nav>
 
-    <!-- ================== NEWS SECTION ================== -->
-    <section id="news" class="rm-section" style="display:none;">
-      <div class="container">
-        <div class="row align-items-end mb-4 mt-5">
-          <div class="col">
 
-            <h2 class="section-title">Paddock News</h2>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+
+      <!-- ================== HOME SECTION ================== -->
+      <section id="home" class="rm-section">
+        <div class="container">
+          <!-- Next event hero moved here and will be populated by JS -->
+          <div class="next-event-hero mt-5 mb-5" id="next-event-hero"></div>
+
+          <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+            <h2 class="section-title mb-0">Latest Paddock News</h2>
+            <button class="btn btn-outline-primary btn-sm" onclick="showSection('news')">View All</button>
           </div>
+          <div class="api-news-grid mb-5" id="home-news-grid"></div>
         </div>
+      </section>
 
-        <!-- Filters -->
-        <div class="rm-filters d-none" id="news-filters"></div>
+      <!-- ================== NEWS SECTION ================== -->
+      <section id="news" class="rm-section" style="display:none;">
+        <div class="container">
+          <div class="row align-items-end mb-4 mt-5">
+            <div class="col">
 
-        <!-- Grid -->
-        <div class="api-news-grid" id="news-grid"></div>
-      </div>
-    </section>
-
-    <!-- ================== SCHEDULE SECTION ================== -->
-    <section id="schedule" class="rm-section" style="display:none;">
-      <div class="container">
-        <div class="row align-items-end mb-4 mt-5">
-          <div class="col">
-            <h2 class="section-title">Season Schedule</h2>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Sentinel for IntersectionObserver to know when the sticky bar hits the top offset -->
-      <div id="schedule-sticky-sentinel"></div>
-
-      <!-- The Single Combined Sticky Wrapper -->
-      <div id="schedule-sticky-bar">
-        <div class="container pt-3 pb-3">
-          
-          <!-- Timeline -->
-          <div class="timeline-wrap mb-0">
-            <div class="timeline-scroll" id="timeline-scroll"></div>
-          </div>
-
-          <!-- Filters (Inline Collapse Panel) -->
-          <div class="mt-3">
-            <div class="d-flex align-items-center gap-2 mt-2">
-              <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="false" aria-controls="filtersCollapse" style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
-                <span><i class="bi bi-funnel-fill me-2"></i> Filter Schedule</span>
-              </button>
-              
-              <button class="next-event-btn ms-auto" id="jump-next-btn" onclick="jumpToNextEvent()">
-                <i class="bi bi-skip-forward-fill me-1"></i>Next Event
-              </button>
+              <h2 class="section-title">Paddock News</h2>
             </div>
-            <div class="collapse" id="filtersCollapse">
-              <div class="pt-3 pb-1 mt-2 d-flex flex-wrap justify-content-between align-items-end gap-3" style="border-top: 1px solid var(--border-color);">
-                <div class="d-flex align-items-center gap-3 flex-wrap">
-                  <div class="year-selector-wrap mb-0" style="margin-bottom:0!important;" id="year-selector"></div>
-                  <div class="series-tabs mb-0" id="series-tabs"></div>
+          </div>
+
+          <!-- Filters -->
+          <div class="rm-filters d-none" id="news-filters"></div>
+
+          <!-- News Search -->
+          <div class="news-search-wrapper mb-4 position-relative">
+            <input type="text" id="api-news-search" class="news-search-input" placeholder="Search news by title..."
+              style="padding-right: 2.5rem;">
+            <button type="button" id="api-news-search-clear" class="btn position-absolute border-0 bg-transparent p-0"
+              style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
+              aria-label="Clear search">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+
+          <!-- Grid -->
+          <div class="api-news-grid" id="news-grid"></div>
+        </div>
+      </section>
+
+      <!-- ================== SCHEDULE SECTION ================== -->
+      <section id="schedule" class="rm-section" style="display:none;">
+        <div class="container">
+          <div class="row align-items-end mb-4 mt-5">
+            <div class="col">
+              <h2 class="section-title">Season Schedule</h2>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sentinel for IntersectionObserver to know when the sticky bar hits the top offset -->
+        <div id="schedule-sticky-sentinel"></div>
+
+        <!-- The Single Combined Sticky Wrapper -->
+        <div id="schedule-sticky-bar">
+          <div class="container pt-3 pb-3">
+
+            <!-- Timeline -->
+            <div class="timeline-wrap mb-0">
+              <div class="timeline-scroll" id="timeline-scroll"></div>
+            </div>
+
+            <!-- Filters (Inline Collapse Panel) -->
+            <div class="mt-3">
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="false"
+                  aria-controls="filtersCollapse"
+                  style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                  <span><i class="bi bi-funnel-fill me-2"></i> Filter</span>
+                </button>
+
+                <div class="news-search-wrapper position-relative" style="max-width: 300px; margin-bottom: 0;">
+                  <input type="text" id="api-schedule-search" class="news-search-input"
+                    placeholder="Search event by title..."
+                    style="padding-right: 2.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
+                  <button type="button" id="api-schedule-search-clear"
+                    class="btn position-absolute border-0 bg-transparent p-0"
+                    style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
+                    aria-label="Clear search">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
                 </div>
-                <div id="view-toggle-wrap"></div>
+
+                <button class="next-event-btn ms-auto" id="jump-next-btn" onclick="jumpToNextEvent()">
+                  Next Event
+                </button>
+              </div>
+              <div class="collapse" id="filtersCollapse">
+                <div class="pt-3 pb-1 mt-2 d-flex flex-wrap justify-content-between align-items-end gap-3"
+                  style="border-top: 1px solid var(--border-color);">
+                  <div class="d-flex align-items-center gap-3 flex-wrap">
+                    <div class="year-selector-wrap mb-0" style="margin-bottom:0!important;" id="year-selector"></div>
+                    <div class="series-tabs mb-0" id="series-tabs"></div>
+                  </div>
+                  <div id="view-toggle-wrap"></div>
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
+        </div>
+
+        <div class="container pt-2">
+          <!-- Events list -->
+          <div id="events-container"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="rm-footer">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          <div class="footer-brand">Triple<span>Crown</span></div>
+          <div class="footer-copy mt-1">Motorsport News & Calendar · All Times Local</div>
+        </div>
+        <div class="footer-copy text-end">
+          &copy; 2026 TripleCrown &middot; For enthusiasts, by enthusiasts<br>
+          All times are approximate. Always verify official broadcaster schedules.<br>
+          Not affiliated with FIGA, F1, WEC, WRC or any series.<br>
+          Built with ❤️ for motorsport
         </div>
       </div>
-
-      <div class="container pt-2">
-        <!-- Events list -->
-        <div id="events-container"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="rm-footer">
-    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <div>
-        <div class="footer-brand">Triple<span>Crown</span></div>
-        <div class="footer-copy mt-1">Motorsport News & Calendar · All Times Local</div>
-      </div>
-      <div class="footer-copy text-end">
-        &copy; 2026 TripleCrown &middot; For enthusiasts, by enthusiasts<br>
-        All times are approximate. Always verify official broadcaster schedules.<br>
-        Not affiliated with FIA, F1, WEC, WRC or any series.<br>
-        Built with ❤️ for motorsport
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   </div> <!-- /#content -->
 

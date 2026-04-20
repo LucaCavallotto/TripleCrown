@@ -3,61 +3,69 @@
     ============================================================ */
     :root {
       /* Gulf Racing Palette */
-      --gulf-blue:    #0067A5;
-      --gulf-orange:  #F4621F;
+      --gulf-blue: #0067A5;
+      --gulf-orange: #F4621F;
       /* British Racing Green + Yellow */
-      --brg-green:    #1B4332;
-      --brg-yellow:   #FFCF00;
+      --brg-green: #1B4332;
+      --brg-yellow: #FFCF00;
       /* Ferrari Classic */
-      --ferrari-red:  #C8102E;
-      --ferrari-white:#F5F0E8;
+      --ferrari-red: #C8102E;
+      --ferrari-white: #F5F0E8;
       /* Neutral tones */
-      --cream:        #FAF7F2;
-      --ink:          #1A1410;
-      --muted:        #8C8078;
+      --cream: #FAF7F2;
+      --ink: #1A1410;
+      --muted: #8C8078;
 
       /* Light mode defaults */
-      --bg-primary:   var(--cream);
+      --bg-primary: var(--cream);
       --bg-secondary: #EFEBE4;
-      --bg-card:      #FFFFFF;
+      --bg-card: #FFFFFF;
       --text-primary: var(--ink);
-      --text-secondary:#5A5248;
-      --text-muted:   var(--muted);
+      --text-secondary: #5A5248;
+      --text-muted: var(--muted);
       --border-color: #DDD8D0;
-      --stripe-color: rgba(0,0,0,0.04);
-      --accent:       var(--gulf-orange);
-      --accent2:      var(--gulf-blue);
-      --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);
-      --shadow-md:    0 8px 32px rgba(0,0,0,0.12);
-      --nav-bg:       rgba(250,247,242,0.92);
-      --hero-overlay: rgba(250,247,242,0.6);
+      --stripe-color: rgba(0, 0, 0, 0.04);
+      --accent: var(--gulf-orange);
+      --accent2: var(--gulf-blue);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --nav-bg: rgba(250, 247, 242, 0.92);
+      --hero-overlay: rgba(250, 247, 242, 0.6);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-primary:   #111009;
+        --bg-primary: #111009;
         --bg-secondary: #1C1A16;
-        --bg-card:      #201E19;
+        --bg-card: #201E19;
         --text-primary: #F0EBE3;
-        --text-secondary:#B0A898;
-        --text-muted:   #6B6258;
+        --text-secondary: #B0A898;
+        --text-muted: #6B6258;
         --border-color: #333028;
-        --stripe-color: rgba(255,255,255,0.03);
-        --accent:       var(--gulf-orange);
-        --accent2:      #3D9FD8;
-        --shadow-sm:    0 2px 8px rgba(0,0,0,0.4);
-        --shadow-md:    0 8px 32px rgba(0,0,0,0.5);
-        --nav-bg:       rgba(17,16,9,0.92);
-        --hero-overlay: rgba(17,16,9,0.6);
+        --stripe-color: rgba(255, 255, 255, 0.03);
+        --accent: var(--gulf-orange);
+        --accent2: #3D9FD8;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
+        --nav-bg: rgba(17, 16, 9, 0.92);
+        --hero-overlay: rgba(17, 16, 9, 0.6);
       }
     }
 
     /* ============================================================
        GLOBAL RESET & BASE
     ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Barlow', sans-serif;
@@ -75,27 +83,35 @@
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      background-image: repeating-linear-gradient(
-        90deg,
-        var(--stripe-color) 0px,
-        var(--stripe-color) 1px,
-        transparent 1px,
-        transparent 60px
-      );
+      background-image: repeating-linear-gradient(90deg,
+          var(--stripe-color) 0px,
+          var(--stripe-color) 1px,
+          transparent 1px,
+          transparent 60px);
     }
 
-    * { position: relative; z-index: 1; }
+    * {
+      position: relative;
+      z-index: 1;
+    }
 
     /* ============================================================
        TYPOGRAPHY
     ============================================================ */
-    h1, h2, h3, h4, h5, .display-font {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    .display-font {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
 
-    .mono { font-family: 'Space Mono', monospace; }
+    .mono {
+      font-family: 'Space Mono', monospace;
+    }
 
     /* ============================================================
        NAVBAR
@@ -119,13 +135,12 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg,
-        var(--gulf-orange) 0%,
-        var(--gulf-orange) 33%,
-        var(--gulf-blue) 33%,
-        var(--gulf-blue) 66%,
-        var(--brg-yellow) 66%,
-        var(--brg-yellow) 100%
-      );
+          var(--gulf-orange) 0%,
+          var(--gulf-orange) 33%,
+          var(--gulf-blue) 33%,
+          var(--gulf-blue) 66%,
+          var(--brg-yellow) 66%,
+          var(--brg-yellow) 100%);
     }
 
     .rm-nav .navbar-brand {
@@ -197,14 +212,15 @@
     .rm-hero::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 20px,
-        var(--stripe-color) 20px,
-        var(--stripe-color) 21px
-      );
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(-45deg,
+          transparent,
+          transparent 20px,
+          var(--stripe-color) 20px,
+          var(--stripe-color) 21px);
     }
 
     .rm-hero-title {
@@ -263,7 +279,9 @@
     /* ============================================================
        NEWS SECTION
     ============================================================ */
-    #news { padding: 4rem 0; }
+    #news {
+      padding: 4rem 0;
+    }
 
     /* Category Filter Pills */
     .rm-filters {
@@ -347,16 +365,36 @@
       z-index: 2;
     }
 
-    .news-card-image .cat-badge.wec   { background: var(--gulf-blue); }
+    .news-card-image .cat-badge.wec {
+      background: var(--gulf-blue);
+    }
+
     .news-card-image .cat-badge.wrc,
     .news-card-image .cat-badge.gtwc,
     .news-card-image .cat-badge.motogp,
-    .news-card-image .cat-badge.nls { background: var(--brg-green); }
-    .news-card-image .cat-badge.f2    { background: #6B21A8; }
-    .news-card-image .cat-badge.fe    { background: #0891B2; }
-    .news-card-image .cat-badge.indycar { background: #B45309; }
-    .news-card-image .cat-badge.nascar  { background: #002855; }
-    .news-card-image .cat-badge.igtc    { background: #FF4500; }
+    .news-card-image .cat-badge.nls {
+      background: var(--brg-green);
+    }
+
+    .news-card-image .cat-badge.f2 {
+      background: #6B21A8;
+    }
+
+    .news-card-image .cat-badge.fe {
+      background: #0891B2;
+    }
+
+    .news-card-image .cat-badge.indycar {
+      background: #B45309;
+    }
+
+    .news-card-image .cat-badge.nascar {
+      background: #002855;
+    }
+
+    .news-card-image .cat-badge.igtc {
+      background: #FF4500;
+    }
 
     /* Decorative graphic placeholder for card image */
     .news-card-graphic {
@@ -414,7 +452,9 @@
     /* ============================================================
        SCHEDULE SECTION
     ============================================================ */
-    #schedule { padding: 4rem 0 6rem; }
+    #schedule {
+      padding: 4rem 0 6rem;
+    }
 
     /* Ensure the sentinel stays in DOM flow but takes up no visual space */
     #schedule-sticky-sentinel {
@@ -426,15 +466,17 @@
     #schedule-sticky-bar {
       /* Set position to sticky and offset it by the navbar height */
       position: sticky;
-      top: 56px; /* Update this if your rm-nav height is different */
-      z-index: 900; /* Stays below the navbar (1000) but above event cards */
-      
+      top: 56px;
+      /* Update this if your rm-nav height is different */
+      z-index: 900;
+      /* Stays below the navbar (1000) but above event cards */
+
       /* Start transparent to blend with the natural page flow */
       background-color: transparent;
       box-shadow: none;
       border-bottom: 1px solid transparent;
       transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      
+
       /* Bleed background to screen edges so the background spans the entire width 
          while the inner .container keeps the content centered */
       margin-left: calc(50% - 50vw);
@@ -445,9 +487,12 @@
 
     /* Locked state (Class added by JavaScript when scrolling) */
     #schedule-sticky-bar.is-locked {
-      background-color: var(--bg-primary); /* Uses main bg to block out scrolling content */
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Drop shadow to separate from content below */
-      border-bottom: 1px solid var(--border-color); /* Subtle divider border */
+      background-color: var(--bg-primary);
+      /* Uses main bg to block out scrolling content */
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      /* Drop shadow to separate from content below */
+      border-bottom: 1px solid var(--border-color);
+      /* Subtle divider border */
     }
 
 
@@ -465,7 +510,9 @@
     .next-event-hero::before {
       content: '';
       position: absolute;
-      left: 0; top: 0; bottom: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 5px;
       background: linear-gradient(180deg, var(--gulf-orange), var(--gulf-blue));
     }
@@ -498,14 +545,17 @@
     /* Hero Clickable */
     .hero-clickable {
       cursor: pointer;
-      border-radius: 4px; /* subtle base for the hover */
+      border-radius: 4px;
+      /* subtle base for the hover */
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease, box-shadow 0.2s ease;
     }
 
     .hero-clickable:hover {
       transform: scale(1.01);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* highlight on hover */
-      filter: brightness(1.05); /* subtle brighten */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      /* highlight on hover */
+      filter: brightness(1.05);
+      /* subtle brighten */
     }
 
     .hero-clickable:active {
@@ -530,7 +580,8 @@
 
     .hero-clickable:hover .hero-cta {
       color: var(--gulf-orange);
-      gap: 0.75rem; /* Moves the arrow slightly to the right */
+      gap: 0.75rem;
+      /* Moves the arrow slightly to the right */
     }
 
     /* Countdown */
@@ -594,9 +645,18 @@
       scrollbar-color: var(--border-color) transparent;
     }
 
-    .timeline-scroll::-webkit-scrollbar { height: 4px; }
-    .timeline-scroll::-webkit-scrollbar-track { background: transparent; }
-    .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+    .timeline-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .timeline-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .timeline-scroll::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 2px;
+    }
 
     .timeline-date-btn {
       flex: 0 0 auto;
@@ -644,8 +704,13 @@
       background: rgba(244, 98, 31, 0.08);
     }
 
-    .timeline-date-btn.active .tl-day { color: var(--gulf-orange); }
-    .timeline-date-btn.past { opacity: 0.45; }
+    .timeline-date-btn.active .tl-day {
+      color: var(--gulf-orange);
+    }
+
+    .timeline-date-btn.past {
+      opacity: 0.45;
+    }
 
     .timeline-date-btn.next-indicator {
       border-color: var(--gulf-orange);
@@ -667,7 +732,9 @@
       transition: opacity 0.15s;
     }
 
-    .next-event-btn:hover { opacity: 0.85; }
+    .next-event-btn:hover {
+      opacity: 0.85;
+    }
 
     /* Series filter tabs */
     .series-tabs {
@@ -691,8 +758,16 @@
       transition: all 0.15s;
     }
 
-    .series-tab.active { background: var(--gulf-blue); border-color: var(--gulf-blue); color: #fff; }
-    .series-tab:hover:not(.active) { border-color: var(--gulf-blue); color: var(--gulf-blue); }
+    .series-tab.active {
+      background: var(--gulf-blue);
+      border-color: var(--gulf-blue);
+      color: #fff;
+    }
+
+    .series-tab:hover:not(.active) {
+      border-color: var(--gulf-blue);
+      color: var(--gulf-blue);
+    }
 
     /* View Toggle */
     .view-toggle-btn {
@@ -723,7 +798,7 @@
       border-color: var(--text-secondary);
       color: var(--bg-primary);
     }
-    
+
     .date-group-header {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
@@ -781,7 +856,8 @@
     /* Event group */
     .event-group {
       margin-bottom: 2.5rem;
-      scroll-margin-top: var(--dynamic-scroll-offset, 160px); /* Dynamically updated via JS to perfectly match sticky header height */
+      scroll-margin-top: var(--dynamic-scroll-offset, 160px);
+      /* Dynamically updated via JS to perfectly match sticky header height */
     }
 
     .event-group-header {
@@ -819,15 +895,41 @@
       margin-left: auto;
     }
 
-    .badge-f1     { background: var(--ferrari-red); }
-    .badge-wec    { background: var(--gulf-blue); }
-    .badge-wrc, .badge-gtwc, .badge-motogp, .badge-nls { background: var(--brg-green); }
-    .badge-f2     { background: #6B21A8; }
-    .badge-fe     { background: #0891B2; }
-    .badge-indycar{ background: #B45309; }
-    .badge-nascar { background: #002855; }
-    .badge-igtc   { background: #FF4500; }
-    
+    .badge-f1 {
+      background: var(--ferrari-red);
+    }
+
+    .badge-wec {
+      background: var(--gulf-blue);
+    }
+
+    .badge-wrc,
+    .badge-gtwc,
+    .badge-motogp,
+    .badge-nls {
+      background: var(--brg-green);
+    }
+
+    .badge-f2 {
+      background: #6B21A8;
+    }
+
+    .badge-fe {
+      background: #0891B2;
+    }
+
+    .badge-indycar {
+      background: #B45309;
+    }
+
+    .badge-nascar {
+      background: #002855;
+    }
+
+    .badge-igtc {
+      background: #FF4500;
+    }
+
     .completed-badge {
       background: var(--ferrari-red);
       color: #fff;
@@ -863,11 +965,25 @@
       background: var(--gulf-orange);
     }
 
-    .session-block-color.q  { background: var(--gulf-blue); }
-    .session-block-color.r  { background: var(--ferrari-red); }
-    .session-block-color.fp { background: var(--brg-yellow); }
-    .session-block-color.ss { background: #8B5CF6; }
-    .session-block-color.se { background: #10B981; }
+    .session-block-color.q {
+      background: var(--gulf-blue);
+    }
+
+    .session-block-color.r {
+      background: var(--ferrari-red);
+    }
+
+    .session-block-color.fp {
+      background: var(--brg-yellow);
+    }
+
+    .session-block-color.ss {
+      background: #8B5CF6;
+    }
+
+    .session-block-color.se {
+      background: #10B981;
+    }
 
     .session-block-body {
       flex: 1;
@@ -953,10 +1069,9 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg,
-        var(--gulf-orange) 0%, var(--gulf-orange) 33%,
-        var(--gulf-blue) 33%, var(--gulf-blue) 66%,
-        var(--brg-yellow) 66%, var(--brg-yellow) 100%
-      );
+          var(--gulf-orange) 0%, var(--gulf-orange) 33%,
+          var(--gulf-blue) 33%, var(--gulf-blue) 66%,
+          var(--brg-yellow) 66%, var(--brg-yellow) 100%);
     }
 
     .footer-brand {
@@ -967,7 +1082,9 @@
       color: var(--text-primary);
     }
 
-    .footer-brand span { color: var(--gulf-orange); }
+    .footer-brand span {
+      color: var(--gulf-orange);
+    }
 
     .footer-copy {
       font-family: 'Space Mono', monospace;
@@ -982,8 +1099,7 @@
     .divider-racing {
       height: 1px;
       background: linear-gradient(90deg,
-        var(--gulf-orange), var(--gulf-blue), transparent
-      );
+          var(--gulf-orange), var(--gulf-blue), transparent);
       margin: 0.75rem 0;
     }
 
@@ -991,48 +1107,134 @@
        ANIMATIONS
     ============================================================ */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .fade-up { animation: fadeUp 0.5s ease both; }
-    .fade-up-1 { animation-delay: 0.05s; }
-    .fade-up-2 { animation-delay: 0.1s; }
-    .fade-up-3 { animation-delay: 0.15s; }
-    .fade-up-4 { animation-delay: 0.2s; }
-    .fade-up-5 { animation-delay: 0.25s; }
+    .fade-up {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .fade-up-1 {
+      animation-delay: 0.05s;
+    }
+
+    .fade-up-2 {
+      animation-delay: 0.1s;
+    }
+
+    .fade-up-3 {
+      animation-delay: 0.15s;
+    }
+
+    .fade-up-4 {
+      animation-delay: 0.2s;
+    }
+
+    .fade-up-5 {
+      animation-delay: 0.25s;
+    }
 
     /* ============================================================
        RESPONSIVE
     ============================================================ */
     @media (max-width: 768px) {
-      .countdown-wrap { gap: 0.5rem; flex-wrap: nowrap; justify-content: flex-start; }
-      .countdown-num { font-size: 1.75rem; }
-      .countdown-unit { min-width: 48px; }
-      .countdown-sep { font-size: 1.5rem; margin-top: 0.2rem; }
-      .hero-cta { bottom: 1rem; right: 1.5rem; font-size: 0.65rem; }
-      .next-event-hero { padding: 1.5rem 1.5rem 2.5rem 1.75rem; } /* Extra bottom padding for CTA */
+      .countdown-wrap {
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+
+      .countdown-num {
+        font-size: 1.75rem;
+      }
+
+      .countdown-unit {
+        min-width: 48px;
+      }
+
+      .countdown-sep {
+        font-size: 1.5rem;
+        margin-top: 0.2rem;
+      }
+
+      .hero-cta {
+        bottom: 1rem;
+        right: 1.5rem;
+        font-size: 0.65rem;
+      }
+
+      .next-event-hero {
+        padding: 1.5rem 1.5rem 2.5rem 1.75rem;
+      }
+
+      /* Extra bottom padding for CTA */
     }
 
     @media (max-width: 576px) {
-      .news-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-      .session-block-body { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-      .countdown-wrap { gap: 0.25rem; justify-content: space-between; }
-      .countdown-num { font-size: 1.4rem; }
-      .countdown-unit { min-width: 40px; }
-      .countdown-sep { margin-top: 0.1rem; }
-      .countdown-label { font-size: 0.6rem; }
+      .news-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+
+      .session-block-body {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .countdown-wrap {
+        gap: 0.25rem;
+        justify-content: space-between;
+      }
+
+      .countdown-num {
+        font-size: 1.4rem;
+      }
+
+      .countdown-unit {
+        min-width: 40px;
+      }
+
+      .countdown-sep {
+        margin-top: 0.1rem;
+      }
+
+      .countdown-label {
+        font-size: 0.6rem;
+      }
     }
 
     @media (max-width: 400px) {
-      .news-grid { grid-template-columns: 1fr; }
-      .countdown-num { font-size: 1.25rem; }
-      .countdown-unit { min-width: 35px; }
-      .hero-cta { font-size: 0.55rem; right: 1.25rem; }
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown-num {
+        font-size: 1.25rem;
+      }
+
+      .countdown-unit {
+        min-width: 35px;
+      }
+
+      .hero-cta {
+        font-size: 0.55rem;
+        right: 1.25rem;
+      }
     }
 
     @media (min-width: 992px) {
-      .next-event-hero { padding: 2.5rem 2.5rem 2.5rem 3rem; }
+      .next-event-hero {
+        padding: 2.5rem 2.5rem 2.5rem 3rem;
+      }
     }
 
     /* ============================================================
@@ -1044,18 +1246,18 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      
+
       /* Slight dark transparent background */
-      background-color: var(--bg-primary); 
-      
+      background-color: var(--bg-primary);
+
       /* Flexbox to center the Bootstrap spinner */
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
       /* Ensure it sits on top of all other content */
-      z-index: 9999; 
-      
+      z-index: 9999;
+
       /* Smooth fade out when hidden */
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
@@ -1078,7 +1280,7 @@
       gap: 1.5rem;
       width: 100%;
     }
-    
+
     .api-news-card {
       background: var(--bg-card, #1A1D24);
       border: 1px solid var(--border-color, #2A2E35);
@@ -1090,33 +1292,33 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       height: 100%;
     }
-    
+
     .api-news-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
       border-color: var(--gulf-orange, #F4621F);
     }
-    
+
     .api-news-image {
       position: relative;
       height: 180px;
       background: #000;
       border-bottom: 2px solid var(--border-color, #2A2E35);
     }
-    
+
     .api-news-img {
       width: 100%;
       height: 100%;
       background-size: cover;
       background-position: center;
     }
-    
+
     .api-news-placeholder {
       width: 100%;
       height: 100%;
       background: #111;
     }
-    
+
     .api-news-image .cat-badge {
       position: absolute;
       top: 12px;
@@ -1130,17 +1332,23 @@
       color: #fff;
       letter-spacing: 1px;
     }
-    .api-news-image .cat-badge.f1 { background: var(--ferrari-red, #C8102E); }
-    .api-news-image .cat-badge.motogp { background: var(--gulf-blue, #0067A5); }
-    
+
+    .api-news-image .cat-badge.f1 {
+      background: var(--ferrari-red, #C8102E);
+    }
+
+    .api-news-image .cat-badge.motogp {
+      background: var(--gulf-blue, #0067A5);
+    }
+
     .api-news-body {
       padding: 1.25rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
     }
-    
+
     .api-news-title {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.25rem;
@@ -1149,7 +1357,7 @@
       color: var(--text-primary);
       line-height: 1.2;
     }
-    
+
     .api-news-desc {
       font-family: 'Barlow', sans-serif;
       font-size: 0.9rem;
@@ -1157,7 +1365,7 @@
       margin-bottom: 1rem;
       flex-grow: 1;
       line-height: 1.4;
-      
+
       /* Truncate to 3 lines max */
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -1165,7 +1373,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    
+
     .api-news-meta {
       display: flex;
       justify-content: space-between;
@@ -1176,8 +1384,40 @@
       border-top: 1px solid var(--border-color, #2A2E35);
       padding-top: 0.8rem;
     }
-    
+
     .api-news-source {
       font-weight: 700;
       color: var(--gulf-orange, #F4621F);
+    }
+
+    /* ============================================================
+       NEWS SEARCH COMPONENT
+    ============================================================ */
+    .news-search-wrapper {
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .news-search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      border-radius: 4px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .news-search-input:focus {
+      outline: none;
+      border-color: var(--gulf-orange);
+      box-shadow: 0 0 0 3px rgba(244, 98, 31, 0.15);
+    }
+
+    .news-search-input::placeholder {
+      color: var(--text-muted);
     }
