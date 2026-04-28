@@ -76,15 +76,32 @@ async function loadData() {
 // Fetch external news from custom API proxy
 async function loadExternalNews() {
     const grid = document.getElementById('news-grid');
+    if (!grid) return;
+
     grid.innerHTML = '<div class="loading-overlay d-flex w-100" style="position:relative;height:150px;grid-column:1/-1;"><div class="spinner-border text-primary m-auto"></div></div>';
+    
     try {
-        const res = await fetch('https://api-proxy-337645177936.europe-west1.run.app');
-        if (!res.ok) throw new Error('API request failed');
+        // Fetch local data.json with cache-busting mechanism
+        const timestamp = new Date().getTime();
+        const res = await fetch(`data/news/data.json?v=${timestamp}`);
+        
+        // Proper error handling
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        
         const data = await res.json();
         
+        // DOM Manipulation Skeleton / Integration
         let allNews = [];
-        if (data.f1_news) allNews = allNews.concat(data.f1_news.map(n => ({...n, _cat: 'F1'})));
-        if (data.motogp_news) allNews = allNews.concat(data.motogp_news.map(n => ({...n, _cat: 'MotoGP'})));
+        
+        // Handle both possible structures: generic NewsAPI ('articles') or the custom proxy format
+        if (data.articles) {
+            allNews = data.articles.map(n => ({...n, _cat: 'News'}));
+        } else {
+            if (data.f1_news) allNews = allNews.concat(data.f1_news.map(n => ({...n, _cat: 'F1'})));
+            if (data.motogp_news) allNews = allNews.concat(data.motogp_news.map(n => ({...n, _cat: 'MotoGP'})));
+        }
         
         // Sort by date descending
         allNews.sort((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt));
@@ -110,7 +127,7 @@ async function loadExternalNews() {
                     ${imgHtml}
                 </div>
                 <div class="api-news-body">
-                    <h3 class="api-news-title">${item.title}</h3>
+                    <h3 class="api-news-title">${item.title || 'No Title'}</h3>
                     <p class="api-news-desc">${item.description || ''}</p>
                     <div class="api-news-meta">
                         <span class="api-news-source">${item.source?.name || 'Unknown'}</span>
@@ -128,6 +145,7 @@ async function loadExternalNews() {
             homeGrid.innerHTML = renderCards(allNews.slice(0, 3));
         }
     } catch (e) {
+        console.error("Failed to fetch or parse data.json:", e);
         const errorHtml = `<div class="no-events w-100 text-center" style="grid-column:1/-1;color:var(--bs-danger);">Error loading news: ${e.message}</div>`;
         grid.innerHTML = errorHtml;
         const homeGrid = document.getElementById('home-news-grid');
