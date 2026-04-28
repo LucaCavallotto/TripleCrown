@@ -95,12 +95,16 @@ async function loadExternalNews() {
         // DOM Manipulation Skeleton / Integration
         let allNews = [];
         
-        // Handle both possible structures: generic NewsAPI ('articles') or the custom proxy format
-        if (data.articles) {
+        // Handle our customized merged format with 5 distinct series
+        if (data.f1_news) allNews = allNews.concat(data.f1_news.map(n => ({...n, _cat: 'F1'})));
+        if (data.wec_news) allNews = allNews.concat(data.wec_news.map(n => ({...n, _cat: 'WEC'})));
+        if (data.us_news) allNews = allNews.concat(data.us_news.map(n => ({...n, _cat: 'US Racing'})));
+        if (data.wrc_news) allNews = allNews.concat(data.wrc_news.map(n => ({...n, _cat: 'WRC'})));
+        if (data.motogp_news) allNews = allNews.concat(data.motogp_news.map(n => ({...n, _cat: 'MotoGP'})));
+        
+        // Fallback for single query structures just in case
+        if (allNews.length === 0 && data.articles) {
             allNews = data.articles.map(n => ({...n, _cat: 'News'}));
-        } else {
-            if (data.f1_news) allNews = allNews.concat(data.f1_news.map(n => ({...n, _cat: 'F1'})));
-            if (data.motogp_news) allNews = allNews.concat(data.motogp_news.map(n => ({...n, _cat: 'MotoGP'})));
         }
         
         // Sort by date descending
@@ -123,7 +127,7 @@ async function loadExternalNews() {
             return `
             <article class="api-news-card fade-up fade-up-${Math.min(idx+1, 5)}" onclick="window.open('${item.url}', '_blank')">
                 <div class="api-news-image">
-                    <span class="cat-badge ${item._cat === 'F1' ? 'f1' : 'motogp'}">${item._cat}</span>
+                    <span class="cat-badge ${item._cat.toLowerCase().replace(/ /g, '-')}">${item._cat}</span>
                     ${imgHtml}
                 </div>
                 <div class="api-news-body">

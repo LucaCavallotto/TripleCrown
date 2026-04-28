@@ -22,7 +22,27 @@ jobs:
           echo "Creando la cartella data/news..."
           mkdir -p data/news
           echo "Scaricando le notizie..."
-          curl -s "https://newsapi.org/v2/everything?domains=motorsport.com,autosport.com,autosprint.it,the-race.com,formu1a.uno,racefans.net,formula1.com,motogp.com,fia.com&language=en&pageSize=20&apiKey=$API_KEY" > data/news/data.json
+          curl -s "https://newsapi.org/v2/everything?q=F1&domains=motorsport.com,autosport.com,racefans.net,the-race.com&language=en&sortBy=publishedAt&pageSize=20&apiKey=$API_KEY" > f1.json
+          curl -s "https://newsapi.org/v2/everything?q=WEC+OR+%22Le+Mans%22+OR+%22GTWC%22+OR+%22GT+World+Challenge%22+OR+%22IGTC%22+OR+%22NLS%22&domains=sportscar365.com,dailysportscar.com,motorsport.com,fiawec.com,gt-world-challenge.com&language=en&sortBy=publishedAt&pageSize=20&apiKey=$API_KEY" > wec.json
+          curl -s "https://newsapi.org/v2/everything?q=NASCAR+OR+IndyCar+OR+%22Indianapolis+500%22&domains=racer.com,motorsport.com,nascar.com,indycar.com,autosport.com&language=en&sortBy=publishedAt&pageSize=20&apiKey=$API_KEY" > us.json
+          curl -s "https://newsapi.org/v2/everything?q=WRC&domains=motorsport.com,autosport.com,wrc.com&language=en&sortBy=publishedAt&pageSize=20&apiKey=$API_KEY" > wrc.json
+          curl -s "https://newsapi.org/v2/everything?q=MOTOGP&domains=motorsport.com,autosport.com,motogp.com&language=en&sortBy=publishedAt&pageSize=20&apiKey=$API_KEY" > motogp.json
+          
+          echo "Unendo i file in data/news/data.json..."
+          jq -n \
+            --slurpfile f1 f1.json \
+            --slurpfile wec wec.json \
+            --slurpfile us us.json \
+            --slurpfile wrc wrc.json \
+            --slurpfile motogp motogp.json \
+            '{
+               status: "ok",
+               f1_news: ($f1[0].articles // []),
+               wec_news: ($wec[0].articles // []),
+               us_news: ($us[0].articles // []),
+               wrc_news: ($wrc[0].articles // []),
+               motogp_news: ($motogp[0].articles // [])
+            }' > data/news/data.json
 
       - name: Salva il nuovo data.json nel sito (Commit & Push)
         run: |
