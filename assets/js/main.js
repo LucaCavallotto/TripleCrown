@@ -825,6 +825,56 @@ function buildNewsFilters() {
   };
 
   // ============================================================
+  //  HOME — This Week
+  // ============================================================
+  function buildThisWeek() {
+    const wrap = document.getElementById('home-this-week-grid');
+    if (!wrap) return;
+
+    const now = new Date();
+    const day = now.getDay() || 7; 
+    if (day !== 1) {
+        now.setHours(-24 * (day - 1));
+    }
+    const startOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(endOfWeek.getDate() + 6);
+    endOfWeek.setHours(23, 59, 59, 999);
+
+    let weekEvents = [];
+    Object.values(SCHEDULE_DATA).forEach(yearEvents => {
+      yearEvents.forEach(ev => {
+        const evDate = new Date(ev.date + 'T00:00:00');
+        if (evDate >= startOfWeek && evDate <= endOfWeek) {
+          weekEvents.push(ev);
+        }
+      });
+    });
+
+    if (weekEvents.length === 0) {
+      wrap.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No motorsport events scheduled for this week.</div>`;
+      return;
+    }
+
+    weekEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    wrap.innerHTML = weekEvents.map((ev, idx) => `
+      <article class="api-news-card fade-up fade-up-${Math.min(idx+1, 5)}" style="cursor:pointer;" onclick="showSection('schedule'); goToScheduleAndScroll('${ev.id}')">
+          <div class="api-news-body d-flex flex-column justify-content-center h-100" style="padding: 1.5rem;">
+              <div>
+                  <span class="cat-badge badge-${ev.series.toLowerCase()}" style="position:relative; display:inline-block; margin-bottom:1rem; border-radius:3px;">${ev.series}</span>
+              </div>
+              <h3 class="api-news-title">${ev.name}</h3>
+              <div class="api-news-meta mt-auto pt-3">
+                  <span class="api-news-source"><i class="bi bi-geo-alt me-1"></i>${ev.location}</span>
+                  <span class="api-news-date"><i class="bi bi-calendar3 me-1"></i>${fmtShort(ev.date)}</span>
+              </div>
+          </div>
+      </article>
+    `).join('');
+  }
+
+  // ============================================================
   //  SCHEDULE — Main build
   // ============================================================
   function buildSchedule() {
@@ -835,6 +885,7 @@ function buildNewsFilters() {
     if (!activeEventId) activeEventId = nextEvent ? nextEvent.id : null;
 
     buildNextEventHero(nextEvent);
+    buildThisWeek();
     buildTimeline(events, nextEvent);
     buildSeriesTabs(events);
     buildEventsList(filtered);
