@@ -19,14 +19,10 @@ jobs:
         env:
           API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
         run: |
-          echo "Scaricando notizie F1..."
-          curl -s "https://newsapi.org/v2/everything?q=formula1&language=en&sortBy=publishedAt&pageSize=5&apiKey=$API_KEY" > f1.json
-          
-          echo "Scaricando notizie MotoGP..."
-          curl -s "https://newsapi.org/v2/everything?q=motogp&language=en&sortBy=publishedAt&pageSize=5&apiKey=$API_KEY" > motogp.json
-          
-          echo "Unendo i file in data.json..."
-          jq -n --slurpfile f1 f1.json --slurpfile mgp motogp.json '{status: "ok", f1_news: $f1[0].articles, motogp_news: $mgp[0].articles}' > data/news/data.json
+          echo "Creando la cartella data/news..."
+          mkdir -p data/news
+          echo "Scaricando le notizie..."
+          curl -s "https://newsapi.org/v2/everything?domains=motorsport.com,autosport.com,autosprint.it,the-race.com,formu1a.uno,racefans.net,formula1.com,motogp.com,fia.com&language=en&pageSize=20&apiKey=$API_KEY" > data/news/data.json
 
       - name: Salva il nuovo data.json nel sito (Commit & Push)
         run: |
