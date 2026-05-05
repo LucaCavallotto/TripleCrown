@@ -404,8 +404,8 @@ function buildNewsFilters() {
     }) || event.sessions[event.sessions.length - 1];
 
     hero.innerHTML = `
-      <div class="row gy-3 align-items-center">
-        <div class="col-md-7">
+      <div class="row gy-4 align-items-center">
+        <div class="col-lg-7">
           <div class="next-event-label"><i class="bi bi-flag-fill me-1"></i>Next Event</div>
           <div class="next-event-name">${event.name}</div>
           <div class="next-event-detail">
@@ -418,7 +418,7 @@ function buildNewsFilters() {
             <span class="event-series-badge badge-${event.series.toLowerCase()}">${event.series}</span>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-lg-5">
           <div class="section-label">Countdown to ${nextSession.type}</div>
           <div class="countdown-wrap mt-1" id="countdown-wrap"></div>
         </div>
