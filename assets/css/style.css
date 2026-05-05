@@ -869,6 +869,12 @@
       transform: rotate(180deg);
     }
 
+    .session-time {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
     .past-count {
       color: var(--text-muted);
       margin-left: 0.25rem;
@@ -1039,7 +1045,8 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow: hidden;
     }
 
     .session-type {
@@ -1049,7 +1056,11 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-primary);
-      min-width: 120px;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .session-time {
@@ -1057,6 +1068,7 @@
       font-size: 0.75rem;
       color: var(--text-secondary);
       white-space: nowrap;
+      margin-left: auto;
     }
 
     .session-location {
@@ -1233,9 +1245,8 @@
       }
 
       .session-block-body {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
       }
 
       .countdown-wrap {

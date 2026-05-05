@@ -818,10 +818,10 @@ function buildNewsFilters() {
             ${s.type}
             ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;" class="session-event-name-wrap"><span class="session-event-name">${s.evName}</span> &middot; ${s.evLocation}</div>` : ''}
           </div>
-          <div class="session-time mono d-flex align-items-center gap-3">
+          <div class="session-time mono d-flex align-items-center gap-3 ms-auto">
             <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
           </div>
-          ${links.length ? `<div class="session-links ms-auto">${links.join('')}</div>` : ''}
+          ${links.length ? `<div class="session-links">${links.join('')}</div>` : ''}
         </div>
       </div>
     `;
