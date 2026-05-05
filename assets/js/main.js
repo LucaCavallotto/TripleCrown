@@ -862,7 +862,7 @@ function buildNewsFilters() {
       <article class="api-news-card fade-up fade-up-${Math.min(idx+1, 5)}" style="cursor:pointer;" onclick="showSection('schedule'); goToScheduleAndScroll('${ev.id}')">
           <div class="api-news-body d-flex flex-column justify-content-center h-100" style="padding: 1.5rem;">
               <div>
-                  <span class="cat-badge badge-${ev.series.toLowerCase()}" style="position:relative; display:inline-block; margin-bottom:1rem; border-radius:3px;">${ev.series}</span>
+                  <span class="event-series-badge ms-0 badge-${ev.series.toLowerCase()} mb-3 d-inline-block">${ev.series}</span>
               </div>
               <h3 class="api-news-title">${ev.name}</h3>
               <div class="api-news-meta mt-auto pt-3">
