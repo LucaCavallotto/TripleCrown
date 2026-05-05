@@ -742,6 +742,18 @@ function buildNewsFilters() {
       const renderEvent = (ev, idx) => {
         const past = isPast(ev.date);
         const isHighlighted = ev.id === activeEventId;
+        
+        // Calculate date range from sessions
+        const sDates = ev.sessions.map(s => s.date).sort();
+        const firstD = sDates[0];
+        const lastD = sDates[sDates.length - 1];
+        
+        const fmtD = (dStr) => {
+          const [y, m, d] = dStr.split('-');
+          return `${d}-${m}-${y}`;
+        };
+        const dateRange = firstD === lastD ? fmtD(firstD) : `${fmtD(firstD)} - ${fmtD(lastD)}`;
+
         return `
           <div class="event-group fade-up fade-up-${Math.min(idx+1,5)} ${isHighlighted ? 'highlighted-event' : ''}"
                id="event-${ev.id}" data-date="${ev.date}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
@@ -750,6 +762,8 @@ function buildNewsFilters() {
                 <div class="event-group-name">${ev.name}</div>
                 <div class="event-group-location">
                   <i class="bi bi-geo-alt me-1"></i>${ev.location}
+                  <span class="ms-2 opacity-75">&middot;</span>
+                  <i class="bi bi-calendar3 me-1 ms-2"></i>${dateRange}
                   ${past ? '<span class="completed-badge ms-2">COMPLETED</span>' : ''}
                 </div>
               </div>
