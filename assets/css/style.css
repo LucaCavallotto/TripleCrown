@@ -370,7 +370,7 @@
     }
 
     .news-card-image .cat-badge.wrc,
-    .news-card-image .cat-badge.gtwc,
+    .news-card-image .cat-badge.gtwceu,
     .news-card-image .cat-badge.motogp,
     .news-card-image .cat-badge.nls {
       background: var(--brg-green);
@@ -983,7 +983,7 @@
     }
 
     .badge-wrc,
-    .badge-gtwc,
+    .badge-gtwceu,
     .badge-motogp,
     .badge-nls {
       background: var(--brg-green);

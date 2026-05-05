@@ -1,12 +1,12 @@
 {
-  "series": "GTWC",
-  "series_slug": "gtwc",
-  "series_website": "https://www.gt-world-challenge.com/",
+  "series": "GTWCEU",
+  "series_slug": "gtwceu",
+  "series_website": "https://www.gt-world-challenge-europe.com/",
   "season": 2026,
   "calendar": [
     {
       "round_number": 0,
-      "id": "gtwc-2026-test1",
+      "id": "gtwceu-2026-test1",
       "event_name": "Official Test Days - Prologue",
       "location": "Circuit Paul Ricard",
       "country_code": "FR",
@@ -27,7 +27,7 @@
     },
     {
       "round_number": 1,
-      "id": "gtwc-2026-rd1",
+      "id": "gtwceu-2026-rd1",
       "event_name": "Circuit Paul Ricard",
       "location": "Circuit Paul Ricard",
       "country_code": "FR",
@@ -48,7 +48,7 @@
     },
     {
       "round_number": 2,
-      "id": "gtwc-2026-rd2",
+      "id": "gtwceu-2026-rd2",
       "event_name": "Brands Hatch",
       "location": "Brands Hatch",
       "country_code": "GB",
@@ -69,7 +69,7 @@
     },
     {
       "round_number": 0,
-      "id": "gtwc-2026-test2",
+      "id": "gtwceu-2026-test2",
       "event_name": "CrowdStrike 24 Hours of Spa - Prologue",
       "location": "Spa-Francorchamps",
       "country_code": "BE",
@@ -90,7 +90,7 @@
     },
     {
       "round_number": 3,
-      "id": "gtwc-2026-rd3",
+      "id": "gtwceu-2026-rd3",
       "event_name": "Monza",
       "location": "Monza",
       "country_code": "IT",
@@ -111,7 +111,7 @@
     },
     {
       "round_number": 4,
-      "id": "gtwc-2026-rd4",
+      "id": "gtwceu-2026-rd4",
       "event_name": "CrowdStrike 24 Hours of Spa",
       "location": "Spa-Francorchamps",
       "country_code": "BE",
@@ -132,7 +132,7 @@
     },
     {
       "round_number": 5,
-      "id": "gtwc-2026-rd5",
+      "id": "gtwceu-2026-rd5",
       "event_name": "Misano",
       "location": "Misano",
       "country_code": "IT",
@@ -153,7 +153,7 @@
     },
     {
       "round_number": 6,
-      "id": "gtwc-2026-rd6",
+      "id": "gtwceu-2026-rd6",
       "event_name": "Magny-Cours",
       "location": "Magny-Cours",
       "country_code": "FR",
@@ -174,7 +174,7 @@
     },
     {
       "round_number": 7,
-      "id": "gtwc-2026-rd7",
+      "id": "gtwceu-2026-rd7",
       "event_name": "Nürburgring",
       "location": "Nürburgring",
       "country_code": "DE",
@@ -195,7 +195,7 @@
     },
     {
       "round_number": 8,
-      "id": "gtwc-2026-rd8",
+      "id": "gtwceu-2026-rd8",
       "event_name": "Zandvoort",
       "location": "Zandvoort",
       "country_code": "NL",
@@ -216,7 +216,7 @@
     },
     {
       "round_number": 9,
-      "id": "gtwc-2026-rd9",
+      "id": "gtwceu-2026-rd9",
       "event_name": "Barcelona",
       "location": "Barcelona",
       "country_code": "ES",
@@ -237,7 +237,7 @@
     },
     {
       "round_number": 10,
-      "id": "gtwc-2026-rd10",
+      "id": "gtwceu-2026-rd10",
       "event_name": "Portimao",
       "location": "Portimao",
       "country_code": "PT",

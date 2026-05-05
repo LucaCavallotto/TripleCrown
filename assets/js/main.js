@@ -6,7 +6,7 @@ async function loadData() {
   try {
     // Load schedule
     SCHEDULE_DATA[activeYear] = [];
-    const seriesList = ['f1', 'f2', 'f3', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp', 'imsa'];
+    const seriesList = ['f1', 'f2', 'f3', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwceu', 'motogp', 'imsa'];
     for (const s of seriesList) {
       try {
         const res = await fetch(`data/schedule/${activeYear}/${s}_${activeYear}.json`);
@@ -193,7 +193,7 @@ let isChronologicalView = false;
 let isProgrammaticScroll = false;
 let programmaticScrollTimeout = null;
 
-const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NASCAR", "IGTC", "NLS", "GTWC", "MotoGP"];
+const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NASCAR", "IGTC", "NLS", "GTWCEU", "MotoGP"];
 const YEARS = [2025, 2026];
 
 // ============================================================
