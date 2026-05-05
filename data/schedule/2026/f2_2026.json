@@ -1,0 +1,475 @@
+{
+  "series": "Formula 2",
+  "series_slug": "f2",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "f2-2026-rd1",
+      "event_name": "Canada",
+      "location": "Montreal",
+      "country_code": "CA",
+      "event_start_date": "2026-05-22T00:00:00Z",
+      "event_end_date": "2026-05-24T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-05-22T15:05:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-05-22T19:00:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-05-23T19:10:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-05-24T17:05:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "f2-2026-rd2",
+      "event_name": "Monaco",
+      "location": "Monte Carlo",
+      "country_code": "MC",
+      "event_start_date": "2026-06-04T00:00:00Z",
+      "event_end_date": "2026-06-07T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-06-04T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-05T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-06-06T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-06-07T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "f2-2026-rd3",
+      "event_name": "Spanish",
+      "location": "Barcelona",
+      "country_code": "ES",
+      "event_start_date": "2026-06-12T00:00:00Z",
+      "event_end_date": "2026-06-14T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-06-12T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-12T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-06-13T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-06-14T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "f2-2026-rd4",
+      "event_name": "Austrian",
+      "location": "Spielberg",
+      "country_code": "AT",
+      "event_start_date": "2026-06-26T00:00:00Z",
+      "event_end_date": "2026-06-28T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-06-26T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-26T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-06-27T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-06-28T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "f2-2026-rd5",
+      "event_name": "British",
+      "location": "Silverstone",
+      "country_code": "GB",
+      "event_start_date": "2026-07-03T00:00:00Z",
+      "event_end_date": "2026-07-05T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-07-03T12:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-03T16:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-07-04T11:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-07-05T11:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "f2-2026-rd6",
+      "event_name": "Belgian",
+      "location": "Spa-Francorchamps",
+      "country_code": "BE",
+      "event_start_date": "2026-07-17T00:00:00Z",
+      "event_end_date": "2026-07-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-07-17T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-17T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-07-18T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-07-19T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "f2-2026-rd7",
+      "event_name": "Hungarian",
+      "location": "Budapest",
+      "country_code": "HU",
+      "event_start_date": "2026-07-24T00:00:00Z",
+      "event_end_date": "2026-07-26T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-07-24T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-24T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-07-25T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-07-26T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "f2-2026-rd8",
+      "event_name": "Italian",
+      "location": "Monza",
+      "country_code": "IT",
+      "event_start_date": "2026-09-04T00:00:00Z",
+      "event_end_date": "2026-09-06T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-09-04T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-04T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-09-05T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-09-06T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "f2-2026-rd9",
+      "event_name": "Spanish Grand Prix",
+      "location": "Madrid",
+      "country_code": "ES",
+      "event_start_date": "2026-09-11T00:00:00Z",
+      "event_end_date": "2026-09-13T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-09-11T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-11T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-09-12T10:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-09-13T10:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 10,
+      "id": "f2-2026-rd10",
+      "event_name": "Azerbaijan",
+      "location": "Baku",
+      "country_code": "AZ",
+      "event_start_date": "2026-09-24T00:00:00Z",
+      "event_end_date": "2026-09-26T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-09-24T09:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-24T13:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-09-25T08:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-09-26T08:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 11,
+      "id": "f2-2026-rd11",
+      "event_name": "Qatar",
+      "location": "Lusail",
+      "country_code": "QA",
+      "event_start_date": "2026-11-27T00:00:00Z",
+      "event_end_date": "2026-11-29T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-11-27T09:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-11-27T13:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-11-28T08:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-11-29T08:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 12,
+      "id": "f2-2026-rd12",
+      "event_name": "Abu Dhabi",
+      "location": "Yas Marina",
+      "country_code": "AE",
+      "event_start_date": "2026-12-04T00:00:00Z",
+      "event_end_date": "2026-12-06T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-12-04T08:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-12-04T12:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-12-05T07:35:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-12-06T07:40:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula2.com" }
+        }
+      ]
+    }
+  ]
+}

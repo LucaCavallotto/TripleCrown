@@ -6,7 +6,7 @@ async function loadData() {
   try {
     // Load schedule
     SCHEDULE_DATA[activeYear] = [];
-    const seriesList = ['f1', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp'];
+    const seriesList = ['f1', 'f2', 'wec', 'wrc', 'fe', 'indycar', 'nascar', 'igtc', 'nls', 'gtwc', 'motogp'];
     for (const s of seriesList) {
       try {
         const res = await fetch(`data/schedule/${activeYear}/${s}_${activeYear}.json`);
