@@ -1,0 +1,235 @@
+{
+  "series": "IMSA SportsCar",
+  "series_slug": "imsa",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 0,
+      "id": "imsa-2026-roar",
+      "event_name": "Roar Before The Rolex 24",
+      "location": "Daytona International Speedway",
+      "country_code": "US",
+      "event_start_date": "2026-01-16T00:00:00Z",
+      "event_end_date": "2026-01-18T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice/Test",
+          "code": "FP",
+          "start_time": "TBC",
+          "date_tbc": "2026-01-18T00:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 1,
+      "id": "imsa-2026-rd1",
+      "event_name": "Rolex 24 At DAYTONA",
+      "location": "Daytona International Speedway",
+      "country_code": "US",
+      "event_start_date": "2026-01-21T00:00:00Z",
+      "event_end_date": "2026-01-25T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-01-24T13:40:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "imsa-2026-rd2",
+      "event_name": "Mobil 1 Twelve Hours of Sebring",
+      "location": "Sebring International Raceway",
+      "country_code": "US",
+      "event_start_date": "2026-03-18T00:00:00Z",
+      "event_end_date": "2026-03-21T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-03-21T10:10:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "imsa-2026-rd3",
+      "event_name": "Acura Grand Prix of Long Beach",
+      "location": "Long Beach Street Circuit",
+      "country_code": "US",
+      "event_start_date": "2026-04-17T00:00:00Z",
+      "event_end_date": "2026-04-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-04-18T16:30:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "imsa-2026-rd4",
+      "event_name": "WeatherTech Raceway Laguna Seca",
+      "location": "WeatherTech Raceway Laguna Seca",
+      "country_code": "US",
+      "event_start_date": "2026-05-01T00:00:00Z",
+      "event_end_date": "2026-05-03T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-03T15:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "imsa-2026-rd5",
+      "event_name": "Chevrolet Detroit Grand Prix",
+      "location": "Detroit Street Circuit",
+      "country_code": "US",
+      "event_start_date": "2026-05-29T00:00:00Z",
+      "event_end_date": "2026-05-30T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-05-30T15:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "imsa-2026-rd6",
+      "event_name": "Sahlen's Six Hours of The Glen",
+      "location": "Watkins Glen International",
+      "country_code": "US",
+      "event_start_date": "2026-06-25T00:00:00Z",
+      "event_end_date": "2026-06-28T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-06-28T10:40:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "imsa-2026-rd7",
+      "event_name": "Chevrolet Grand Prix",
+      "location": "Canadian Tire Motorsport Park",
+      "country_code": "CA",
+      "event_start_date": "2026-07-10T00:00:00Z",
+      "event_end_date": "2026-07-12T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-07-12T11:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "imsa-2026-rd8",
+      "event_name": "Motul SportsCar Endurance Grand Prix",
+      "location": "Road America",
+      "country_code": "US",
+      "event_start_date": "2026-07-30T00:00:00Z",
+      "event_end_date": "2026-08-02T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-02T15:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 9,
+      "id": "imsa-2026-rd9",
+      "event_name": "Michelin GT Challenge at VIR",
+      "location": "VIRginia International Raceway",
+      "country_code": "US",
+      "event_start_date": "2026-08-21T00:00:00Z",
+      "event_end_date": "2026-08-23T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-08-23T14:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 10,
+      "id": "imsa-2026-rd10",
+      "event_name": "TireRack.com Battle On The Bricks",
+      "location": "Indianapolis Motor Speedway",
+      "country_code": "US",
+      "event_start_date": "2026-09-18T00:00:00Z",
+      "event_end_date": "2026-09-20T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-09-20T15:00:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    },
+    {
+      "round_number": 11,
+      "id": "imsa-2026-rd11",
+      "event_name": "Motul Petit Le Mans",
+      "location": "Michelin Raceway Road Atlanta",
+      "country_code": "US",
+      "event_start_date": "2026-09-30T00:00:00Z",
+      "event_end_date": "2026-10-03T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Race",
+          "code": "R",
+          "start_time": "TBC",
+          "date_tbc": "2026-10-03T11:40:00Z",
+          "is_confirmed": false,
+          "links": { "official": "https://www.imsa.com/weathertech/weathertech-2026-schedule/" }
+        }
+      ]
+    }
+  ]
+}
