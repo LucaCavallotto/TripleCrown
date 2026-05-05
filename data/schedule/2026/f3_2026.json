@@ -1,0 +1,320 @@
+{
+  "series": "Formula 3",
+  "series_slug": "f3",
+  "series_website": "https://www.fiaformula3.com/",
+  "season": 2026,
+  "calendar": [
+    {
+      "round_number": 1,
+      "id": "f3-2026-rd1",
+      "event_name": "Monaco",
+      "location": "Monte Carlo",
+      "country_code": "MC",
+      "event_start_date": "2026-06-04T00:00:00Z",
+      "event_end_date": "2026-06-07T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-06-04T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-05T15:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-06-06T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-06-07T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 2,
+      "id": "f3-2026-rd2",
+      "event_name": "Spanish",
+      "location": "Barcelona",
+      "country_code": "ES",
+      "event_start_date": "2026-06-12T00:00:00Z",
+      "event_end_date": "2026-06-14T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-06-12T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-12T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-06-13T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-06-14T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 3,
+      "id": "f3-2026-rd3",
+      "event_name": "Austrian",
+      "location": "Spielberg",
+      "country_code": "AT",
+      "event_start_date": "2026-06-26T00:00:00Z",
+      "event_end_date": "2026-06-28T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-06-26T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-06-26T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-06-27T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-06-28T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 4,
+      "id": "f3-2026-rd4",
+      "event_name": "British",
+      "location": "Silverstone",
+      "country_code": "GB",
+      "event_start_date": "2026-07-03T00:00:00Z",
+      "event_end_date": "2026-07-05T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-07-03T09:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-03T12:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-07-04T17:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-07-05T10:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 5,
+      "id": "f3-2026-rd5",
+      "event_name": "Belgian",
+      "location": "Spa-Francorchamps",
+      "country_code": "BE",
+      "event_start_date": "2026-07-17T00:00:00Z",
+      "event_end_date": "2026-07-19T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-07-17T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-17T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-07-18T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-07-19T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 6,
+      "id": "f3-2026-rd6",
+      "event_name": "Hungarian",
+      "location": "Budapest",
+      "country_code": "HU",
+      "event_start_date": "2026-07-24T00:00:00Z",
+      "event_end_date": "2026-07-26T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-07-24T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-07-24T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-07-25T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-07-26T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 7,
+      "id": "f3-2026-rd7",
+      "event_name": "Italian",
+      "location": "Monza",
+      "country_code": "IT",
+      "event_start_date": "2026-09-04T00:00:00Z",
+      "event_end_date": "2026-09-06T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-09-04T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-04T15:00:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-09-05T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-09-06T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    },
+    {
+      "round_number": 8,
+      "id": "f3-2026-rd8",
+      "event_name": "Spanish Grand Prix",
+      "location": "Madrid",
+      "country_code": "ES",
+      "event_start_date": "2026-09-11T00:00:00Z",
+      "event_end_date": "2026-09-13T00:00:00Z",
+      "sessions": [
+        {
+          "type": "Practice",
+          "code": "FP",
+          "start_time": "2026-09-11T08:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Qualifying",
+          "code": "Q",
+          "start_time": "2026-09-11T11:55:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Sprint",
+          "code": "S",
+          "start_time": "2026-09-12T16:45:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        },
+        {
+          "type": "Feature",
+          "code": "R",
+          "start_time": "2026-09-13T09:20:00Z",
+          "is_confirmed": true,
+          "links": { "official": "https://www.fiaformula3.com" }
+        }
+      ]
+    }
+  ]
+}

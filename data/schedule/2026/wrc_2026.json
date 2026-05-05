@@ -1,6 +1,7 @@
 {
   "series": "WRC",
   "series_slug": "wrc",
+  "series_website": "https://www.wrc.com/en",
   "season": 2026,
   "calendar": [
     {

@@ -1,6 +1,7 @@
 {
   "series": "NASCAR",
   "series_slug": "nascar",
+  "series_website": "https://www.nascar.com/",
   "season": 2026,
   "calendar": [
     {

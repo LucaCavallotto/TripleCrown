@@ -1,6 +1,7 @@
 {
   "series": "MotoGP",
   "series_slug": "motogp",
+  "series_website": "https://www.motogp.com/",
   "season": 2026,
   "calendar": [
     {
