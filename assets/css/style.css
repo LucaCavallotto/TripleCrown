@@ -920,7 +920,7 @@
     a.event-series-badge:hover {
       filter: brightness(1.2);
       transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .event-group-name {
