@@ -736,6 +736,27 @@
       opacity: 0.85;
     }
 
+    .rm-btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--accent2);
+      background: var(--accent2);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .rm-btn-primary:hover {
+      opacity: 0.85;
+      color: #fff;
+    }
+
     /* Series filter tabs */
     .series-tabs {
       display: flex;
