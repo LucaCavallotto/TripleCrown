@@ -883,11 +883,38 @@
 
     .event-group-header {
       display: flex;
-      align-items: baseline;
+      justify-content: space-between;
+      align-items: flex-end;
       gap: 1rem;
       margin-bottom: 1rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      .event-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+    }
+
+    .event-series-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 1px;
+      color: #fff !important;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    a.event-series-badge:hover {
+      filter: brightness(1.2);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .event-group-name {

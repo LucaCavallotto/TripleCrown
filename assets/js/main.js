@@ -754,6 +754,9 @@ function buildNewsFilters() {
         };
         const dateRange = firstD === lastD ? fmtD(firstD) : `${fmtD(firstD)} - ${fmtD(lastD)}`;
 
+        // Get series official link
+        const officialLink = ev.sessions.find(s => s.official)?.official;
+
         return `
           <div class="event-group fade-up fade-up-${Math.min(idx+1,5)} ${isHighlighted ? 'highlighted-event' : ''}"
                id="event-${ev.id}" data-date="${ev.date}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
@@ -767,7 +770,10 @@ function buildNewsFilters() {
                   ${past ? '<span class="completed-badge ms-2">COMPLETED</span>' : ''}
                 </div>
               </div>
-              <span class="event-series-badge badge-${ev.series.toLowerCase()}">${ev.series}</span>
+              ${officialLink 
+                ? `<a href="${officialLink}" target="_blank" class="event-series-badge badge-${ev.series.toLowerCase()} text-decoration-none" title="View official ${ev.series} website">${ev.series} <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.5rem"></i></a>`
+                : `<span class="event-series-badge badge-${ev.series.toLowerCase()}">${ev.series}</span>`
+              }
             </div>
             ${ev.sessions.map(s => sessionBlock(s, false)).join('')}
           </div>
@@ -796,7 +802,7 @@ function buildNewsFilters() {
 
   function sessionBlock(s, isChronological = false) {
     const links = [];
-    if (s.official) links.push(`<a href="${s.official}" target="_blank" class="session-link"><i class="bi bi-globe2 me-1"></i>Official</a>`);
+    // if (s.official) links.push(`<a href="${s.official}" target="_blank" class="session-link"><i class="bi bi-globe2 me-1"></i>Official</a>`);
     if (s.broadcaster) links.push(`<a href="#" class="session-link"><i class="bi bi-tv me-1"></i>${s.broadcaster}</a>`);
     
     // Format YYYY-MM-DD to DD-MM-YYYY
