@@ -348,7 +348,8 @@ function getUniqueEventDates(events) {
 }
 
 function getSeries(events) {
-  return ['All', ...new Set(events.map(e => e.series))];
+  const uniqueSeries = [...new Set(events.map(e => e.series))].sort((a, b) => a.localeCompare(b));
+  return ['All', ...uniqueSeries];
 }
 
 // ============================================================
