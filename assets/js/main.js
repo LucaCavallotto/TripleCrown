@@ -772,13 +772,17 @@ function buildEventsList(events) {
       // Get series official link
       const officialLink = ev.seriesWebsite || ev.sessions.find(s => s.official)?.official;
 
+      const isTripleCrown = (ev.series === 'F1' && ev.name === 'Monaco Grand Prix') ||
+                            (ev.series === 'IndyCar' && ev.name.includes('Indianapolis 500')) ||
+                            (ev.series === 'WEC' && ev.name === '24 Hours of Le Mans');
+
       return `
           <div class="event-group fade-up fade-up-${Math.min(idx + 1, 5)} ${isHighlighted ? 'highlighted-event' : ''}"
                id="event-${ev.id}" data-date="${ev.date}">
             ${isHighlighted ? '<div class="upcoming-label">UPCOMING EVENT</div>' : ''}
             <div class="event-group-header">
               <div>
-                <div class="event-group-name">${ev.name}</div>
+                <div class="event-group-name">${isTripleCrown ? '👑 ' : ''}${ev.name}</div>
                 <div class="event-group-location">
                   <i class="bi bi-geo-alt me-1"></i>${ev.location}
                   <span class="ms-2 opacity-75">&middot;</span>
