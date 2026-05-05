@@ -146,7 +146,7 @@ async function loadExternalNews() {
 
     const homeGrid = document.getElementById('home-news-grid');
     if (homeGrid) {
-      homeGrid.innerHTML = renderCards(allNews.slice(0, 3));
+      homeGrid.innerHTML = renderCards(allNews.slice(0, 6));
     }
   } catch (e) {
     console.error("Failed to fetch or parse data.json:", e);
