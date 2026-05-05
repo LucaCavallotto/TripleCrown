@@ -741,7 +741,20 @@ function buildEventsList(events) {
 
     const renderEvent = (ev, idx) => {
       const past = isPast(ev.date);
-      const isHighlighted = ev.id === activeEventId;
+      
+      // Calculate week boundaries
+      const now = new Date();
+      const day = now.getDay();
+      const diff = now.getDate() - day + (day === 0 ? -6 : 1); 
+      const startOfWeek = new Date(now.setDate(diff));
+      startOfWeek.setHours(0, 0, 0, 0);
+      const endOfWeek = new Date(startOfWeek);
+      endOfWeek.setDate(endOfWeek.getDate() + 6);
+      endOfWeek.setHours(23, 59, 59, 999);
+
+      const evDate = new Date(ev.date + 'T00:00:00');
+      const isThisWeek = evDate >= startOfWeek && evDate <= endOfWeek;
+      const isHighlighted = isThisWeek || ev.id === activeEventId;
 
       // Calculate date range from sessions
       const sDates = ev.sessions.map(s => s.date).sort();
@@ -759,7 +772,8 @@ function buildEventsList(events) {
 
       return `
           <div class="event-group fade-up fade-up-${Math.min(idx + 1, 5)} ${isHighlighted ? 'highlighted-event' : ''}"
-               id="event-${ev.id}" data-date="${ev.date}" style="${isHighlighted ? 'outline:2px solid var(--gulf-orange);outline-offset:4px;border-radius:3px;' : ''}">
+               id="event-${ev.id}" data-date="${ev.date}">
+            ${isHighlighted ? '<div class="upcoming-label">UPCOMING EVENT</div>' : ''}
             <div class="event-group-header">
               <div>
                 <div class="event-group-name">${ev.name}</div>

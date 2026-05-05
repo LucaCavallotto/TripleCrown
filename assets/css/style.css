@@ -869,6 +869,31 @@
       transform: rotate(180deg);
     }
 
+    /* Schedule Section */
+    .highlighted-event {
+      outline: 2px solid var(--gulf-orange);
+      outline-offset: 8px;
+      border-radius: 4px;
+      position: relative;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .upcoming-label {
+      position: absolute;
+      top: -18px;
+      left: 16px;
+      background-color: var(--bg-primary);
+      padding: 0 8px;
+      color: var(--gulf-orange);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
     .session-time {
       color: var(--text-muted);
       font-size: 0.85rem;
