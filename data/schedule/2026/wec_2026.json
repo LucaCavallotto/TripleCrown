@@ -1,6 +1,7 @@
 {
   "series": "WEC",
   "series_slug": "wec",
+  "series_website": "https://www.fiawec.com/",
   "season": 2026,
   "calendar": [
     {

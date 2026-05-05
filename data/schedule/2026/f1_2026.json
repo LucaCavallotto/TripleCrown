@@ -1,6 +1,7 @@
 {
   "series": "Formula 1",
   "series_slug": "f1",
+  "series_website": "https://www.formula1.com/",
   "season": 2026,
   "calendar": [
     {

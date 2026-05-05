@@ -1,6 +1,7 @@
 {
   "series": "IMSA SportsCar",
   "series_slug": "imsa",
+  "series_website": "https://www.imsa.com/",
   "season": 2026,
   "calendar": [
     {

@@ -1,6 +1,7 @@
 {
   "series": "Formula E",
   "series_slug": "fe",
+  "series_website": "https://www.fiaformulae.com/",
   "season": 2026,
   "calendar": []
 }

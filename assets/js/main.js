@@ -30,6 +30,7 @@ async function loadData() {
                 id: calItem.id,
                 date: eDateStr,
                 series: seriesName,
+                seriesWebsite: rawData.series_website || null,
                 name: calItem.event_name,
                 location: calItem.location,
                 sessions: calItem.sessions.map(sesh => {
@@ -768,7 +769,7 @@ function buildEventsList(events) {
       const dateRange = firstD === lastD ? fmtD(firstD) : `${fmtD(firstD)} - ${fmtD(lastD)}`;
 
       // Get series official link
-      const officialLink = ev.sessions.find(s => s.official)?.official;
+      const officialLink = ev.seriesWebsite || ev.sessions.find(s => s.official)?.official;
 
       return `
           <div class="event-group fade-up fade-up-${Math.min(idx + 1, 5)} ${isHighlighted ? 'highlighted-event' : ''}"
