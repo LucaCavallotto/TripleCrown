@@ -6,6 +6,32 @@
         "id": null,
         "name": "Motorsport.com"
       },
+      "author": "Lydia Mee",
+      "title": "Martin Brundle speaks out on viral Jimmy Fallon Miami GP moment",
+      "description": "Martin Brundle has responded after Jimmy Fallon grabbed and bit his microphone cover during a bizarre Miami GP grid walk exchange",
+      "url": "https://www.motorsport.com/f1/news/martin-brundle-speaks-out-on-viral-jimmy-fallon-miami-gp-moment/10818220/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/c94f638db064a32fe1980ac3c4cb3ebc",
+      "publishedAt": "2026-05-04T18:35:02Z",
+      "content": "Sky Sports Formula 1 veteran Martin Brundle has addressed his bizarre interaction with American television host Jimmy Fallon during the pre-race grid walk ahead of the Miami Grand Prix.\r\nThe Miami In… [+1768 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Motorsport.com"
+      },
+      "author": "Fabien Gaillard",
+      "title": "Why the FIA stewards weren't lenient with Charles Leclerc in Miami GP",
+      "description": "Charles Leclerc received a heavy penalty following the Miami Grand Prix for a series of incidents resulting from his spin on the final lap",
+      "url": "https://www.motorsport.com/f1/news/why-the-stewards-werent-lenient-with-leclerc/10818234/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/8f89b5d00aa17b7797b5b3e306e5575e",
+      "publishedAt": "2026-05-04T16:17:30Z",
+      "content": "The 20-second penalty imposed on Charles Leclerc following the Miami Grand Prix - which was actually a conversion of an uncompleted drive-through penalty imposed by the FIA stewards - is a particular… [+2847 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Motorsport.com"
+      },
       "author": "Haydn Cobb",
       "title": "Max Verstappen on his first-lap 360 spin: “If F1 doesn’t work out I can always go rally!”",
       "description": "Verstappen poked fun at himself after his first-lap 360-degree spin in the Miami GP",
@@ -234,35 +260,22 @@
       "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/f095915dc5f153dab76f2c83001b0c7d",
       "publishedAt": "2026-05-03T16:55:35Z",
       "content": "To celebrate the Cadillac Formula 1 Team's first home grand prix, Nike has crafted an ultra-limited bespoke pair of Dunk Low trainers, according to Hypebeast.\r\nHowever, fans hoping to secure a piece … [+1664 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "autosport.com"
-      },
-      "author": "Ed Hardy",
-      "title": "FIA president certain V8 engines to return to F1 by 2031",
-      "description": "FIA president Mohammed Ben Sulayem has promised to end the ongoing 13-year hiatus of V8 power units from Formula 1 by 2031 at the latest.The V8 was ditched for a V6 turbo-hybrid in 2014 and F1 has now entered its third regulation cycle since the electrified p…",
-      "url": "https://www.autosport.com/f1/news/mohammed-ben-sulayem-v8-engines-to-return-to-f1-by-2031/10817808/",
-      "urlToImage": "https://cdn-7.motorsport.com/images/amp/YE9wG8KY/s6/fia-president-mohammed-ben-sul-2.jpg",
-      "publishedAt": "2026-05-03T16:40:11Z",
-      "content": "FIA president Mohammed Ben Sulayem has promised to end the ongoing 13-year hiatus of V8 power units from Formula 1 by 2031 at the latest.\r\nThe V8 was ditched for a V6 turbo-hybrid in 2014 and F1 has … [+2807 chars]"
-    },
+    }
+  ],
+  "wec_news": [
     {
       "source": {
         "id": null,
         "name": "Motorsport.com"
       },
-      "author": "Ed Hardy",
-      "title": "Mohammed Ben Sulayem: V8 engines to return to F1 by 2031",
-      "description": "The FIA president has promised the return of V8 engines to F1 for its next regulation change in 2031",
-      "url": "https://www.motorsport.com/f1/news/mohammed-ben-sulayem-v8s-to-return-to-f1-by-2031/10817797/",
-      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/f9ec7b91bb1e559121e39797ade399fa",
-      "publishedAt": "2026-05-03T16:31:25Z",
-      "content": "FIA president Mohammed Ben Sulayem has promised to end the ongoing 13-year hiatus of V8 power units from Formula 1 by 2031 at the latest.\r\nThe V8 was ditched for a V6 turbohybrid in 2014 and F1 has n… [+2813 chars]"
-    }
-  ],
-  "wec_news": [
+      "author": "Joey Barnes",
+      "title": "HRC US boss Salters points to cost, supports \"elimination of Evo changes\" in Acura's exit",
+      "description": "HRC US boss Salters opens up on the factors in Acura's IMSA exit",
+      "url": "https://www.motorsport.com/imsa/news/hrc-us-boss-salters-points-to-cost-supports-elimination-of-evo-changes-in-acuras-exit/10818228/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/fa37175edb20276eaff3e15344e61fe5",
+      "publishedAt": "2026-05-04T16:18:26Z",
+      "content": "Honda Racing Corporation USA (HRS US) President David Salters provided slightly more insight on Acuras decision to exit the IMSA WeatherTech SportsCar Championship at the end of the 2026 season.\r\nThe… [+4455 chars]"
+    },
     {
       "source": {
         "id": null,
@@ -509,22 +522,74 @@
       "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/c0239c87d0a59d91c9b16ad64291ea44",
       "publishedAt": "2026-04-23T09:45:02Z",
       "content": "Oscar Piastri says Max Verstappen leaving Formula 1 wouldnt be a great look for the world championship, as the Red Bull driver reconsiders his future.\r\nVerstappen has been among the most vocal critic… [+3755 chars]"
+    }
+  ],
+  "us_news": [
+    {
+      "source": {
+        "id": null,
+        "name": "Motorsport.com"
+      },
+      "author": "Matt Weaver",
+      "title": "It's early May and NASCAR's standings have real consequence again",
+      "description": "Simulations indicate needing to finish top-3 in the regular season standings",
+      "url": "https://www.motorsport.com/nascar-cup/news/its-early-may-and-nascars-standings-have-real-consequence-again/10818266/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/e461d0e6a49150251236b32b3e6af33d",
+      "publishedAt": "2026-05-04T20:18:57Z",
+      "content": "Conventional wisdom usually dictates waiting until after the Coca-Cola 600 to make any wide-sweeping declarations about the NASCAR Cup Series season but the sample size is becoming prescient.\r\nAfter … [+6779 chars]"
     },
     {
       "source": {
         "id": null,
         "name": "Motorsport.com"
       },
-      "author": "Motorsport.com staff writers",
-      "title": "2026 F1 Draft: Who would each team take first to start their future?",
-      "description": "A clean-slate reset: 11 teams, 11 picks, and the next decade at stake",
-      "url": "https://www.motorsport.com/f1/news/2026-f1-draft-who-would-each-team-take-first-to-start-their-future/10814607/",
-      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/6ce55be4adb50b9cb78188e54447f41e",
-      "publishedAt": "2026-04-22T20:29:51Z",
-      "content": "We're here to strip Formula 1 back to zero. No contracts, no politics, no legacy seats: just 11 teams and a clean board of drivers aged 22 and under. This is, ultimately, a long-term play. Not who wi… [+6379 chars]"
-    }
-  ],
-  "us_news": [
+      "author": "Nick DeGroot",
+      "title": "FOX unveils plan for 60 hours of Indy 500 coverage",
+      "description": "US viewers can expect a lot 60 hours of IndyCar coverage across FOX Sports channels during the Month of May",
+      "url": "https://www.motorsport.com/indycar/news/fox-unveils-plan-for-60-hours-of-indy-500-coverage/10818264/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/8e4d5b6dfaa37856ea02a2d21bf5d65d",
+      "publishedAt": "2026-05-04T20:10:54Z",
+      "content": "The 110th running of the Indianapolis 500 is just around the corner, and once again, FOX is planning to go all-in for the Month of May.\r\nFOX's plan includes 60 hours of coverage, kicking it all off w… [+1797 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Motorsport.com"
+      },
+      "author": "Joey Barnes",
+      "title": "HRC US boss Salters points to cost, supports \"elimination of Evo changes\" in Acura's exit",
+      "description": "HRC US boss Salters opens up on the factors in Acura's IMSA exit",
+      "url": "https://www.motorsport.com/imsa/news/hrc-us-boss-salters-points-to-cost-supports-elimination-of-evo-changes-in-acuras-exit/10818228/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/fa37175edb20276eaff3e15344e61fe5",
+      "publishedAt": "2026-05-04T16:18:26Z",
+      "content": "Honda Racing Corporation USA (HRS US) President David Salters provided slightly more insight on Acuras decision to exit the IMSA WeatherTech SportsCar Championship at the end of the 2026 season.\r\nThe… [+4455 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Motorsport.com"
+      },
+      "author": "Nick DeGroot",
+      "title": "Katheine Legge to make NASCAR Cup return at Watkins Glen",
+      "description": "Legge will be back behind the wheel of the No. 78 Live Fast Motorsports Chevrolet",
+      "url": "https://www.motorsport.com/nascar-cup/news/katheine-legge-to-make-nascar-cup-return-at-watkins-glen/10818212/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/561ebca81b218144089e922def2c5159",
+      "publishedAt": "2026-05-04T15:06:40Z",
+      "content": "Katherine Legge is one of 17 women who have competed in the top level of NASCAR, and the IndyCar and IMSA veteran is the most recent.\r\nLegge, 45, will pilot the No. 78 Live Fast Motorsports Chevrolet… [+1459 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Motorsport.com"
+      },
+      "author": "Nick DeGroot",
+      "title": "San Diego Street Course to be called Qualcomm Circuit in NASCAR partnership deal",
+      "description": "The all-new NASCAR street course inside an active military base has an official name",
+      "url": "https://www.motorsport.com/nascar-cup/news/san-diego-street-course-to-be-called-qualcomm-circuit-in-nascar-partnership-deal/10818218/",
+      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/81708bdaad4caaa2bef1de98f0ba20a8",
+      "publishedAt": "2026-05-04T15:01:39Z",
+      "content": "The 16-turn, 3.4-mile circuit that is set to be built inside Naval Base Coronado in San Diego will be known as Qualcomm Circuit.\r\nThe San Diego-based technology company will have the naming rights as… [+1869 chars]"
+    },
     {
       "source": {
         "id": null,
@@ -719,71 +784,6 @@
       "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/053ef6fcbe9b1eee44985cd9507c189c",
       "publishedAt": "2026-05-02T15:09:54Z",
       "content": "Oscar Piastri has quickly established himself as a top driver in Formula 1, but the McLaren driver has admitted that reaching the championship was never his primary objective.\r\nInstead, the Australia… [+2164 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "autosport.com"
-      },
-      "author": "Giacomo Rauli",
-      "title": "Alex Zanardi dies at the age of 59",
-      "description": "A wide smile, dimples on his cheeks, and those slightly squinting eyes. If we close our eyes, that’s how Alex Zanardi comes to mind. And of course, wearing a racing suit – whether it was a Formula 1 suit, a Ganassi one, or the Italian handbike suit didn’t rea…",
-      "url": "https://www.autosport.com/f1/news/alex-zanardi-dies-at-the-age-of-59/10817217/",
-      "urlToImage": "https://cdn-7.motorsport.com/images/amp/6b7Aapv0/s6/alex-zanardi-bmw-team-rll.jpg",
-      "publishedAt": "2026-05-02T08:30:02Z",
-      "content": "A wide smile, dimples on his cheeks, and those slightly squinting eyes. If we close our eyes, thats how Alex Zanardi comes to mind. And of course, wearing a racing suit whether it was a Formula 1 sui… [+5455 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "Motorsport.com"
-      },
-      "author": "Nick DeGroot",
-      "title": "What exactly caused that shocking crash near the end of NASCAR's Texas Truck race?",
-      "description": "The drivers involved explain what led to the violent crash, which resulted in a brief red flag and pushed the race into overtime",
-      "url": "https://www.motorsport.com/nascar-truck/news/what-exactly-caused-the-violent-crash-near-the-end-of-the-texas-truck-race-/10817188/",
-      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/a1e62696bf15d055e26bc298e39839ae",
-      "publishedAt": "2026-05-02T05:19:32Z",
-      "content": "While the battle for the lead captivated viewers, few eyeballs (and almost no cameras) were fixated on the very back of the field near the end of Friday's NASCAR Craftsman Truck Series race.\r\nBut sud… [+3558 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "Motorsport.com"
-      },
-      "author": "Nick DeGroot",
-      "title": "Carson Hocevar wins again in Texas overtime after chaotic Truck race",
-      "description": "It was a 1-2 finish for Spire as Hocevar continues his winning ways at Texas Motor Speedway",
-      "url": "https://www.motorsport.com/nascar-truck/news/carson-hocevar-wins-nascar-truck-texas-spire/10817181/",
-      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/73e44d2678de671078fd593a97ddb4e5",
-      "publishedAt": "2026-05-02T03:14:56Z",
-      "content": "After two red flags and an overtime restart, Carson Hocevar captured the checkered flag in Friday's NASCAR Craftsman Truck Series race at Texas Motor Speedway.\r\nHe passed Gio Ruggiero on the final re… [+5572 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "Motorsport.com"
-      },
-      "author": "Nick DeGroot",
-      "title": "AJ Allmendinger joins impressive NASCAR Truck field for Watkins Glen",
-      "description": "Allmendinger will face fellow road course aces Zilisch and SVG at The Glen",
-      "url": "https://www.motorsport.com/nascar-truck/news/aj-allmendinger-joins-impressive-nascar-truck-field-for-watkins-glen/10817163/",
-      "urlToImage": "https://s.yimg.com/os/en/motorsport_articles_445/8608068005a5307c5ed55bfb740d1eb4",
-      "publishedAt": "2026-05-01T23:36:44Z",
-      "content": "AJ Allmendinger will be the next driver in Kaulig Racing's 'free agent' No. 25 Ram 1500, driving the truck at Watkins Glen International next weekend. That race will feature several other notable nam… [+1233 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "autosport.com"
-      },
-      "author": "Lydia Mee",
-      "title": "Brown admits Alonso Indy 500 miss was his \"worst experience\"",
-      "description": "McLaren CEO Zak Brown has revealed that failing to qualify for the Indianapolis 500 with two-time Formula 1 champion Fernando Alonso was one of the lowest moments of his professional career. The Woking outfit's high-profile attempt to conquer the Brickyard wi…",
-      "url": "https://www.autosport.com/f1/news/brown-admits-alonso-indy-500-miss-was-his-worst-experience/10817046/",
-      "urlToImage": "https://cdn-8.motorsport.com/images/amp/0R7wWVg2/s6/img-2506-jpg-2.jpg",
-      "publishedAt": "2026-05-01T19:49:59Z",
-      "content": "McLaren CEO Zak Brown has revealed that failing to qualify for the Indianapolis 500 with two-time Formula 1 champion Fernando Alonso was one of the lowest moments of his professional career. \r\nThe Wo… [+2120 chars]"
     }
   ],
   "wrc_news": [
