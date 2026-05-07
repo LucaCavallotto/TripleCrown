@@ -1459,16 +1459,43 @@
       background: var(--ferrari-red, #C8102E);
     }
 
-    .api-news-image .cat-badge.motogp {
+    .api-news-image .cat-badge.wec {
       background: var(--gulf-blue, #0067A5);
     }
 
-    .api-news-image .cat-badge.wec {
-      background: var(--gulf-orange, #F4621F);
+    .api-news-image .cat-badge.wrc,
+    .api-news-image .cat-badge.gtwceu,
+    .api-news-image .cat-badge.motogp,
+    .api-news-image .cat-badge.nls {
+      background: var(--brg-green, #1B4332);
     }
 
-    .api-news-image .cat-badge.wrc {
-      background: var(--brg-green, #1B4332);
+    .api-news-image .cat-badge.f2 {
+      background: #6B21A8;
+    }
+
+    .api-news-image .cat-badge.f3 {
+      background: #9333EA;
+    }
+
+    .api-news-image .cat-badge.fe {
+      background: #0891B2;
+    }
+
+    .api-news-image .cat-badge.indycar {
+      background: #B45309;
+    }
+
+    .api-news-image .cat-badge.nascar {
+      background: #002855;
+    }
+
+    .api-news-image .cat-badge.igtc {
+      background: #FF4500;
+    }
+
+    .api-news-image .cat-badge.imsa {
+      background: var(--gulf-orange, #F4621F);
     }
 
     .api-news-image .cat-badge.us-racing {

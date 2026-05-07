@@ -112,12 +112,18 @@ async function loadExternalNews() {
     const getBestCategory = (article, currentCat) => {
       const url = (article.url || '').toLowerCase();
       
-      // 1. Explicit URL path is the absolute strongest signal
-      if (url.includes('/f1/')) return 'F1';
-      if (url.includes('/motogp/')) return 'MotoGP';
-      if (url.includes('/wec/') || url.includes('/lemans/')) return 'WEC';
-      if (url.includes('/wrc/')) return 'WRC';
-      if (url.includes('/indycar/') || url.includes('/nascar/') || url.includes('/imsa/')) return 'US Racing';
+      // 1. Explicit URL parsing (more flexible to catch paths like /nascar-os/ or slugs like formula-e-berlino)
+      if (url.match(/[\/-]f1[\/-]/)) return 'F1';
+      if (url.includes('motogp')) return 'MotoGP';
+      if (url.match(/[\/-]wec[\/-]/) || url.includes('lemans') || url.includes('24-heures-du-mans')) return 'WEC';
+      if (url.match(/[\/-]wrc[\/-]/)) return 'WRC';
+      if (url.includes('formula-e')) return 'FE';
+      if (url.includes('indycar')) return 'IndyCar';
+      if (url.includes('nascar')) return 'NASCAR';
+      if (url.match(/[\/-]imsa[\/-]/) || url.includes('weathertech-sportscar')) return 'IMSA';
+      if (url.match(/[\/-]f2[\/-]/)) return 'F2';
+      if (url.match(/[\/-]f3[\/-]/)) return 'F3';
+      if (url.includes('gt-world-challenge')) return 'GTWCEU';
 
       // 2. Keyword fallback (checking title and description)
       const texts = [
@@ -127,14 +133,19 @@ async function loadExternalNews() {
 
       const check = (keywords) => keywords.some(k => texts.includes(k));
 
-      // Overcome false-positive 'F1' categorizations if strong alternative keywords exist
-      if (currentCat === 'F1') {
-         if (check(['motogp', 'moto2', 'moto3']) && !check(['f1', 'formula 1'])) return 'MotoGP';
-         if (check(['wec', 'le mans', 'hypercar', 'endurance championship', 'lmdh']) && !check(['f1'])) return 'WEC';
-         if (check(['indycar', 'nascar', 'imsa', 'laguna seca']) && !check(['f1'])) return 'US Racing';
-         if (check(['wrc', 'rally']) && !check(['f1'])) return 'WRC';
-      }
+      // We check in order of specificity to avoid F1 crossover false positives.
+      if (check(['motogp', 'moto2', 'moto3'])) return 'MotoGP';
+      if (check(['wec', 'le mans', 'hypercar', 'endurance championship', 'lmdh'])) return 'WEC';
+      if (check(['indycar', 'indy 500'])) return 'IndyCar';
+      if (check(['nascar'])) return 'NASCAR';
+      if (check(['imsa', 'laguna seca', 'daytona'])) return 'IMSA';
+      if (check(['formula e', 'formula-e'])) return 'FE';
+      if (check(['wrc', 'rally'])) return 'WRC';
+      if (check(['gt world challenge', 'gtwceu'])) return 'GTWCEU';
+      if (check(['f1', 'formula 1'])) return 'F1';
 
+      // 3. Fallback to API. Map generic API categories to standard ones if needed.
+      if (currentCat === 'US Racing') return 'IndyCar'; 
       return currentCat;
     };
 
