@@ -162,6 +162,11 @@ async function loadExternalNews() {
 
     EXTERNAL_NEWS = allNews;
 
+    // Dynamically build categories based on what actually exists
+    const uniqueCats = new Set(EXTERNAL_NEWS.map(n => n._cat).filter(Boolean));
+    NEWS_CATEGORIES = ["All", ...Array.from(uniqueCats).sort()];
+    buildNewsFilters();
+
     if (allNews.length === 0) {
       grid.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No news found.</div>`;
       return;
@@ -214,10 +219,15 @@ function renderPaginatedNews() {
   const pagination = document.getElementById('news-pagination');
   if (!grid || !pagination) return;
 
-  // Filter based on search query
+  // Filter based on search query and category
   let filteredNews = EXTERNAL_NEWS;
+
+  if (activeNewsFilter !== 'All') {
+    filteredNews = filteredNews.filter(item => item._cat === activeNewsFilter);
+  }
+
   if (currentNewsQuery) {
-    filteredNews = EXTERNAL_NEWS.filter(item => {
+    filteredNews = filteredNews.filter(item => {
       const title = (item.title || '').toLowerCase();
       return title.includes(currentNewsQuery);
     });
@@ -289,12 +299,12 @@ async function initPage() {
   loadExternalNews();
   buildTimeline();
 }
-// Modify setNewsFilter and setYear to async
-window.setNewsFilter = async function (cat) {
+// Category filter for paginated news
+window.setNewsFilter = function (cat) {
   activeNewsFilter = cat;
-  await loadData();
+  currentNewsPage = 1;
   buildNewsFilters();
-  buildNewsGrid();
+  renderPaginatedNews();
 }
 
 window.setYear = async function (yr) {
@@ -323,7 +333,7 @@ let isChronologicalView = false;
 let isProgrammaticScroll = false;
 let programmaticScrollTimeout = null;
 
-const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NASCAR", "IGTC", "NLS", "GTWCEU", "MotoGP"];
+let NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "US Racing", "MotoGP"];
 const YEARS = [2025, 2026];
 
 // ============================================================
@@ -1191,46 +1201,54 @@ function initNewsSearch() {
 }
 
 function initStickyBehavior() {
-  const sentinel = document.getElementById('schedule-sticky-sentinel');
-  const stickyBar = document.getElementById('schedule-sticky-bar');
-
-  if (!sentinel || !stickyBar) return;
-
-  // Exact height of the fixed navbar
   const navbarHeight = 56;
 
-  // Create an Intersection Observer to watch the zero-height sentinel
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      // If the sentinel is scrolling up past the top of the navbar, 
-      // we lock the sticky bar.
-      if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
-        stickyBar.classList.add('is-locked');
-      } else {
-        stickyBar.classList.remove('is-locked');
-      }
+  // 1. Schedule Sticky Bar
+  const scheduleSentinel = document.getElementById('schedule-sticky-sentinel');
+  const scheduleStickyBar = document.getElementById('schedule-sticky-bar');
+
+  if (scheduleSentinel && scheduleStickyBar) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
+          scheduleStickyBar.classList.add('is-locked');
+        } else {
+          scheduleStickyBar.classList.remove('is-locked');
+        }
+      });
+    }, {
+      rootMargin: `-${navbarHeight}px 0px 0px 0px`,
+      threshold: 0
     });
-  }, {
-    // Offset by the navbar height so it triggers exactly when it touches the navbar
-    rootMargin: `-${navbarHeight}px 0px 0px 0px`,
-    threshold: 0
-  });
+    observer.observe(scheduleSentinel);
 
-  observer.observe(sentinel);
+    const resizeObserver = new ResizeObserver(() => {
+      const stickyHeight = scheduleStickyBar.offsetHeight;
+      const totalOffset = navbarHeight + stickyHeight + 20;
+      document.documentElement.style.setProperty('--dynamic-scroll-offset', `${totalOffset}px`);
+    });
+    resizeObserver.observe(scheduleStickyBar);
+  }
 
-  // Track dynamic height of the sticky bar for accurate scroll-margins
-  // This perfectly calculates whether the filter dropdown is open or closed!
-  const resizeObserver = new ResizeObserver(() => {
-    // Use offsetHeight since it factors in total element size (padding/borders)
-    const stickyHeight = stickyBar.offsetHeight;
-    // Add Navbar height + 20px padding buffer for visual breathing room
-    const totalOffset = navbarHeight + stickyHeight + 20;
+  // 2. News Sticky Bar
+  const newsSentinel = document.getElementById('news-sticky-sentinel');
+  const newsStickyBar = document.getElementById('news-sticky-bar');
 
-    // Pass this dynamic value directly to the CSS variable
-    document.documentElement.style.setProperty('--dynamic-scroll-offset', `${totalOffset}px`);
-  });
-
-  resizeObserver.observe(stickyBar);
+  if (newsSentinel && newsStickyBar) {
+    const newsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
+          newsStickyBar.classList.add('is-locked');
+        } else {
+          newsStickyBar.classList.remove('is-locked');
+        }
+      });
+    }, {
+      rootMargin: `-${navbarHeight}px 0px 0px 0px`,
+      threshold: 0
+    });
+    newsObserver.observe(newsSentinel);
+  }
 }
 
 async function init() {
@@ -1259,6 +1277,7 @@ async function init() {
     }
 
     // News
+    buildNewsFilters();
     loadExternalNews();
 
     // Schedule

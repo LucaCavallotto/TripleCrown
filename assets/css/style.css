@@ -489,13 +489,13 @@
     }
 
     /* Ensure the sentinel stays in DOM flow but takes up no visual space */
-    #schedule-sticky-sentinel {
+    #schedule-sticky-sentinel, #news-sticky-sentinel {
       height: 0;
       visibility: hidden;
     }
 
     /* Base state for the combined wrapper */
-    #schedule-sticky-bar {
+    #schedule-sticky-bar, #news-sticky-bar {
       /* Set position to sticky and offset it by the navbar height */
       position: sticky;
       top: 56px;
@@ -518,7 +518,7 @@
     }
 
     /* Locked state (Class added by JavaScript when scrolling) */
-    #schedule-sticky-bar.is-locked {
+    #schedule-sticky-bar.is-locked, #news-sticky-bar.is-locked {
       background-color: var(--bg-primary);
       /* Uses main bg to block out scrolling content */
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
