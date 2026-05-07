@@ -108,6 +108,15 @@ async function loadExternalNews() {
       allNews = data.articles.map(n => ({ ...n, _cat: 'News' }));
     }
 
+    // Deduplicate by title
+    const seenTitles = new Set();
+    allNews = allNews.filter(n => {
+      const title = n.title ? n.title.trim().toLowerCase() : '';
+      if (!title || seenTitles.has(title)) return false;
+      seenTitles.add(title);
+      return true;
+    });
+
     // Sort by date descending
     allNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
