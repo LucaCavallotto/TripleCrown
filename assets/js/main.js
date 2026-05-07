@@ -247,6 +247,19 @@ function showSection(name) {
     l.classList.toggle('active', l.getAttribute('href') === '#' + name);
   });
 
+  if (name === 'schedule') {
+    isProgrammaticScroll = true;
+    if (programmaticScrollTimeout) clearTimeout(programmaticScrollTimeout);
+    
+    // Slight delay to ensure DOM is visible for scroll calculation
+    setTimeout(() => {
+      scrollTimelineToActive();
+      programmaticScrollTimeout = setTimeout(() => {
+        isProgrammaticScroll = false;
+      }, 500);
+    }, 50);
+  }
+
   // Close navbar on mobile after selection
   const navMain = document.getElementById('navMain');
   if (navMain && navMain.classList.contains('show')) {
@@ -922,7 +935,10 @@ function buildSchedule() {
   const filtered = getFilteredEvents();
   const nextEvent = getNextEvent(events);
 
-  if (!activeEventId) activeEventId = nextEvent ? nextEvent.id : null;
+  // Set default active event if none is set
+  if (!activeEventId && nextEvent) {
+    activeEventId = nextEvent.id;
+  }
 
   buildNextEventHero(nextEvent);
   buildThisWeek();
@@ -932,8 +948,11 @@ function buildSchedule() {
 
   if (window.triggerScheduleSearch) window.triggerScheduleSearch();
 
-  // Auto-scroll timeline to next
-  setTimeout(scrollTimelineToActive, 150);
+  // Auto-scroll timeline to active if section is visible
+  const schedSection = document.getElementById('schedule');
+  if (schedSection && schedSection.style.display !== 'none') {
+    setTimeout(scrollTimelineToActive, 150);
+  }
 }
 
 // ============================================================
