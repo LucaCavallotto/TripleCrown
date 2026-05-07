@@ -317,6 +317,38 @@
       color: #fff;
     }
 
+    /* Pagination Buttons */
+    .rm-page-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .rm-page-btn:hover:not(:disabled) {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    .rm-page-btn.active {
+      background: var(--gulf-orange);
+      border-color: var(--gulf-orange);
+      color: #fff;
+    }
+
+    .rm-page-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     /* News Grid */
     .news-grid {
       display: grid;

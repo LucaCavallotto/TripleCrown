@@ -111,44 +111,19 @@ async function loadExternalNews() {
     // Sort by date descending
     allNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
+    EXTERNAL_NEWS = allNews;
+
     if (allNews.length === 0) {
       grid.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No news found.</div>`;
       return;
     }
 
-    const renderCards = (newsArray) => newsArray.map((item, idx) => {
-      const hasImage = item.urlToImage && item.urlToImage !== 'null';
-      const imgHtml = hasImage
-        ? `<div class="api-news-img" style="background-image: url('${item.urlToImage}')"></div>`
-        : `<div class="api-news-placeholder d-flex align-items-center justify-content-center"><i class="bi bi-image" style="font-size:2.5rem;color:#333"></i></div>`;
-
-      const dateObj = new Date(item.publishedAt);
-      const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
-
-      return `
-            <article class="api-news-card fade-up fade-up-${Math.min(idx + 1, 5)}" onclick="window.open('${item.url}', '_blank')">
-                <div class="api-news-image">
-                    <span class="cat-badge ${item._cat.toLowerCase().replace(/ /g, '-')}">${item._cat}</span>
-                    ${imgHtml}
-                </div>
-                <div class="api-news-body">
-                    <h3 class="api-news-title">${item.title || 'No Title'}</h3>
-                    <p class="api-news-desc">${item.description || ''}</p>
-                    <div class="api-news-meta">
-                        <span class="api-news-source">${item.source?.name || 'Unknown'}</span>
-                        <span class="api-news-date">${dateStr}</span>
-                    </div>
-                </div>
-            </article>
-            `;
-    }).join('');
-
-    grid.innerHTML = renderCards(allNews);
-
     const homeGrid = document.getElementById('home-news-grid');
     if (homeGrid) {
       homeGrid.innerHTML = renderCards(allNews.slice(0, 6));
     }
+
+    renderPaginatedNews();
   } catch (e) {
     console.error("Failed to fetch or parse data.json:", e);
     const errorHtml = `<div class="no-events w-100 text-center" style="grid-column:1/-1;color:var(--bs-danger);">Error loading news: ${e.message}</div>`;
@@ -158,12 +133,113 @@ async function loadExternalNews() {
   }
 }
 
+const renderCards = (newsArray) => newsArray.map((item, idx) => {
+  const hasImage = item.urlToImage && item.urlToImage !== 'null';
+  const imgHtml = hasImage
+    ? `<div class="api-news-img" style="background-image: url('${item.urlToImage}')"></div>`
+    : `<div class="api-news-placeholder d-flex align-items-center justify-content-center"><i class="bi bi-image" style="font-size:2.5rem;color:#333"></i></div>`;
+
+  const dateObj = new Date(item.publishedAt);
+  const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+  return `
+        <article class="api-news-card fade-up fade-up-${Math.min(idx + 1, 5)}" onclick="window.open('${item.url}', '_blank')">
+            <div class="api-news-image">
+                <span class="cat-badge ${item._cat.toLowerCase().replace(/ /g, '-')}">${item._cat}</span>
+                ${imgHtml}
+            </div>
+            <div class="api-news-body">
+                <h3 class="api-news-title">${item.title || 'No Title'}</h3>
+                <p class="api-news-desc">${item.description || ''}</p>
+                <div class="api-news-meta">
+                    <span class="api-news-source">${item.source?.name || 'Unknown'}</span>
+                    <span class="api-news-date">${dateStr}</span>
+                </div>
+            </div>
+        </article>
+        `;
+}).join('');
+
+function renderPaginatedNews() {
+  const grid = document.getElementById('news-grid');
+  const pagination = document.getElementById('news-pagination');
+  if (!grid || !pagination) return;
+
+  // Filter based on search query
+  let filteredNews = EXTERNAL_NEWS;
+  if (currentNewsQuery) {
+    filteredNews = EXTERNAL_NEWS.filter(item => {
+      const title = (item.title || '').toLowerCase();
+      return title.includes(currentNewsQuery);
+    });
+  }
+
+  if (filteredNews.length === 0) {
+    grid.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No news found for this search.</div>`;
+    pagination.innerHTML = '';
+    return;
+  }
+
+  const totalPages = Math.ceil(filteredNews.length / NEWS_PER_PAGE);
+  if (currentNewsPage > totalPages) currentNewsPage = totalPages;
+  if (currentNewsPage < 1) currentNewsPage = 1;
+
+  const startIndex = (currentNewsPage - 1) * NEWS_PER_PAGE;
+  const endIndex = startIndex + NEWS_PER_PAGE;
+  const currentItems = filteredNews.slice(startIndex, endIndex);
+
+  grid.innerHTML = renderCards(currentItems);
+
+  // Build Pagination UI
+  if (totalPages <= 1) {
+    pagination.innerHTML = '';
+    return;
+  }
+
+  let paginationHtml = '';
+
+  // Prev button
+  paginationHtml += `<button class="rm-page-btn" ${currentNewsPage === 1 ? 'disabled' : ''} onclick="changeNewsPage(${currentNewsPage - 1})"><i class="bi bi-chevron-left"></i></button>`;
+
+  // Page numbers logic (show few pages around current)
+  let startPage = Math.max(1, currentNewsPage - 2);
+  let endPage = Math.min(totalPages, currentNewsPage + 2);
+
+  if (startPage > 1) {
+    paginationHtml += `<button class="rm-page-btn" onclick="changeNewsPage(1)">1</button>`;
+    if (startPage > 2) paginationHtml += `<span class="rm-page-btn" style="border:none;background:transparent;cursor:default;">...</span>`;
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    paginationHtml += `<button class="rm-page-btn ${i === currentNewsPage ? 'active' : ''}" onclick="changeNewsPage(${i})">${i}</button>`;
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) paginationHtml += `<span class="rm-page-btn" style="border:none;background:transparent;cursor:default;">...</span>`;
+    paginationHtml += `<button class="rm-page-btn" onclick="changeNewsPage(${totalPages})">${totalPages}</button>`;
+  }
+
+  // Next button
+  paginationHtml += `<button class="rm-page-btn" ${currentNewsPage === totalPages ? 'disabled' : ''} onclick="changeNewsPage(${currentNewsPage + 1})"><i class="bi bi-chevron-right"></i></button>`;
+
+  pagination.innerHTML = paginationHtml;
+}
+
+window.changeNewsPage = function (page) {
+  currentNewsPage = page;
+  renderPaginatedNews();
+  // Scroll slightly up to the start of the news grid
+  const newsSection = document.getElementById('news');
+  if (newsSection) {
+    newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 async function initPage() {
   await loadData();
   loadExternalNews();
   buildTimeline();
 }
-
 // Modify setNewsFilter and setYear to async
 window.setNewsFilter = async function (cat) {
   activeNewsFilter = cat;
@@ -184,6 +260,11 @@ window.setYear = async function (yr) {
 // ============================================================
 //  APP STATE
 // ============================================================
+let EXTERNAL_NEWS = [];
+let currentNewsPage = 1;
+const NEWS_PER_PAGE = 24;
+let currentNewsQuery = '';
+
 let activeNewsFilter = "All";
 let activeYear = 2026;
 let activeSeries = "All";
@@ -250,7 +331,7 @@ function showSection(name) {
   if (name === 'schedule') {
     isProgrammaticScroll = true;
     if (programmaticScrollTimeout) clearTimeout(programmaticScrollTimeout);
-    
+
     // Slight delay to ensure DOM is visible for scroll calculation
     setTimeout(() => {
       scrollTimelineToActive();
@@ -756,11 +837,11 @@ function buildEventsList(events) {
 
     const renderEvent = (ev, idx) => {
       const past = isPast(ev.date);
-      
+
       // Calculate week boundaries
       const now = new Date();
       const day = now.getDay();
-      const diff = now.getDate() - day + (day === 0 ? -6 : 1); 
+      const diff = now.getDate() - day + (day === 0 ? -6 : 1);
       const startOfWeek = new Date(now.setDate(diff));
       startOfWeek.setHours(0, 0, 0, 0);
       const endOfWeek = new Date(startOfWeek);
@@ -786,8 +867,8 @@ function buildEventsList(events) {
       const officialLink = ev.seriesWebsite || ev.sessions.find(s => s.official)?.official;
 
       const isTripleCrown = (ev.series === 'F1' && ev.name === 'Monaco Grand Prix') ||
-                            (ev.series === 'IndyCar' && ev.name.includes('Indianapolis 500')) ||
-                            (ev.series === 'WEC' && ev.name === '24 Hours of Le Mans');
+        (ev.series === 'IndyCar' && ev.name.includes('Indianapolis 500')) ||
+        (ev.series === 'WEC' && ev.name === '24 Hours of Le Mans');
 
       return `
           <div class="event-group fade-up fade-up-${Math.min(idx + 1, 5)} ${isHighlighted ? 'highlighted-event' : ''}"
@@ -1029,23 +1110,13 @@ function initScheduleSearch() {
 function initNewsSearch() {
   const searchInput = document.getElementById('api-news-search');
   const clearBtn = document.getElementById('api-news-search-clear');
-  const newsGrid = document.getElementById('news-grid');
-  if (!searchInput || !newsGrid) return;
+  if (!searchInput) return;
 
   // Filter function
   const filterNews = (query) => {
-    const cards = newsGrid.querySelectorAll('.api-news-card');
-    cards.forEach(card => {
-      const titleEl = card.querySelector('.api-news-title');
-      if (titleEl) {
-        const titleText = titleEl.textContent.toLowerCase();
-        if (titleText.includes(query)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      }
-    });
+    currentNewsQuery = query;
+    currentNewsPage = 1;
+    renderPaginatedNews();
   };
 
   // On input, filter and toggle clear button
