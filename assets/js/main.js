@@ -108,47 +108,87 @@ async function loadExternalNews() {
       allNews = data.articles.map(n => ({ ...n, _cat: 'News' }));
     }
 
+    // Proactively fix categories based on strong URL or keyword signals
+    const getBestCategory = (article, currentCat) => {
+      const url = (article.url || '').toLowerCase();
+      
+      // 1. Explicit URL parsing (more flexible to catch paths like /nascar-os/ or slugs like formula-e-berlino)
+      if (url.match(/[\/-]f1[\/-]/)) return 'F1';
+      if (url.includes('motogp')) return 'MotoGP';
+      if (url.match(/[\/-]wec[\/-]/) || url.includes('lemans') || url.includes('24-heures-du-mans')) return 'WEC';
+      if (url.match(/[\/-]wrc[\/-]/)) return 'WRC';
+      if (url.includes('formula-e')) return 'FE';
+      if (url.includes('indycar')) return 'IndyCar';
+      if (url.includes('nascar')) return 'NASCAR';
+      if (url.match(/[\/-]imsa[\/-]/) || url.includes('weathertech-sportscar')) return 'IMSA';
+      if (url.match(/[\/-]f2[\/-]/)) return 'F2';
+      if (url.match(/[\/-]f3[\/-]/)) return 'F3';
+      if (url.includes('gt-world-challenge')) return 'GTWCEU';
+
+      // 2. Keyword fallback (checking title and description)
+      const texts = [
+        article.title || '',
+        article.description || ''
+      ].join(' ').toLowerCase();
+
+      const check = (keywords) => keywords.some(k => texts.includes(k));
+
+      // We check in order of specificity to avoid F1 crossover false positives.
+      if (check(['motogp', 'moto2', 'moto3'])) return 'MotoGP';
+      if (check(['wec', 'le mans', 'hypercar', 'endurance championship', 'lmdh'])) return 'WEC';
+      if (check(['indycar', 'indy 500'])) return 'IndyCar';
+      if (check(['nascar'])) return 'NASCAR';
+      if (check(['imsa', 'laguna seca', 'daytona'])) return 'IMSA';
+      if (check(['formula e', 'formula-e'])) return 'FE';
+      if (check(['wrc', 'rally'])) return 'WRC';
+      if (check(['gt world challenge', 'gtwceu'])) return 'GTWCEU';
+      if (check(['f1', 'formula 1'])) return 'F1';
+
+      // 3. Fallback to API. Map generic API categories to standard ones if needed.
+      if (currentCat === 'US Racing') return 'IndyCar'; 
+      return currentCat;
+    };
+
+    // Apply the fix to every article
+    allNews.forEach(n => {
+      n._cat = getBestCategory(n, n._cat);
+    });
+
+    // Deduplicate by title
+    const seenTitles = new Map();
+    allNews.forEach(n => {
+      const title = n.title ? n.title.trim() : '';
+      if (!title) return;
+      const lowerTitle = title.toLowerCase();
+      
+      if (!seenTitles.has(lowerTitle)) {
+        seenTitles.set(lowerTitle, n);
+      }
+    });
+
+    allNews = Array.from(seenTitles.values());
+
     // Sort by date descending
     allNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+    EXTERNAL_NEWS = allNews;
+
+    // Dynamically build categories based on what actually exists
+    const uniqueCats = new Set(EXTERNAL_NEWS.map(n => n._cat).filter(Boolean));
+    NEWS_CATEGORIES = ["All", ...Array.from(uniqueCats).sort()];
+    buildNewsFilters();
 
     if (allNews.length === 0) {
       grid.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No news found.</div>`;
       return;
     }
 
-    const renderCards = (newsArray) => newsArray.map((item, idx) => {
-      const hasImage = item.urlToImage && item.urlToImage !== 'null';
-      const imgHtml = hasImage
-        ? `<div class="api-news-img" style="background-image: url('${item.urlToImage}')"></div>`
-        : `<div class="api-news-placeholder d-flex align-items-center justify-content-center"><i class="bi bi-image" style="font-size:2.5rem;color:#333"></i></div>`;
-
-      const dateObj = new Date(item.publishedAt);
-      const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
-
-      return `
-            <article class="api-news-card fade-up fade-up-${Math.min(idx + 1, 5)}" onclick="window.open('${item.url}', '_blank')">
-                <div class="api-news-image">
-                    <span class="cat-badge ${item._cat.toLowerCase().replace(/ /g, '-')}">${item._cat}</span>
-                    ${imgHtml}
-                </div>
-                <div class="api-news-body">
-                    <h3 class="api-news-title">${item.title || 'No Title'}</h3>
-                    <p class="api-news-desc">${item.description || ''}</p>
-                    <div class="api-news-meta">
-                        <span class="api-news-source">${item.source?.name || 'Unknown'}</span>
-                        <span class="api-news-date">${dateStr}</span>
-                    </div>
-                </div>
-            </article>
-            `;
-    }).join('');
-
-    grid.innerHTML = renderCards(allNews);
-
     const homeGrid = document.getElementById('home-news-grid');
     if (homeGrid) {
       homeGrid.innerHTML = renderCards(allNews.slice(0, 6));
     }
+
+    renderPaginatedNews();
   } catch (e) {
     console.error("Failed to fetch or parse data.json:", e);
     const errorHtml = `<div class="no-events w-100 text-center" style="grid-column:1/-1;color:var(--bs-danger);">Error loading news: ${e.message}</div>`;
@@ -158,18 +198,124 @@ async function loadExternalNews() {
   }
 }
 
+const renderCards = (newsArray) => newsArray.map((item, idx) => {
+  const hasImage = item.urlToImage && item.urlToImage !== 'null';
+  const imgHtml = hasImage
+    ? `<div class="api-news-img" style="background-image: url('${item.urlToImage}')"></div>`
+    : `<div class="api-news-placeholder d-flex align-items-center justify-content-center"><i class="bi bi-image" style="font-size:2.5rem;color:#333"></i></div>`;
+
+  const dateObj = new Date(item.publishedAt);
+  const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+  return `
+        <article class="api-news-card fade-up fade-up-${Math.min(idx + 1, 5)}" onclick="window.open('${item.url}', '_blank')">
+            <div class="api-news-image">
+                <span class="cat-badge ${item._cat.toLowerCase().replace(/ /g, '-')}">${item._cat}</span>
+                ${imgHtml}
+            </div>
+            <div class="api-news-body">
+                <h3 class="api-news-title">${item.title || 'No Title'}</h3>
+                <p class="api-news-desc">${item.description || ''}</p>
+                <div class="api-news-meta">
+                    <span class="api-news-source">${item.source?.name || 'Unknown'}</span>
+                    <span class="api-news-date">${dateStr}</span>
+                </div>
+            </div>
+        </article>
+        `;
+}).join('');
+
+function renderPaginatedNews() {
+  const grid = document.getElementById('news-grid');
+  const pagination = document.getElementById('news-pagination');
+  if (!grid || !pagination) return;
+
+  // Filter based on search query and category
+  let filteredNews = EXTERNAL_NEWS;
+
+  if (activeNewsFilter !== 'All') {
+    filteredNews = filteredNews.filter(item => item._cat === activeNewsFilter);
+  }
+
+  if (currentNewsQuery) {
+    filteredNews = filteredNews.filter(item => {
+      const title = (item.title || '').toLowerCase();
+      return title.includes(currentNewsQuery);
+    });
+  }
+
+  if (filteredNews.length === 0) {
+    grid.innerHTML = `<div class="no-events w-100 text-center" style="grid-column:1/-1">No news found for this search.</div>`;
+    pagination.innerHTML = '';
+    return;
+  }
+
+  const totalPages = Math.ceil(filteredNews.length / NEWS_PER_PAGE);
+  if (currentNewsPage > totalPages) currentNewsPage = totalPages;
+  if (currentNewsPage < 1) currentNewsPage = 1;
+
+  const startIndex = (currentNewsPage - 1) * NEWS_PER_PAGE;
+  const endIndex = startIndex + NEWS_PER_PAGE;
+  const currentItems = filteredNews.slice(startIndex, endIndex);
+
+  grid.innerHTML = renderCards(currentItems);
+
+  // Build Pagination UI
+  if (totalPages <= 1) {
+    pagination.innerHTML = '';
+    return;
+  }
+
+  let paginationHtml = '';
+
+  // Prev button
+  paginationHtml += `<button class="rm-page-btn" ${currentNewsPage === 1 ? 'disabled' : ''} onclick="changeNewsPage(${currentNewsPage - 1})"><i class="bi bi-chevron-left"></i></button>`;
+
+  // Page numbers logic (show few pages around current)
+  let startPage = Math.max(1, currentNewsPage - 2);
+  let endPage = Math.min(totalPages, currentNewsPage + 2);
+
+  if (startPage > 1) {
+    paginationHtml += `<button class="rm-page-btn" onclick="changeNewsPage(1)">1</button>`;
+    if (startPage > 2) paginationHtml += `<span class="rm-page-btn" style="border:none;background:transparent;cursor:default;">...</span>`;
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    paginationHtml += `<button class="rm-page-btn ${i === currentNewsPage ? 'active' : ''}" onclick="changeNewsPage(${i})">${i}</button>`;
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) paginationHtml += `<span class="rm-page-btn" style="border:none;background:transparent;cursor:default;">...</span>`;
+    paginationHtml += `<button class="rm-page-btn" onclick="changeNewsPage(${totalPages})">${totalPages}</button>`;
+  }
+
+  // Next button
+  paginationHtml += `<button class="rm-page-btn" ${currentNewsPage === totalPages ? 'disabled' : ''} onclick="changeNewsPage(${currentNewsPage + 1})"><i class="bi bi-chevron-right"></i></button>`;
+
+  pagination.innerHTML = paginationHtml;
+}
+
+window.changeNewsPage = function (page) {
+  currentNewsPage = page;
+  renderPaginatedNews();
+  // Scroll slightly up to the start of the news grid
+  const newsSection = document.getElementById('news');
+  if (newsSection) {
+    newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 async function initPage() {
   await loadData();
   loadExternalNews();
   buildTimeline();
 }
-
-// Modify setNewsFilter and setYear to async
-window.setNewsFilter = async function (cat) {
+// Category filter for paginated news
+window.setNewsFilter = function (cat) {
   activeNewsFilter = cat;
-  await loadData();
+  currentNewsPage = 1;
   buildNewsFilters();
-  buildNewsGrid();
+  renderPaginatedNews();
 }
 
 window.setYear = async function (yr) {
@@ -184,6 +330,11 @@ window.setYear = async function (yr) {
 // ============================================================
 //  APP STATE
 // ============================================================
+let EXTERNAL_NEWS = [];
+let currentNewsPage = 1;
+const NEWS_PER_PAGE = 24;
+let currentNewsQuery = '';
+
 let activeNewsFilter = "All";
 let activeYear = 2026;
 let activeSeries = "All";
@@ -193,7 +344,7 @@ let isChronologicalView = false;
 let isProgrammaticScroll = false;
 let programmaticScrollTimeout = null;
 
-const NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "FE", "IndyCar", "NASCAR", "IGTC", "NLS", "GTWCEU", "MotoGP"];
+let NEWS_CATEGORIES = ["All", "F1", "WEC", "WRC", "US Racing", "MotoGP"];
 const YEARS = [2025, 2026];
 
 // ============================================================
@@ -250,7 +401,7 @@ function showSection(name) {
   if (name === 'schedule') {
     isProgrammaticScroll = true;
     if (programmaticScrollTimeout) clearTimeout(programmaticScrollTimeout);
-    
+
     // Slight delay to ensure DOM is visible for scroll calculation
     setTimeout(() => {
       scrollTimelineToActive();
@@ -756,11 +907,11 @@ function buildEventsList(events) {
 
     const renderEvent = (ev, idx) => {
       const past = isPast(ev.date);
-      
+
       // Calculate week boundaries
       const now = new Date();
       const day = now.getDay();
-      const diff = now.getDate() - day + (day === 0 ? -6 : 1); 
+      const diff = now.getDate() - day + (day === 0 ? -6 : 1);
       const startOfWeek = new Date(now.setDate(diff));
       startOfWeek.setHours(0, 0, 0, 0);
       const endOfWeek = new Date(startOfWeek);
@@ -786,8 +937,8 @@ function buildEventsList(events) {
       const officialLink = ev.seriesWebsite || ev.sessions.find(s => s.official)?.official;
 
       const isTripleCrown = (ev.series === 'F1' && ev.name === 'Monaco Grand Prix') ||
-                            (ev.series === 'IndyCar' && ev.name.includes('Indianapolis 500')) ||
-                            (ev.series === 'WEC' && ev.name === '24 Hours of Le Mans');
+        (ev.series === 'IndyCar' && ev.name.includes('Indianapolis 500')) ||
+        (ev.series === 'WEC' && ev.name === '24 Hours of Le Mans');
 
       return `
           <div class="event-group fade-up fade-up-${Math.min(idx + 1, 5)} ${isHighlighted ? 'highlighted-event' : ''}"
@@ -1029,23 +1180,13 @@ function initScheduleSearch() {
 function initNewsSearch() {
   const searchInput = document.getElementById('api-news-search');
   const clearBtn = document.getElementById('api-news-search-clear');
-  const newsGrid = document.getElementById('news-grid');
-  if (!searchInput || !newsGrid) return;
+  if (!searchInput) return;
 
   // Filter function
   const filterNews = (query) => {
-    const cards = newsGrid.querySelectorAll('.api-news-card');
-    cards.forEach(card => {
-      const titleEl = card.querySelector('.api-news-title');
-      if (titleEl) {
-        const titleText = titleEl.textContent.toLowerCase();
-        if (titleText.includes(query)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      }
-    });
+    currentNewsQuery = query;
+    currentNewsPage = 1;
+    renderPaginatedNews();
   };
 
   // On input, filter and toggle clear button
@@ -1071,46 +1212,54 @@ function initNewsSearch() {
 }
 
 function initStickyBehavior() {
-  const sentinel = document.getElementById('schedule-sticky-sentinel');
-  const stickyBar = document.getElementById('schedule-sticky-bar');
-
-  if (!sentinel || !stickyBar) return;
-
-  // Exact height of the fixed navbar
   const navbarHeight = 56;
 
-  // Create an Intersection Observer to watch the zero-height sentinel
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      // If the sentinel is scrolling up past the top of the navbar, 
-      // we lock the sticky bar.
-      if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
-        stickyBar.classList.add('is-locked');
-      } else {
-        stickyBar.classList.remove('is-locked');
-      }
+  // 1. Schedule Sticky Bar
+  const scheduleSentinel = document.getElementById('schedule-sticky-sentinel');
+  const scheduleStickyBar = document.getElementById('schedule-sticky-bar');
+
+  if (scheduleSentinel && scheduleStickyBar) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
+          scheduleStickyBar.classList.add('is-locked');
+        } else {
+          scheduleStickyBar.classList.remove('is-locked');
+        }
+      });
+    }, {
+      rootMargin: `-${navbarHeight}px 0px 0px 0px`,
+      threshold: 0
     });
-  }, {
-    // Offset by the navbar height so it triggers exactly when it touches the navbar
-    rootMargin: `-${navbarHeight}px 0px 0px 0px`,
-    threshold: 0
-  });
+    observer.observe(scheduleSentinel);
 
-  observer.observe(sentinel);
+    const resizeObserver = new ResizeObserver(() => {
+      const stickyHeight = scheduleStickyBar.offsetHeight;
+      const totalOffset = navbarHeight + stickyHeight + 20;
+      document.documentElement.style.setProperty('--dynamic-scroll-offset', `${totalOffset}px`);
+    });
+    resizeObserver.observe(scheduleStickyBar);
+  }
 
-  // Track dynamic height of the sticky bar for accurate scroll-margins
-  // This perfectly calculates whether the filter dropdown is open or closed!
-  const resizeObserver = new ResizeObserver(() => {
-    // Use offsetHeight since it factors in total element size (padding/borders)
-    const stickyHeight = stickyBar.offsetHeight;
-    // Add Navbar height + 20px padding buffer for visual breathing room
-    const totalOffset = navbarHeight + stickyHeight + 20;
+  // 2. News Sticky Bar
+  const newsSentinel = document.getElementById('news-sticky-sentinel');
+  const newsStickyBar = document.getElementById('news-sticky-bar');
 
-    // Pass this dynamic value directly to the CSS variable
-    document.documentElement.style.setProperty('--dynamic-scroll-offset', `${totalOffset}px`);
-  });
-
-  resizeObserver.observe(stickyBar);
+  if (newsSentinel && newsStickyBar) {
+    const newsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < navbarHeight) {
+          newsStickyBar.classList.add('is-locked');
+        } else {
+          newsStickyBar.classList.remove('is-locked');
+        }
+      });
+    }, {
+      rootMargin: `-${navbarHeight}px 0px 0px 0px`,
+      threshold: 0
+    });
+    newsObserver.observe(newsSentinel);
+  }
 }
 
 async function init() {
@@ -1139,6 +1288,7 @@ async function init() {
     }
 
     // News
+    buildNewsFilters();
     loadExternalNews();
 
     // Schedule
