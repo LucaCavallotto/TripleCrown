@@ -108,14 +108,54 @@ async function loadExternalNews() {
       allNews = data.articles.map(n => ({ ...n, _cat: 'News' }));
     }
 
-    // Deduplicate by title
-    const seenTitles = new Set();
-    allNews = allNews.filter(n => {
-      const title = n.title ? n.title.trim().toLowerCase() : '';
-      if (!title || seenTitles.has(title)) return false;
-      seenTitles.add(title);
-      return true;
+    // Proactively fix categories based on strong URL or keyword signals
+    const getBestCategory = (article, currentCat) => {
+      const url = (article.url || '').toLowerCase();
+      
+      // 1. Explicit URL path is the absolute strongest signal
+      if (url.includes('/f1/')) return 'F1';
+      if (url.includes('/motogp/')) return 'MotoGP';
+      if (url.includes('/wec/') || url.includes('/lemans/')) return 'WEC';
+      if (url.includes('/wrc/')) return 'WRC';
+      if (url.includes('/indycar/') || url.includes('/nascar/') || url.includes('/imsa/')) return 'US Racing';
+
+      // 2. Keyword fallback (checking title and description)
+      const texts = [
+        article.title || '',
+        article.description || ''
+      ].join(' ').toLowerCase();
+
+      const check = (keywords) => keywords.some(k => texts.includes(k));
+
+      // Overcome false-positive 'F1' categorizations if strong alternative keywords exist
+      if (currentCat === 'F1') {
+         if (check(['motogp', 'moto2', 'moto3']) && !check(['f1', 'formula 1'])) return 'MotoGP';
+         if (check(['wec', 'le mans', 'hypercar', 'endurance championship', 'lmdh']) && !check(['f1'])) return 'WEC';
+         if (check(['indycar', 'nascar', 'imsa', 'laguna seca']) && !check(['f1'])) return 'US Racing';
+         if (check(['wrc', 'rally']) && !check(['f1'])) return 'WRC';
+      }
+
+      return currentCat;
+    };
+
+    // Apply the fix to every article
+    allNews.forEach(n => {
+      n._cat = getBestCategory(n, n._cat);
     });
+
+    // Deduplicate by title
+    const seenTitles = new Map();
+    allNews.forEach(n => {
+      const title = n.title ? n.title.trim() : '';
+      if (!title) return;
+      const lowerTitle = title.toLowerCase();
+      
+      if (!seenTitles.has(lowerTitle)) {
+        seenTitles.set(lowerTitle, n);
+      }
+    });
+
+    allNews = Array.from(seenTitles.values());
 
     // Sort by date descending
     allNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
