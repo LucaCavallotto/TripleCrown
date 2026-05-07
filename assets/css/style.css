@@ -1452,6 +1452,7 @@
       text-transform: uppercase;
       color: #fff;
       letter-spacing: 1px;
+      background: rgba(0, 0, 0, 0.75); /* Default background */
     }
 
     .api-news-image .cat-badge.f1 {
@@ -1460,6 +1461,18 @@
 
     .api-news-image .cat-badge.motogp {
       background: var(--gulf-blue, #0067A5);
+    }
+
+    .api-news-image .cat-badge.wec {
+      background: var(--gulf-orange, #F4621F);
+    }
+
+    .api-news-image .cat-badge.wrc {
+      background: var(--brg-green, #1B4332);
+    }
+
+    .api-news-image .cat-badge.us-racing {
+      background: #B45309;
     }
 
     .api-news-body {
