@@ -47,7 +47,8 @@ async function loadData() {
                     lTime = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
                   }
                   let cssCode = sesh.code ? sesh.code.toLowerCase() : 'u';
-                  if (cssCode.startsWith('fp')) cssCode = 'fp';
+                  if (cssCode.startsWith('fp') || cssCode === 'w') cssCode = 'fp';
+                  if (cssCode.startsWith('q') || cssCode.startsWith('tq')) cssCode = 'q';
 
                   return {
                     code: cssCode,
