@@ -317,6 +317,38 @@
       color: #fff;
     }
 
+    /* Pagination Buttons */
+    .rm-page-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .rm-page-btn:hover:not(:disabled) {
+      border-color: var(--gulf-orange);
+      color: var(--gulf-orange);
+    }
+
+    .rm-page-btn.active {
+      background: var(--gulf-orange);
+      border-color: var(--gulf-orange);
+      color: #fff;
+    }
+
+    .rm-page-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     /* News Grid */
     .news-grid {
       display: grid;
@@ -457,13 +489,13 @@
     }
 
     /* Ensure the sentinel stays in DOM flow but takes up no visual space */
-    #schedule-sticky-sentinel {
+    #schedule-sticky-sentinel, #news-sticky-sentinel {
       height: 0;
       visibility: hidden;
     }
 
     /* Base state for the combined wrapper */
-    #schedule-sticky-bar {
+    #schedule-sticky-bar, #news-sticky-bar {
       /* Set position to sticky and offset it by the navbar height */
       position: sticky;
       top: 56px;
@@ -486,7 +518,7 @@
     }
 
     /* Locked state (Class added by JavaScript when scrolling) */
-    #schedule-sticky-bar.is-locked {
+    #schedule-sticky-bar.is-locked, #news-sticky-bar.is-locked {
       background-color: var(--bg-primary);
       /* Uses main bg to block out scrolling content */
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -1420,14 +1452,54 @@
       text-transform: uppercase;
       color: #fff;
       letter-spacing: 1px;
+      background: rgba(0, 0, 0, 0.75); /* Default background */
     }
 
     .api-news-image .cat-badge.f1 {
       background: var(--ferrari-red, #C8102E);
     }
 
-    .api-news-image .cat-badge.motogp {
+    .api-news-image .cat-badge.wec {
       background: var(--gulf-blue, #0067A5);
+    }
+
+    .api-news-image .cat-badge.wrc,
+    .api-news-image .cat-badge.gtwceu,
+    .api-news-image .cat-badge.motogp,
+    .api-news-image .cat-badge.nls {
+      background: var(--brg-green, #1B4332);
+    }
+
+    .api-news-image .cat-badge.f2 {
+      background: #6B21A8;
+    }
+
+    .api-news-image .cat-badge.f3 {
+      background: #9333EA;
+    }
+
+    .api-news-image .cat-badge.fe {
+      background: #0891B2;
+    }
+
+    .api-news-image .cat-badge.indycar {
+      background: #B45309;
+    }
+
+    .api-news-image .cat-badge.nascar {
+      background: #002855;
+    }
+
+    .api-news-image .cat-badge.igtc {
+      background: #FF4500;
+    }
+
+    .api-news-image .cat-badge.imsa {
+      background: var(--gulf-orange, #F4621F);
+    }
+
+    .api-news-image .cat-badge.us-racing {
+      background: #B45309;
     }
 
     .api-news-body {

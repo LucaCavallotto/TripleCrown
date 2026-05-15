@@ -88,23 +88,51 @@
               <h2 class="section-title">Paddock News</h2>
             </div>
           </div>
+        </div>
 
-          <!-- Filters -->
-          <div class="rm-filters d-none" id="news-filters"></div>
+        <!-- Sentinel for IntersectionObserver to know when the sticky bar hits the top offset -->
+        <div id="news-sticky-sentinel"></div>
 
-          <!-- News Search -->
-          <div class="news-search-wrapper mb-4 position-relative">
-            <input type="text" id="api-news-search" class="news-search-input" placeholder="Search news by title..."
-              style="padding-right: 2.5rem;">
-            <button type="button" id="api-news-search-clear" class="btn position-absolute border-0 bg-transparent p-0"
-              style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
-              aria-label="Clear search">
-              <i class="bi bi-x-lg"></i>
-            </button>
+        <!-- The Single Combined Sticky Wrapper -->
+        <div id="news-sticky-bar">
+          <div class="container pt-3 pb-3">
+
+            <!-- Filters (Inline Collapse Panel) & Search -->
+            <div class="d-flex align-items-center gap-2 mt-2">
+              <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button"
+                data-bs-toggle="collapse" data-bs-target="#newsFiltersCollapse" aria-expanded="false"
+                aria-controls="newsFiltersCollapse"
+                style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                <span><i class="bi bi-funnel-fill me-2"></i> Filter</span>
+              </button>
+
+              <div class="news-search-wrapper position-relative" style="max-width: 300px; margin-bottom: 0;">
+                <input type="text" id="api-news-search" class="news-search-input" placeholder="Search news by title..."
+                  style="padding-right: 2.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
+                <button type="button" id="api-news-search-clear" class="btn position-absolute border-0 bg-transparent p-0"
+                  style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
+                  aria-label="Clear search">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Collapsible Filters Area -->
+            <div class="collapse mt-3" id="newsFiltersCollapse">
+              <div class="card card-body" style="background-color: var(--bg-card); border-color: var(--border-color);">
+                <div class="rm-filters mb-0" id="news-filters"></div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="container pt-4">
 
           <!-- Grid -->
           <div class="api-news-grid" id="news-grid"></div>
+
+          <!-- Pagination -->
+          <div id="news-pagination" class="d-flex justify-content-center flex-wrap mt-5 mb-2 gap-2"></div>
         </div>
       </section>
 
