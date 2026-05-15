@@ -1220,18 +1220,74 @@ function buildSchedule() {
 //  INIT
 // ============================================================
 function initScheduleSearch() {
-  const searchInput = document.getElementById('api-schedule-search');
-  const clearBtn = document.getElementById('api-schedule-search-clear');
+  const inputs = document.querySelectorAll('#api-schedule-search-desktop, #api-schedule-search-mobile');
+  const clearBtns = document.querySelectorAll('.api-schedule-search-clear');
+  const navContainers = document.querySelectorAll('.schedule-search-nav-container');
+  const searchCounts = document.querySelectorAll('.schedule-search-count');
 
-  if (!searchInput) return;
+  if (inputs.length === 0) return;
 
-  // We expose a global trigger so buildSchedule() can re-apply the filter after DOM rebuilds
+  let matchElements = [];
+  let currentMatchIdx = -1;
+
+  window.navigateScheduleSearch = (direction) => {
+    if (matchElements.length === 0) return;
+    currentMatchIdx += direction;
+    if (currentMatchIdx < 0) currentMatchIdx = matchElements.length - 1;
+    if (currentMatchIdx >= matchElements.length) currentMatchIdx = 0;
+    
+    updateSearchUI();
+    scrollToMatch(matchElements[currentMatchIdx]);
+  };
+
+  const updateSearchUI = () => {
+    if (matchElements.length > 1) {
+      navContainers.forEach(nc => {
+        nc.classList.remove('d-none');
+        nc.classList.add('d-flex');
+      });
+      searchCounts.forEach(sc => {
+        sc.textContent = `${currentMatchIdx + 1}/${matchElements.length}`;
+      });
+    } else {
+      navContainers.forEach(nc => {
+        nc.classList.add('d-none');
+        nc.classList.remove('d-flex');
+      });
+    }
+  };
+
+  const scrollToMatch = (el) => {
+    // Check if inside a past events container and open it if necessary
+    const pastContainer = el.closest('#past-events-chrono, #past-events-grouped');
+    if (pastContainer && pastContainer.classList.contains('d-none')) {
+      pastContainer.classList.remove('d-none');
+      const wrapper = pastContainer.closest('.past-events-wrapper');
+      if (wrapper) {
+        const toggleBtn = wrapper.querySelector('.past-events-toggle');
+        if (toggleBtn) toggleBtn.classList.add('open');
+      }
+    }
+
+    document.querySelectorAll('.search-highlight').forEach(e => e.classList.remove('search-highlight'));
+    el.classList.add('search-highlight');
+    
+    let offset = 220;
+    const rootStyles = getComputedStyle(document.documentElement);
+    const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
+    if (dynamicOffset) offset = parseInt(dynamicOffset) + 120;
+
+    const y = el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: y - offset, behavior: 'smooth' });
+  };
+
   window.triggerScheduleSearch = () => {
-    searchInput.dispatchEvent(new Event('input'));
+    inputs[0].dispatchEvent(new Event('input'));
   };
 
   const filterSchedule = (query) => {
     const isChrono = isChronologicalView && activeSeries === 'All';
+    matchElements = [];
 
     if (isChrono) {
       const groups = document.querySelectorAll('#events-container .event-group');
@@ -1244,15 +1300,15 @@ function initScheduleSearch() {
             if (nameEl.textContent.toLowerCase().includes(query)) {
               session.style.display = '';
               hasVisible = true;
+              if (query !== "") matchElements.push(session);
             } else {
               session.style.display = 'none';
             }
           } else {
-            // If title doesn't exist, we just show it if query is empty
             session.style.display = query === '' ? '' : 'none';
           }
         });
-        group.style.display = hasVisible ? '' : 'none';
+        group.style.display = hasVisible || query === '' ? '' : 'none';
       });
     } else {
       const groups = document.querySelectorAll('#events-container .event-group');
@@ -1261,28 +1317,65 @@ function initScheduleSearch() {
         if (nameEl) {
           if (nameEl.textContent.toLowerCase().includes(query)) {
             group.style.display = '';
+            if (query !== "") matchElements.push(group);
           } else {
             group.style.display = 'none';
           }
         }
       });
     }
+
+    if (query === "") {
+      currentMatchIdx = -1;
+      document.querySelectorAll('.search-highlight').forEach(e => e.classList.remove('search-highlight'));
+      updateSearchUI();
+    } else if (matchElements.length > 0) {
+      const pastChrono = document.getElementById('past-events-chrono');
+      const pastGrouped = document.getElementById('past-events-grouped');
+      const pastOpen = (pastChrono && !pastChrono.classList.contains('d-none')) || 
+                        (pastGrouped && !pastGrouped.classList.contains('d-none'));
+
+      if (pastOpen) {
+        currentMatchIdx = 0;
+      } else {
+        currentMatchIdx = matchElements.findIndex(el => !el.closest('#past-events-chrono, #past-events-grouped'));
+        if (currentMatchIdx === -1) currentMatchIdx = 0;
+      }
+      
+      updateSearchUI();
+      scrollToMatch(matchElements[currentMatchIdx]);
+    } else {
+      currentMatchIdx = -1;
+      updateSearchUI();
+    }
   };
 
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    if (clearBtn) {
-      clearBtn.style.display = query.length > 0 ? 'block' : 'none';
-    }
-    filterSchedule(query);
+  inputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      // Sync other inputs
+      inputs.forEach(i => { if(i !== e.target) i.value = e.target.value; });
+      
+      clearBtns.forEach(btn => {
+        btn.style.display = query !== "" ? "block" : "none";
+      });
+      filterSchedule(query);
+    });
   });
 
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      clearBtn.style.display = 'none';
-      filterSchedule('');
-      searchInput.focus();
+  clearBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      inputs.forEach(i => i.value = "");
+      clearBtns.forEach(b => b.style.display = "none");
+      filterSchedule("");
+    });
+  });
+
+  const searchCollapse = document.getElementById('searchCollapse');
+  if (searchCollapse) {
+    searchCollapse.addEventListener('shown.bs.collapse', () => {
+      const mobInput = document.getElementById('api-schedule-search-mobile');
+      if(mobInput) mobInput.focus();
     });
   }
 }

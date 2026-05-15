@@ -163,29 +163,72 @@
 
             <!-- Filters (Inline Collapse Panel) -->
             <div class="mt-3">
-              <div class="d-flex align-items-center gap-2 mt-2">
-                <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="false"
-                  aria-controls="filtersCollapse"
-                  style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
+              <div class="d-flex align-items-center gap-3 mt-2 w-100">
+                <!-- Filter Button -->
+                <button class="view-toggle-btn d-flex align-items-center gap-2" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#filtersCollapse"
+                  style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem; flex-shrink: 0;">
                   <span><i class="bi bi-funnel-fill me-2"></i> Filter</span>
                 </button>
 
-                <div class="news-search-wrapper position-relative" style="max-width: 300px; margin-bottom: 0;">
-                  <input type="text" id="api-schedule-search" class="news-search-input"
+                <!-- Mobile Search Toggle -->
+                <button class="view-toggle-btn d-md-none d-flex align-items-center gap-2 flex-grow-1" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#searchCollapse"
+                  style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                  <span><i class="bi bi-search me-2"></i> Search</span>
+                </button>
+
+                <!-- Desktop Search (Custom Display Logic) -->
+                <div class="desktop-search-container position-relative">
+                  <input type="text" id="api-schedule-search-desktop" class="news-search-input w-100"
                     placeholder="Search event by title..."
-                    style="padding-right: 2.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
-                  <button type="button" id="api-schedule-search-clear"
-                    class="btn position-absolute border-0 bg-transparent p-0"
+                    style="padding-right: 7rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
+                  
+                  <div class="schedule-search-nav-container position-absolute d-none align-items-center gap-2" 
+                       style="right: 35px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted); border-right: 1px solid var(--border-color); padding-right: 10px;">
+                    <span class="schedule-search-count">0/0</span>
+                    <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(-1)"><i class="bi bi-chevron-up"></i></button>
+                    <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(1)"><i class="bi bi-chevron-down"></i></button>
+                  </div>
+
+                  <button type="button" class="api-schedule-search-clear btn position-absolute border-0 bg-transparent p-0"
                     style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
                     aria-label="Clear search">
                     <i class="bi bi-x-lg"></i>
                   </button>
                 </div>
 
-                <button class="next-event-btn ms-auto" id="jump-next-btn" onclick="jumpToNextEvent()">
+                <!-- Next Event Button -->
+                <button class="next-event-btn" id="jump-next-btn" onclick="jumpToNextEvent()" style="flex-shrink: 0; margin-left: auto;">
                   Next Event
                 </button>
+              </div>
+              
+              <!-- Mobile Search Panel (Collapse) -->
+              <div class="collapse d-md-none" id="searchCollapse">
+                <div class="pt-3 pb-1 mt-2 d-flex align-items-center gap-2" style="border-top: 1px solid var(--border-color);">
+                  <div class="news-search-wrapper position-relative flex-grow-1" style="max-width: none; margin-bottom: 0;">
+                    <input type="text" id="api-schedule-search-mobile" class="news-search-input"
+                      placeholder="Search event by title..."
+                      style="padding-right: 7rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
+                    
+                    <div class="schedule-search-nav-container position-absolute d-none align-items-center gap-2" 
+                         style="right: 35px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted); border-right: 1px solid var(--border-color); padding-right: 10px;">
+                      <span class="schedule-search-count">0/0</span>
+                      <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(-1)"><i class="bi bi-chevron-up"></i></button>
+                      <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(1)"><i class="bi bi-chevron-down"></i></button>
+                    </div>
+
+                    <button type="button" class="api-schedule-search-clear btn position-absolute border-0 bg-transparent p-0"
+                      style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
+                      aria-label="Clear search">
+                      <i class="bi bi-x-lg"></i>
+                    </button>
+                  </div>
+                  <button type="button" class="btn border-0 p-2 text-muted" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-label="Close search">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
               </div>
               <div class="collapse" id="filtersCollapse">
                 <div class="pt-3 pb-1 mt-2 d-flex flex-wrap justify-content-between align-items-end gap-3"

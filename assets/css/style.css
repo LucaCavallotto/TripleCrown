@@ -1642,6 +1642,18 @@
     /* ============================================================
        NEWS SEARCH COMPONENT
     ============================================================ */
+    .desktop-search-container {
+      display: flex !important;
+      flex-grow: 1;
+      min-width: 200px;
+    }
+
+    @media (max-width: 767px) {
+      .desktop-search-container {
+        display: none !important;
+      }
+    }
+
     .news-search-wrapper {
       max-width: 450px;
       width: 100%;
@@ -1670,3 +1682,33 @@
     .news-search-input::placeholder {
       color: var(--text-muted);
     }
+/* Search Result Navigation */
+.search-highlight {
+  outline: 2px solid var(--gulf-blue) !important;
+  outline-offset: 6px;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.search-highlight::before {
+  content: 'SEARCH MATCH';
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background-color: var(--bg-primary);
+  padding: 0 8px;
+  color: var(--gulf-blue);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.hover-primary:hover {
+  color: var(--ferrari-red) !important;
+}
