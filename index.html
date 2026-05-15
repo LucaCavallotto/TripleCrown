@@ -73,66 +73,80 @@
           <div
             class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4 mt-5">
             <h2 class="section-title mb-0">Latest Paddock News</h2>
-            <button class="rm-btn-primary" onclick="showSection('news')">View All</button>
           </div>
-          <div class="api-news-grid mb-5" id="home-news-grid"></div>
+
+          <!-- Original News Code (Hidden) -->
+          <div class="d-none">
+            <button class="rm-btn-primary" onclick="showSection('news')">View All</button>
+            <div class="api-news-grid mb-5" id="home-news-grid"></div>
+          </div>
+
+          <!-- News Unavailable Placeholder -->
+          <div class="news-unavailable-placeholder mb-5 mt-5">
+            <i class="bi bi-megaphone-fill"></i>
+            <h3>NEWS SERVICE CURRENTLY UNAVAILABLE</h3>
+            <p>Paddock news updates are currently suspended. Please check our official schedule for race timings.</p>
+          </div>
         </div>
       </section>
 
       <!-- ================== NEWS SECTION ================== -->
       <section id="news" class="rm-section" style="display:none;">
-        <div class="container">
-          <div class="row align-items-end mb-4 mt-5">
-            <div class="col">
-
-              <h2 class="section-title">Paddock News</h2>
-            </div>
+        <div class="container py-5 mt-5">
+          <div class="news-unavailable-placeholder">
+             <i class="bi bi-megaphone-fill"></i>
+             <h2>NEWS SERVICE UNAVAILABLE</h2>
+             <p>We are currently performing maintenance on our paddock news delivery system. Please check back later for the latest updates from the racing world.</p>
+             <button class="rm-btn-primary mt-4" onclick="showSection('home')">Return to Home</button>
           </div>
         </div>
 
-        <!-- Sentinel for IntersectionObserver to know when the sticky bar hits the top offset -->
-        <div id="news-sticky-sentinel"></div>
+        <!-- Original News Code (Hidden) -->
+        <div class="d-none">
+          <div class="container">
+            <div class="row align-items-end mb-4 mt-5">
+              <div class="col">
+                <h2 class="section-title">Paddock News</h2>
+              </div>
+            </div>
+          </div>
 
-        <!-- The Single Combined Sticky Wrapper -->
-        <div id="news-sticky-bar">
-          <div class="container pt-3 pb-3">
+          <div id="news-sticky-sentinel"></div>
 
-            <!-- Filters (Inline Collapse Panel) & Search -->
-            <div class="d-flex align-items-center gap-2 mt-2">
-              <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button"
-                data-bs-toggle="collapse" data-bs-target="#newsFiltersCollapse" aria-expanded="false"
-                aria-controls="newsFiltersCollapse"
-                style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
-                <span><i class="bi bi-funnel-fill me-2"></i> Filter</span>
-              </button>
-
-              <div class="news-search-wrapper position-relative" style="max-width: 300px; margin-bottom: 0;">
-                <input type="text" id="api-news-search" class="news-search-input" placeholder="Search news by title..."
-                  style="padding-right: 2.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
-                <button type="button" id="api-news-search-clear" class="btn position-absolute border-0 bg-transparent p-0"
-                  style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
-                  aria-label="Clear search">
-                  <i class="bi bi-x-lg"></i>
+          <div id="news-sticky-bar">
+            <div class="container pt-3 pb-3">
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <button class="view-toggle-btn dropdown-toggle text-start d-flex align-items-center gap-4" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#newsFiltersCollapse" aria-expanded="false"
+                  aria-controls="newsFiltersCollapse"
+                  style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                  <span><i class="bi bi-funnel-fill me-2"></i> Filter</span>
                 </button>
-              </div>
-            </div>
 
-            <!-- Collapsible Filters Area -->
-            <div class="collapse mt-3" id="newsFiltersCollapse">
-              <div class="card card-body" style="background-color: var(--bg-card); border-color: var(--border-color);">
-                <div class="rm-filters mb-0" id="news-filters"></div>
+                <div class="news-search-wrapper position-relative" style="max-width: 300px; margin-bottom: 0;">
+                  <input type="text" id="api-news-search" class="news-search-input" placeholder="Search news by title..."
+                    style="padding-right: 2.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
+                  <button type="button" id="api-news-search-clear"
+                    class="btn position-absolute border-0 bg-transparent p-0"
+                    style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
+                    aria-label="Clear search">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="collapse mt-3" id="newsFiltersCollapse">
+                <div class="card card-body" style="background-color: var(--bg-card); border-color: var(--border-color);">
+                  <div class="rm-filters mb-0" id="news-filters"></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="container pt-4">
-
-          <!-- Grid -->
-          <div class="api-news-grid" id="news-grid"></div>
-
-          <!-- Pagination -->
-          <div id="news-pagination" class="d-flex justify-content-center flex-wrap mt-5 mb-2 gap-2"></div>
+          <div class="container pt-4">
+            <div class="api-news-grid" id="news-grid"></div>
+            <div id="news-pagination" class="d-flex justify-content-center flex-wrap mt-5 mb-2 gap-2"></div>
+          </div>
         </div>
       </section>
 
@@ -165,8 +179,8 @@
             <div class="mt-3">
               <div class="d-flex align-items-center gap-3 mt-2 w-100">
                 <!-- Filter Button -->
-                <button class="view-toggle-btn d-flex align-items-center gap-2" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#filtersCollapse"
+                <button class="view-toggle-btn d-flex align-items-center gap-2" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#filtersCollapse"
                   style="border-radius: 3px; background-color: var(--bg-card); padding-top: 0.5rem; padding-bottom: 0.5rem; flex-shrink: 0;">
                   <span><i class="bi bi-funnel-fill me-2"></i> Filter</span>
                 </button>
@@ -183,15 +197,18 @@
                   <input type="text" id="api-schedule-search-desktop" class="news-search-input w-100"
                     placeholder="Search event by title..."
                     style="padding-right: 7rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
-                  
-                  <div class="schedule-search-nav-container position-absolute d-none align-items-center gap-2" 
-                       style="right: 35px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted); border-right: 1px solid var(--border-color); padding-right: 10px;">
+
+                  <div class="schedule-search-nav-container position-absolute d-none align-items-center gap-2"
+                    style="right: 35px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted); border-right: 1px solid var(--border-color); padding-right: 10px;">
                     <span class="schedule-search-count">0/0</span>
-                    <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(-1)"><i class="bi bi-chevron-up"></i></button>
-                    <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(1)"><i class="bi bi-chevron-down"></i></button>
+                    <button type="button" class="btn p-0 text-muted hover-primary"
+                      onclick="navigateScheduleSearch(-1)"><i class="bi bi-chevron-up"></i></button>
+                    <button type="button" class="btn p-0 text-muted hover-primary"
+                      onclick="navigateScheduleSearch(1)"><i class="bi bi-chevron-down"></i></button>
                   </div>
 
-                  <button type="button" class="api-schedule-search-clear btn position-absolute border-0 bg-transparent p-0"
+                  <button type="button"
+                    class="api-schedule-search-clear btn position-absolute border-0 bg-transparent p-0"
                     style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
                     aria-label="Clear search">
                     <i class="bi bi-x-lg"></i>
@@ -199,33 +216,40 @@
                 </div>
 
                 <!-- Next Event Button -->
-                <button class="next-event-btn" id="jump-next-btn" onclick="jumpToNextEvent()" style="flex-shrink: 0; margin-left: auto;">
+                <button class="next-event-btn" id="jump-next-btn" onclick="jumpToNextEvent()"
+                  style="flex-shrink: 0; margin-left: auto;">
                   Next Event
                 </button>
               </div>
-              
+
               <!-- Mobile Search Panel (Collapse) -->
               <div class="collapse d-md-none" id="searchCollapse">
-                <div class="pt-3 pb-1 mt-2 d-flex align-items-center gap-2" style="border-top: 1px solid var(--border-color);">
-                  <div class="news-search-wrapper position-relative flex-grow-1" style="max-width: none; margin-bottom: 0;">
+                <div class="pt-3 pb-1 mt-2 d-flex align-items-center gap-2"
+                  style="border-top: 1px solid var(--border-color);">
+                  <div class="news-search-wrapper position-relative flex-grow-1"
+                    style="max-width: none; margin-bottom: 0;">
                     <input type="text" id="api-schedule-search-mobile" class="news-search-input"
                       placeholder="Search event by title..."
                       style="padding-right: 7rem; padding-top: 0.4rem; padding-bottom: 0.4rem;">
-                    
-                    <div class="schedule-search-nav-container position-absolute d-none align-items-center gap-2" 
-                         style="right: 35px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted); border-right: 1px solid var(--border-color); padding-right: 10px;">
+
+                    <div class="schedule-search-nav-container position-absolute d-none align-items-center gap-2"
+                      style="right: 35px; top: 50%; transform: translateY(-50%); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-muted); border-right: 1px solid var(--border-color); padding-right: 10px;">
                       <span class="schedule-search-count">0/0</span>
-                      <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(-1)"><i class="bi bi-chevron-up"></i></button>
-                      <button type="button" class="btn p-0 text-muted hover-primary" onclick="navigateScheduleSearch(1)"><i class="bi bi-chevron-down"></i></button>
+                      <button type="button" class="btn p-0 text-muted hover-primary"
+                        onclick="navigateScheduleSearch(-1)"><i class="bi bi-chevron-up"></i></button>
+                      <button type="button" class="btn p-0 text-muted hover-primary"
+                        onclick="navigateScheduleSearch(1)"><i class="bi bi-chevron-down"></i></button>
                     </div>
 
-                    <button type="button" class="api-schedule-search-clear btn position-absolute border-0 bg-transparent p-0"
+                    <button type="button"
+                      class="api-schedule-search-clear btn position-absolute border-0 bg-transparent p-0"
                       style="right: 15px; top: 50%; transform: translateY(-50%); display: none; color: var(--text-muted);"
                       aria-label="Clear search">
                       <i class="bi bi-x-lg"></i>
                     </button>
                   </div>
-                  <button type="button" class="btn border-0 p-2 text-muted" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-label="Close search">
+                  <button type="button" class="btn border-0 p-2 text-muted" data-bs-toggle="collapse"
+                    data-bs-target="#searchCollapse" aria-label="Close search">
                     <i class="bi bi-x-lg"></i>
                   </button>
                 </div>

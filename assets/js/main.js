@@ -63,13 +63,13 @@ async function loadData() {
                       const typeLower = (sesh.type || "").toLowerCase();
                       const codeLower = (sesh.code || "").toLowerCase();
                       let durationHours = 2; // Default for Race, Feature, Sprint, etc.
-                      
+
                       if (typeLower.includes("qualifying") || codeLower.startsWith("q") || codeLower.startsWith("tq")) {
                         durationHours = 1;
                       } else if (typeLower.includes("practice") || codeLower.startsWith("fp") || codeLower === "w") {
                         durationHours = 1;
                       }
-                      
+
                       endTimeISO = new Date(d.getTime() + durationHours * 60 * 60 * 1000).toISOString();
                     }
                   }
@@ -81,7 +81,7 @@ async function loadData() {
                     const sd = new Date(sesh.start_time);
                     const ed = new Date(sesh.end_time);
                     endTimeFormatted = `${pad(ed.getHours())}:${pad(ed.getMinutes())}`;
-                    
+
                     if (sd.toDateString() !== ed.toDateString()) {
                       isMultiDay = true;
                       endDay = pad(ed.getDate());
@@ -161,7 +161,7 @@ async function loadExternalNews() {
     // Proactively fix categories based on strong URL or keyword signals
     const getBestCategory = (article, currentCat) => {
       const url = (article.url || '').toLowerCase();
-      
+
       // 1. Explicit URL parsing (more flexible to catch paths like /nascar-os/ or slugs like formula-e-berlino)
       if (url.match(/[\/-]f1[\/-]/)) return 'F1';
       if (url.includes('motogp')) return 'MotoGP';
@@ -195,7 +195,7 @@ async function loadExternalNews() {
       if (check(['f1', 'formula 1'])) return 'F1';
 
       // 3. Fallback to API. Map generic API categories to standard ones if needed.
-      if (currentCat === 'US Racing') return 'IndyCar'; 
+      if (currentCat === 'US Racing') return 'IndyCar';
       return currentCat;
     };
 
@@ -210,7 +210,7 @@ async function loadExternalNews() {
       const title = n.title ? n.title.trim() : '';
       if (!title) return;
       const lowerTitle = title.toLowerCase();
-      
+
       if (!seenTitles.has(lowerTitle)) {
         seenTitles.set(lowerTitle, n);
       }
@@ -1235,7 +1235,7 @@ function initScheduleSearch() {
     currentMatchIdx += direction;
     if (currentMatchIdx < 0) currentMatchIdx = matchElements.length - 1;
     if (currentMatchIdx >= matchElements.length) currentMatchIdx = 0;
-    
+
     updateSearchUI();
     scrollToMatch(matchElements[currentMatchIdx]);
   };
@@ -1271,7 +1271,7 @@ function initScheduleSearch() {
 
     document.querySelectorAll('.search-highlight').forEach(e => e.classList.remove('search-highlight'));
     el.classList.add('search-highlight');
-    
+
     let offset = 220;
     const rootStyles = getComputedStyle(document.documentElement);
     const dynamicOffset = rootStyles.getPropertyValue('--dynamic-scroll-offset');
@@ -1332,8 +1332,8 @@ function initScheduleSearch() {
     } else if (matchElements.length > 0) {
       const pastChrono = document.getElementById('past-events-chrono');
       const pastGrouped = document.getElementById('past-events-grouped');
-      const pastOpen = (pastChrono && !pastChrono.classList.contains('d-none')) || 
-                        (pastGrouped && !pastGrouped.classList.contains('d-none'));
+      const pastOpen = (pastChrono && !pastChrono.classList.contains('d-none')) ||
+        (pastGrouped && !pastGrouped.classList.contains('d-none'));
 
       if (pastOpen) {
         currentMatchIdx = 0;
@@ -1341,7 +1341,7 @@ function initScheduleSearch() {
         currentMatchIdx = matchElements.findIndex(el => !el.closest('#past-events-chrono, #past-events-grouped'));
         if (currentMatchIdx === -1) currentMatchIdx = 0;
       }
-      
+
       updateSearchUI();
       scrollToMatch(matchElements[currentMatchIdx]);
     } else {
@@ -1354,8 +1354,8 @@ function initScheduleSearch() {
     input.addEventListener('input', (e) => {
       const query = e.target.value.toLowerCase();
       // Sync other inputs
-      inputs.forEach(i => { if(i !== e.target) i.value = e.target.value; });
-      
+      inputs.forEach(i => { if (i !== e.target) i.value = e.target.value; });
+
       clearBtns.forEach(btn => {
         btn.style.display = query !== "" ? "block" : "none";
       });
@@ -1375,7 +1375,7 @@ function initScheduleSearch() {
   if (searchCollapse) {
     searchCollapse.addEventListener('shown.bs.collapse', () => {
       const mobInput = document.getElementById('api-schedule-search-mobile');
-      if(mobInput) mobInput.focus();
+      if (mobInput) mobInput.focus();
     });
   }
 }
