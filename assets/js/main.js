@@ -20,7 +20,7 @@ async function loadData() {
             sData = rawData.calendar.map(calItem => {
               const rSesh = calItem.sessions.find(sesh => sesh.code === 'R') || calItem.sessions[calItem.sessions.length - 1] || {};
               let rDateObj = new Date(calItem.event_end_date);
-              if (rSesh.start_time && rSesh.start_time !== "TBC") {
+              if (rSesh.start_time && rSesh.start_time !== "TBC" && rSesh.start_time !== "N.S.") {
                 rDateObj = new Date(rSesh.start_time);
               }
               const pad = n => String(n).padStart(2, '0');
@@ -39,12 +39,12 @@ async function loadData() {
                   let startTimeISO = null;
                   let endTimeISO = null;
 
-                  if (sesh.start_time === "TBC" || !sesh.start_time) {
+                  if (sesh.start_time === "TBC" || sesh.start_time === "N.S." || !sesh.start_time) {
                     const dStr = sesh.date_tbc || calItem.event_end_date;
                     const d = new Date(dStr);
                     lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-                    lTime = "TBC";
-                    // For TBC events, we can set start and end to end of day to avoid active state issues
+                    lTime = "N.S.";
+                    // For N.S. events, we can set start and end to end of day to avoid active state issues
                     startTimeISO = new Date(lDate + 'T23:59:59').toISOString();
                     endTimeISO = new Date(lDate + 'T23:59:59').toISOString();
                   } else {
@@ -69,6 +69,12 @@ async function loadData() {
                       endTimeISO = new Date(d.getTime() + durationHours * 60 * 60 * 1000).toISOString();
                     }
                   }
+                  let endTimeFormatted = "";
+                  if (endTimeISO && lTime !== "N.S.") {
+                    const ed = new Date(endTimeISO);
+                    endTimeFormatted = `${pad(ed.getHours())}:${pad(ed.getMinutes())}`;
+                  }
+
                   let cssCode = sesh.code ? sesh.code.toLowerCase() : 'u';
                   if (cssCode.startsWith('fp') || cssCode === 'w') cssCode = 'fp';
                   if (cssCode.startsWith('q') || cssCode.startsWith('tq')) cssCode = 'q';
@@ -78,6 +84,7 @@ async function loadData() {
                     type: sesh.type,
                     date: lDate,
                     time: lTime,
+                    endTimeFormatted: endTimeFormatted,
                     startTimeISO: startTimeISO,
                     endTimeISO: endTimeISO,
                     local: calItem.location,
@@ -676,9 +683,9 @@ function buildNextEventHero(events) {
 
     const labelEl = document.getElementById('hero-session-label');
     if (currentNow >= startTarget && currentNow < endTarget) {
-      if (nextSession.time === "TBC") {
+      if (nextSession.time === "N.S.") {
         if (labelEl) labelEl.textContent = `${nextSession.type} — TODAY`;
-        wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TIME TBC</span>`;
+        wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TIME N.S.</span>`;
       } else {
         if (labelEl) labelEl.style.display = 'none';
         wrap.innerHTML = `<div class="happening-now-hero">${nextSession.type} <span class="live-tag">LIVE NOW</span></div>`;
@@ -759,8 +766,8 @@ function buildTimeline(events, nextEvent) {
 
 function jumpToNextEvent() {
   const events = getFilteredEvents();
-  const next = getNextEvent(events);
-  if (next) selectEvent(next.id);
+  const activeOrNext = getActiveOrNextEvents(events);
+  if (activeOrNext.length > 0) selectEvent(activeOrNext[0].id);
 }
 
 function scrollTimelineToActive() {
@@ -877,7 +884,7 @@ function getFilteredEvents() {
 function selectEvent(id) {
   activeEventId = id;
   const events = getFilteredEvents();
-  buildTimeline(getEvents(activeYear), getNextEvent(getEvents(activeYear)));
+  buildTimeline(getEvents(activeYear), getActiveOrNextEvents(getEvents(activeYear))[0]);
   buildEventsList(events);
   scrollTimelineToActive();
 
@@ -946,9 +953,9 @@ function buildEventsList(events) {
       let daySessions = grouped[date];
       // Sort sessions by time
       daySessions.sort((a, b) => {
-        if (a.time === "TBC" && b.time === "TBC") return 0;
-        if (a.time === "TBC") return 1;
-        if (b.time === "TBC") return -1;
+        if (a.time === "N.S." && b.time === "N.S.") return 0;
+        if (a.time === "N.S.") return 1;
+        if (b.time === "N.S.") return -1;
         return a.time.localeCompare(b.time);
       });
 
@@ -1088,7 +1095,7 @@ function sessionBlock(s, isChronological = false) {
             ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;" class="session-event-name-wrap"><span class="session-event-name">${s.evName}</span> &middot; ${s.evLocation}</div>` : ''}
           </div>
           <div class="session-time mono d-flex align-items-center gap-3 ms-auto">
-            <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}</strong></div>
+            <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}${s.endTimeFormatted ? ' — ' + s.endTimeFormatted : ''}</strong></div>
           </div>
           ${links.length ? `<div class="session-links">${links.join('')}</div>` : ''}
         </div>
