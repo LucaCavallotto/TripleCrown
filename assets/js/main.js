@@ -36,15 +36,38 @@ async function loadData() {
                 sessions: calItem.sessions.map(sesh => {
                   let lDate = "";
                   let lTime = "";
+                  let startTimeISO = null;
+                  let endTimeISO = null;
+
                   if (sesh.start_time === "TBC" || !sesh.start_time) {
                     const dStr = sesh.date_tbc || calItem.event_end_date;
                     const d = new Date(dStr);
                     lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
                     lTime = "TBC";
+                    // For TBC events, we can set start and end to end of day to avoid active state issues
+                    startTimeISO = new Date(lDate + 'T23:59:59').toISOString();
+                    endTimeISO = new Date(lDate + 'T23:59:59').toISOString();
                   } else {
                     const d = new Date(sesh.start_time);
                     lDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
                     lTime = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                    startTimeISO = d.toISOString();
+                    if (sesh.end_time) {
+                      endTimeISO = new Date(sesh.end_time).toISOString();
+                    } else {
+                      // Default durations
+                      const typeLower = (sesh.type || "").toLowerCase();
+                      const codeLower = (sesh.code || "").toLowerCase();
+                      let durationHours = 2; // Default for Race, Feature, Sprint, etc.
+                      
+                      if (typeLower.includes("qualifying") || codeLower.startsWith("q") || codeLower.startsWith("tq")) {
+                        durationHours = 1;
+                      } else if (typeLower.includes("practice") || codeLower.startsWith("fp") || codeLower === "w") {
+                        durationHours = 1;
+                      }
+                      
+                      endTimeISO = new Date(d.getTime() + durationHours * 60 * 60 * 1000).toISOString();
+                    }
                   }
                   let cssCode = sesh.code ? sesh.code.toLowerCase() : 'u';
                   if (cssCode.startsWith('fp') || cssCode === 'w') cssCode = 'fp';
@@ -55,6 +78,8 @@ async function loadData() {
                     type: sesh.type,
                     date: lDate,
                     time: lTime,
+                    startTimeISO: startTimeISO,
+                    endTimeISO: endTimeISO,
                     local: calItem.location,
                     official: sesh.links?.official || null,
                     broadcaster: sesh.links?.broadcast || null
@@ -503,9 +528,23 @@ function getEvents(year) {
   return (SCHEDULE_DATA[year] || []).sort((a, b) => a.date.localeCompare(b.date));
 }
 
-function getNextEvent(events) {
+function getActiveOrNextEvents(events) {
   const now = new Date();
-  return events.find(e => new Date(e.date + 'T23:59:59') >= now) || events[events.length - 1];
+  // Find all events that are currently happening
+  const happening = events.filter(e => {
+    return e.sessions.some(s => {
+      return now >= new Date(s.startTimeISO) && now < new Date(s.endTimeISO);
+    });
+  });
+
+  if (happening.length > 0) return happening;
+
+  // If none happening, find the first event with an upcoming session
+  const next = events.find(e => {
+    return e.sessions.some(s => new Date(s.endTimeISO) > now);
+  });
+
+  return next ? [next] : [];
 }
 
 function getUniqueEventDates(events) {
@@ -542,9 +581,9 @@ function setYear(y) {
 // ============================================================
 //  SCHEDULE — Next event hero + countdown
 // ============================================================
-function buildNextEventHero(event) {
+function buildNextEventHero(events) {
   const hero = document.getElementById('next-event-hero');
-  if (!event) {
+  if (!events || events.length === 0) {
     hero.innerHTML = `<p class="no-events">No upcoming events found.</p>`;
     hero.onclick = null;
     hero.classList.remove('hero-clickable');
@@ -554,7 +593,44 @@ function buildNextEventHero(event) {
     return;
   }
 
-  // Make the entire hero container clickable
+  // Clear interval for any previous setup
+  if (countdownInterval) clearInterval(countdownInterval);
+
+  const now = new Date();
+
+  // CASE: Multiple events happening simultaneously
+  if (events.length > 1) {
+    hero.classList.remove('hero-clickable');
+    hero.onclick = null;
+    hero.innerHTML = `
+      <div class="multi-live-header mb-3">
+        <i class="bi bi-broadcast me-2"></i> ${events.length} EVENTS LIVE NOW
+      </div>
+      <div class="row gy-3">
+        ${events.map(ev => {
+      const s = ev.sessions.find(sesh => now >= new Date(sesh.startTimeISO) && now < new Date(sesh.endTimeISO)) || ev.sessions[0];
+      return `
+            <div class="col-md-6">
+              <div class="multi-live-card" onclick="goToScheduleAndScroll('${ev.id}')">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <div class="next-event-label">${ev.series}</div>
+                  <span class="live-tag-sm">LIVE</span>
+                </div>
+                <div class="next-event-name" style="font-size: 1.25rem; margin-bottom: 0.25rem;">${ev.name}</div>
+                <div class="happening-now-hero" style="font-size: 1.1rem; color: var(--ferrari-red);">
+                  ${s.type}
+                </div>
+              </div>
+            </div>
+          `;
+    }).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  // CASE: Single event (Next or currently active)
+  const event = events[0];
   hero.classList.add('hero-clickable');
   hero.setAttribute('role', 'button');
   hero.setAttribute('tabindex', '0');
@@ -562,12 +638,7 @@ function buildNextEventHero(event) {
   hero.onclick = () => goToScheduleAndScroll(event.id);
 
   const nextSession = event.sessions.find(s => {
-    if (s.time === "TBC") {
-      const dt = new Date(s.date + 'T23:59:59');
-      return dt > new Date();
-    }
-    const dt = new Date(s.date + 'T' + s.time + ':00');
-    return dt > new Date();
+    return new Date(s.endTimeISO) > new Date();
   }) || event.sessions[event.sessions.length - 1];
 
   hero.innerHTML = `
@@ -586,7 +657,7 @@ function buildNextEventHero(event) {
           </div>
         </div>
         <div class="col-lg-5 d-flex flex-column align-items-start align-items-lg-center text-start text-lg-center">
-          <div class="section-label">Countdown to ${nextSession.type}</div>
+          <div class="section-label" id="hero-session-label">Countdown to ${nextSession.type}</div>
           <div class="countdown-wrap mt-1" id="countdown-wrap"></div>
         </div>
       </div>
@@ -595,27 +666,37 @@ function buildNextEventHero(event) {
       </div>
     `;
 
-  // Start countdown
-  if (countdownInterval) clearInterval(countdownInterval);
   const wrap = document.getElementById('countdown-wrap');
-
-  const targetStr = nextSession.time === "TBC" ? (nextSession.date + 'T00:00:00') : (nextSession.date + 'T' + nextSession.time + ':00');
-  const target = new Date(targetStr);
+  const startTarget = new Date(nextSession.startTimeISO);
+  const endTarget = new Date(nextSession.endTimeISO);
 
   function tick() {
-    const now = new Date();
-    const diff = target - now;
+    const currentNow = new Date();
     if (!wrap) return;
 
-    if (diff <= 0) {
+    const labelEl = document.getElementById('hero-session-label');
+    if (currentNow >= startTarget && currentNow < endTarget) {
       if (nextSession.time === "TBC") {
-        wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TODAY (TIME TBC)</span>`;
+        if (labelEl) labelEl.textContent = `${nextSession.type} — TODAY`;
+        wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">TIME TBC</span>`;
       } else {
-        wrap.innerHTML = `<span class="section-label" style="color:var(--ferrari-red)">LIVE NOW</span>`;
+        if (labelEl) labelEl.style.display = 'none';
+        wrap.innerHTML = `<div class="happening-now-hero">${nextSession.type} <span class="live-tag">LIVE NOW</span></div>`;
       }
+      return;
+    } else if (currentNow >= endTarget) {
+      if (labelEl) labelEl.style.display = 'none';
+      wrap.innerHTML = `<span class="section-label" style="color:var(--text-muted)">SESSION FINISHED</span>`;
       clearInterval(countdownInterval);
       return;
     }
+
+    if (labelEl) {
+      labelEl.style.display = 'block';
+      labelEl.textContent = `Countdown to ${nextSession.type}`;
+    }
+
+    const diff = startTarget - currentNow;
     const days = Math.floor(diff / 86400000);
     const hours = Math.floor((diff % 86400000) / 3600000);
     const mins = Math.floor((diff % 3600000) / 60000);
@@ -986,6 +1067,8 @@ function buildEventsList(events) {
 }
 
 function sessionBlock(s, isChronological = false) {
+  const now = new Date();
+  const isActive = s.startTimeISO && s.endTimeISO && now >= new Date(s.startTimeISO) && now < new Date(s.endTimeISO);
   const links = [];
   // if (s.official) links.push(`<a href="${s.official}" target="_blank" class="session-link"><i class="bi bi-globe2 me-1"></i>Official</a>`);
   if (s.broadcaster) links.push(`<a href="#" class="session-link"><i class="bi bi-tv me-1"></i>${s.broadcaster}</a>`);
@@ -995,9 +1078,10 @@ function sessionBlock(s, isChronological = false) {
   const formattedDate = `${da}-${mo}-${yr}`;
 
   return `
-      <div class="session-block">
+      <div class="session-block ${isActive ? 'is-active' : ''}">
         <div class="session-block-color ${s.code}"></div>
         <div class="session-block-body">
+          ${isActive ? '<span class="live-tag-sm">LIVE</span>' : ''}
           ${isChronological ? `<span class="event-series-badge ms-0 badge-${s.evSeries.toLowerCase()}">${s.evSeries}</span>` : ''}
           <div class="session-type">
             ${s.type}
@@ -1084,19 +1168,12 @@ function buildThisWeek() {
 // ============================================================
 function buildSchedule() {
   const events = getEvents(activeYear);
-  const filtered = getFilteredEvents();
-  const nextEvent = getNextEvent(events);
-
-  // Set default active event if none is set
-  if (!activeEventId && nextEvent) {
-    activeEventId = nextEvent.id;
-  }
-
-  buildNextEventHero(nextEvent);
-  buildThisWeek();
-  buildTimeline(events, nextEvent);
+  const activeOrNext = getActiveOrNextEvents(events);
   buildSeriesTabs(events);
-  buildEventsList(filtered);
+  buildThisWeek();
+  buildTimeline(events, activeOrNext[0]);
+  buildNextEventHero(activeOrNext);
+  buildEventsList(getFilteredEvents());
 
   if (window.triggerScheduleSearch) window.triggerScheduleSearch();
 
