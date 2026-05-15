@@ -38,6 +38,10 @@ async function loadData() {
                   let lTime = "";
                   let startTimeISO = null;
                   let endTimeISO = null;
+                  let endTimeFormatted = "";
+                  let isMultiDay = false;
+                  let endDay = "";
+                  let endDayMonth = "";
 
                   if (sesh.start_time === "TBC" || sesh.start_time === "N.S." || !sesh.start_time) {
                     const dStr = sesh.date_tbc || calItem.event_end_date;
@@ -55,7 +59,7 @@ async function loadData() {
                     if (sesh.end_time) {
                       endTimeISO = new Date(sesh.end_time).toISOString();
                     } else {
-                      // Default durations
+                      // Default durations for logic (Happening Now)
                       const typeLower = (sesh.type || "").toLowerCase();
                       const codeLower = (sesh.code || "").toLowerCase();
                       let durationHours = 2; // Default for Race, Feature, Sprint, etc.
@@ -69,10 +73,20 @@ async function loadData() {
                       endTimeISO = new Date(d.getTime() + durationHours * 60 * 60 * 1000).toISOString();
                     }
                   }
-                  let endTimeFormatted = "";
-                  if (endTimeISO && lTime !== "N.S.") {
-                    const ed = new Date(endTimeISO);
+                  isMultiDay = false;
+                  endDay = "";
+                  endDayMonth = "";
+
+                  if (endTimeISO && lTime !== "N.S." && sesh.end_time) {
+                    const sd = new Date(sesh.start_time);
+                    const ed = new Date(sesh.end_time);
                     endTimeFormatted = `${pad(ed.getHours())}:${pad(ed.getMinutes())}`;
+                    
+                    if (sd.toDateString() !== ed.toDateString()) {
+                      isMultiDay = true;
+                      endDay = pad(ed.getDate());
+                      endDayMonth = pad(ed.getMonth() + 1);
+                    }
                   }
 
                   let cssCode = sesh.code ? sesh.code.toLowerCase() : 'u';
@@ -85,6 +99,9 @@ async function loadData() {
                     date: lDate,
                     time: lTime,
                     endTimeFormatted: endTimeFormatted,
+                    isMultiDay: isMultiDay,
+                    endDay: endDay,
+                    endDayMonth: endDayMonth,
                     startTimeISO: startTimeISO,
                     endTimeISO: endTimeISO,
                     local: calItem.location,
@@ -1080,9 +1097,17 @@ function sessionBlock(s, isChronological = false) {
   // if (s.official) links.push(`<a href="${s.official}" target="_blank" class="session-link"><i class="bi bi-globe2 me-1"></i>Official</a>`);
   if (s.broadcaster) links.push(`<a href="#" class="session-link"><i class="bi bi-tv me-1"></i>${s.broadcaster}</a>`);
 
-  // Format YYYY-MM-DD to DD-MM-YYYY
+  // Format YYYY-MM-DD to DD/MM/YYYY
   const [yr, mo, da] = s.date.split('-');
-  const formattedDate = `${da}-${mo}-${yr}`;
+  let dateDisplay = `${da}/${mo}/${yr}`;
+
+  if (s.isMultiDay) {
+    if (s.endDayMonth === mo) {
+      dateDisplay = `${da}-${s.endDay}/${mo}/${yr}`;
+    } else {
+      dateDisplay = `${da}/${mo} - ${s.endDay}/${s.endDayMonth}/${yr}`;
+    }
+  }
 
   return `
       <div class="session-block ${isActive ? 'is-active' : ''}">
@@ -1095,7 +1120,7 @@ function sessionBlock(s, isChronological = false) {
             ${isChronological ? `<div style="font-size:0.65rem; color:var(--text-muted); font-family:'Space Mono', monospace; text-transform:uppercase; margin-top:2px;" class="session-event-name-wrap"><span class="session-event-name">${s.evName}</span> &middot; ${s.evLocation}</div>` : ''}
           </div>
           <div class="session-time mono d-flex align-items-center gap-3 ms-auto">
-            <div><i class="bi bi-clock me-1"></i>${formattedDate} &nbsp;<strong>${s.time}${s.endTimeFormatted ? ' — ' + s.endTimeFormatted : ''}</strong></div>
+            <div><i class="bi bi-clock me-1"></i>${dateDisplay} &nbsp;<strong>${s.time}${s.endTimeFormatted ? ' — ' + s.endTimeFormatted : ''}</strong></div>
           </div>
           ${links.length ? `<div class="session-links">${links.join('')}</div>` : ''}
         </div>
